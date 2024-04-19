@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Cookeco.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Cookeco"
+    Shell.FlyoutBehavior="Flyout"
+    Title="Cookeco" BackgroundColor="#A17C5E">
+
+    <FlyoutItem Title="Menu" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+        <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    </FlyoutItem>
+    <TabBar>
+        <Tab>
+            <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+            <ShellContent
+               Title="CreateRecipe"
+               ContentTemplate="{DataTemplate local:MainPage}"
+               Route="MainPage" />
+            <ShellContent
+               Title="SearchRecipe"
+               ContentTemplate="{DataTemplate local:MainPage}"
+               Route="MainPage" />
+            <ShellContent
+               Title="Profile"
+               ContentTemplate="{DataTemplate local:MainPage}"
+               Route="MainPage" />
+        </Tab>
+    </TabBar>
+
+
+</Shell>
