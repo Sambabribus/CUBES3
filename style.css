@@ -1,0 +1,186 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background: #bda18a;
+    color: #E8D5CC;
+}
+
+#header{
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.container{
+    padding: 10px 10%;
+}
+
+header h1 {
+    text-align: center;
+    margin: 0;
+}
+
+.top-band {
+    width: 100%;
+    height: 140px;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo{
+    width: 140px;
+}
+
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a{
+    color: #F5EFE6;
+    text-decoration: none;
+    font-size: 20px;
+    position: relative;
+}
+
+nav ul li a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #E8D5CC;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+
+nav ul li a:hover::after{
+    width: 100%;
+}
+
+main {
+    padding: 20px;
+    margin-top: 200px;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Styles spécifiques pour le formulaire de contact */
+.contact-form {
+    background-color: #F5EFE6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px #5D3C2E;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 250px; 
+    animation: float 3s ease-in-out infinite; 
+    opacity: 0.7;
+
+}
+
+.contact-form h2 {
+    color: #A17C5E;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #5D3C2E;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #A17C5E;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #E8D5CC;
+    color: #5D3C2E;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #C49D83;
+    outline: none;
+}
+
+button {
+    background-color: #A17C5E;
+    color: #F5EFE6;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #C49D83;
+}
+
+
+.btn-primary {
+    margin: 150px;
+    background-color: #A17C5E; /* Couleur de fond bleue */
+    color: white; /* Texte blanc */
+    border: none; /* Pas de bordure */
+    padding: 10px 20px; /* Padding intérieur pour un meilleur visuel */
+    font-size: 16px; /* Taille de police appropriée */
+    border-radius: 5px; /* Bords arrondis pour un look moderne */
+    text-decoration: none; /* Enlever le soulignement des liens */
+    display: inline-block; /* Permet au bouton d'être aligné avec d'autres éléments si nécessaire */
+    cursor: pointer; /* Changement du curseur pour indiquer qu'il s'agit d'un bouton cliquable */
+    transition: background-color 0.3s; /* Transition douce pour le survol */
+}
+
+.btn-primary:hover {
+    background-color: #C49D83; /* Couleur de fond un peu plus foncée au survol */
+}
+
+/* footer */
+
+footer, .content:after {
+    height: 50px; 
+}
+footer {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-align: center;
+    line-height: 50px; /* Centrer le texte verticalement */
+    margin-top: 900px;
+    opacity: 0.8;
+}
