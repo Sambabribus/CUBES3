@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cookeco")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+78e113c6e37ba57a977b1795ae8fb4467a3164cc")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cookeco")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cookeco")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

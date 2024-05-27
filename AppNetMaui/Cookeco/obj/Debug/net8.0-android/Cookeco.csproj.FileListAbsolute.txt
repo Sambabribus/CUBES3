@@ -2055,3 +2055,4 @@ C:\Users\woter\OneDrive\Документи\GitHub\CUBES3\AppNetMaui\Cookeco\obj\
 C:\Users\woter\OneDrive\Документи\GitHub\CUBES3\AppNetMaui\Cookeco\obj\Debug\net8.0-android\android\src\mono\com\google\android\material\textfield\TextInputLayout_OnEditTextAttachedListenerImplementor.java
 C:\Users\woter\OneDrive\Документи\GitHub\CUBES3\AppNetMaui\Cookeco\obj\Debug\net8.0-android\android\src\mono\com\google\android\material\textfield\TextInputLayout_OnEndIconChangedListenerImplementor.java
 C:\Users\woter\OneDrive\Документи\GitHub\CUBES3\AppNetMaui\Cookeco\obj\Debug\net8.0-android\android\src\mono\MonoPackageManager_Resources.java
+C:\Users\woter\OneDrive\Документи\GitHub\CUBES3\AppNetMaui\Cookeco\obj\Debug\net8.0-android\Cookeco.sourcelink.json
