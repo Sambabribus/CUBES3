@@ -1,0 +1,1 @@
+C:\ProjectCESI\CUBES3\MobileApp\CookEco\CookEco.csproj;x64
