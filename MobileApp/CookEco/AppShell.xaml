@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="CookEco.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:CookEco"
+    x:Class="CookEco.AppShell"
     Shell.FlyoutBehavior="Disabled"
     Title="CookEco">
-
-    <ShellContent Title="Login" ContentTemplate="{DataTemplate local:LoginPage}" />
-    <ShellContent Title="Register" ContentTemplate="{DataTemplate local:RegisterPage}" />
-    <ShellContent Title="Main" ContentTemplate="{DataTemplate local:MainPage}" />
-    <ShellContent Title="Profile" ContentTemplate="{DataTemplate local:ProfilePage}" />
-    <ShellContent Title="Create Recipe" ContentTemplate="{DataTemplate local:CreateRecipePage}" />
-    <ShellContent Title="Gallery" ContentTemplate="{DataTemplate local:GalleryPage}" />
-    
+    <TabBar>
+        <Tab Title="Main" Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="Profile" Icon="profile.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" />
+        </Tab>
+        <Tab Title="Create Recipe" Icon="create.png">
+            <ShellContent ContentTemplate="{DataTemplate local:CreateRecipePage}" />
+        </Tab>
+        <Tab Title="Gallery" Icon="gallery.png">
+            <ShellContent ContentTemplate="{DataTemplate local:GalleryPage}" />
+        </Tab>
+    </TabBar>
 </Shell>

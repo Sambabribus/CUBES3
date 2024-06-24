@@ -1,25 +1,25 @@
-using CookEco;
-namespace CookEco;
-
-public partial class CreateRecipePage : ContentPage
+namespace CookEco
 {
-    public CreateRecipePage()
+    public partial class CreateRecipePage : ContentPage
     {
-        InitializeComponent();
-    }
-
-    private async void OnSaveRecipeClicked(object sender, EventArgs e)
-    {
-        await ManagerDB.Init();
-
-        var recipe = new Recipe
+        public CreateRecipePage()
         {
-            Title = TitleEntry.Text,
-            Description = DescriptionEntry.Text,
-            ImagePath = ImagePathEntry.Text
-        };
-        await ManagerDB.SaveRecipeAsync(recipe);
-        await DisplayAlert("Success", "Recipe saved", "OK");
-        await Navigation.PopAsync();
+            InitializeComponent();
+        }
+
+        private async void OnSaveRecipeClicked(object sender, EventArgs e)
+        {
+            await ManagerDB.Init();
+
+            var recipe = new Recipe
+            {
+                Title = TitleEntry.Text,
+                Description = DescriptionEntry.Text,
+                ImagePath = ImagePathEntry.Text
+            };
+            await ManagerDB.SaveRecipeAsync(recipe);
+            await DisplayAlert("Success", "Recipe saved", "OK");
+            await Navigation.PopAsync();
+        }
     }
 }

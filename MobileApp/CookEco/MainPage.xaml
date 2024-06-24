@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CookEco.MainPage">
     <StackLayout>
+        <Button Text="Create Recipe" Clicked="OnCreateRecipeClicked" />
         <ListView x:Name="RecipeListView">
             <ListView.ItemTemplate>
                 <DataTemplate>

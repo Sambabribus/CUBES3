@@ -14,6 +14,10 @@
             var recipes = await ManagerDB.GetRecipesAsync();
             RecipeListView.ItemsSource = recipes;
         }
-    }
 
+        private async void OnCreateRecipeClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CreateRecipePage());
+        }
+    }
 }
