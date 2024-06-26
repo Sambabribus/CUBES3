@@ -5,15 +5,21 @@
              Background="#CA9F4E">
     <StackLayout>
         <Button Text="Create Recipe" Clicked="OnCreateRecipeClicked" />
-        <Grid>
-            <Image  x:Name="myImage"></Image>
-            <ListView x:Name="RecipeListView">
+        <Image x:Name="myImage" HeightRequest="200" />
+        <ListView x:Name="RecipeListView">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Title}" Detail="{Binding Description}" />
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Image Source="{Binding ImagePath}" WidthRequest="50" HeightRequest="50"/>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Title}" FontSize="Medium"/>
+                                <Label Text="{Binding Description}" FontSize="Small"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
+        </ListView>
     </StackLayout>
 </ContentPage>

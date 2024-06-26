@@ -23,23 +23,5 @@ namespace CookEco
         {
             await Navigation.PushAsync(new CreateRecipePage());
         }
-
-        private async void PickImage(object sender, EventArgs e)
-        {
-
-            var result = await FilePicker.PickAsync(new PickOptions
-            {
-                PickerTitle = "Pick Image Please",
-                FileTypes = FilePickerFileType.Images
-            });
-
-            if (result == null)
-            {
-                return;
-            }
-
-            var stream = await result.OpenReadAsync();
-            myImage.Source = ImageSource.FromStream(() => stream);
-        }
     }
 }

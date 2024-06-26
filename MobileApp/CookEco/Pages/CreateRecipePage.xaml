@@ -6,7 +6,7 @@
     <StackLayout>
         <Entry x:Name="TitleEntry" Placeholder="Title" />
         <Entry x:Name="DescriptionEntry" Placeholder="Description" />
-        <Button Text="Tale Pictures" Clicked="TakePhoto"/>
+        <Button Text="Take Picture" Clicked="TakePhoto"/>
         <Button Text="Save Recipe" Clicked="OnSaveRecipeClicked" />
     </StackLayout>
 </ContentPage>
