@@ -1,19 +1,27 @@
 using System;
+using System.Collections.ObjectModel;
+using Microsoft.Maui.Controls;
+using CookEco.Models;
+using CookEco.Services;
 using System.IO;
 using System.Threading.Tasks;
-using CookEco.Services;
-using CookEco.Models;
 using Microsoft.Maui.Media;
 
 namespace CookEco
 {
     public partial class CreateRecipePage : ContentPage
     {
+        private ObservableCollection<Recipe> _recipes;
         public static string localFilePath;
 
         public CreateRecipePage()
         {
             InitializeComponent();
+        }
+
+        public CreateRecipePage(ObservableCollection<Recipe> recipes) : this()
+        {
+            _recipes = recipes;
         }
 
         private async void TakePhoto(object sender, EventArgs e)
@@ -56,9 +64,17 @@ namespace CookEco
                 Description = DescriptionEntry.Text,
                 ImagePath = localFilePath
             };
+
             await ManagerDB.SaveRecipeAsync(recipe);
+            _recipes?.Add(recipe);
+
             await DisplayAlert("Success", "Recipe saved", "OK");
             await Navigation.PopAsync();
+        }
+
+        public void SetRecipesCollection(ObservableCollection<Recipe> recipes)
+        {
+            _recipes = recipes;
         }
     }
 }
