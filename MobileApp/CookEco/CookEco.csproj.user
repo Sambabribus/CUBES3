@@ -8,19 +8,19 @@
     <DefaultDevice>pixel_5_-_api_34</DefaultDevice>
   </PropertyGroup>
   <ItemGroup>
-    <MauiXaml Update="CreateRecipePage.xaml">
+    <MauiXaml Update="Pages\CreateRecipePage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="GalleryPage.xaml">
+    <MauiXaml Update="Pages\GalleryPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="LoginPage.xaml">
+    <MauiXaml Update="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="ProfilePage.xaml">
+    <MauiXaml Update="Pages\ProfilePage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="RegisterPage.xaml">
+    <MauiXaml Update="Pages\RegisterPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>
@@ -29,9 +29,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Update="AppShell.xaml">
-      <SubType>Designer</SubType>
-    </None>
-    <None Update="MainPage.xaml">
       <SubType>Designer</SubType>
     </None>
     <None Update="Platforms\Windows\App.xaml">

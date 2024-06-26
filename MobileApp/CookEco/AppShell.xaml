@@ -10,14 +10,14 @@
         <Tab Title="Main" Icon="home.png">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-        <Tab Title="Profile" Icon="profile.png">
-            <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" />
-        </Tab>
         <Tab Title="Create Recipe" Icon="create.png">
             <ShellContent ContentTemplate="{DataTemplate local:CreateRecipePage}" />
         </Tab>
         <Tab Title="Gallery" Icon="gallery.png">
             <ShellContent ContentTemplate="{DataTemplate local:GalleryPage}" />
+        </Tab>
+        <Tab Title="Profile" Icon="profile.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" />
         </Tab>
     </TabBar>
 </Shell>

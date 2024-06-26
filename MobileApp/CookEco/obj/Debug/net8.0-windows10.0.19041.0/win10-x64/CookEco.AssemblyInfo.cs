@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CookEco")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+e2251b7a9922f3072ea91a0f3cdc2e6c9764457e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+87d125e1871e8e736464650642e85844161798a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("CookEco")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CookEco")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
