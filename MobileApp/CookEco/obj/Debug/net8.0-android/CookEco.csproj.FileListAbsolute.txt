@@ -1042,3 +1042,4 @@ C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\lp\152\jl\files
 C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\lp\158\jl\files.cache
 C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\lp\159\jl\files.cache
 C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\android\assets\System.Private.CoreLib.dll
+C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\android\assets\BCrypt.Net-Next.dll

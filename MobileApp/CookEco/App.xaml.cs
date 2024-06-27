@@ -7,7 +7,6 @@
             InitializeComponent();
             MainPage = new NavigationPage(new LoginPage());
         }
-
         public void LoginSuccessful()
         {
             MainPage = new AppShell();
