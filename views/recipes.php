@@ -67,11 +67,11 @@ if (isset($_GET['query'])) {
 <div class="slider">
       <div class="slide-track">
         <div class="slide bg-red-500">
-<img src="Image/EcoCook.png">
+<img src="../assets/shrek-5.jpg">
 
 </div>
         <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="Image/EcoCook.svg"></div>
+        <div class="slide1"><img src="../assets/shrek-5.jpg"></div>
        
       </div>
     </div>
@@ -80,11 +80,11 @@ if (isset($_GET['query'])) {
     <div class="slider">
       <div class="slide-track">
         <div class="slide bg-red-500">
-<img src="Image/EcoCook.png">
+<img src="../assets/shrek-5.jpg">
 
 </div>
         <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="Image/EcoCook.svg"></div>
+        <div class="slide1"><img src="../assets/shrek-5.jpg"></div>
        
       </div>
     </div>
@@ -92,11 +92,11 @@ if (isset($_GET['query'])) {
     <div class="slider">
       <div class="slide-track">
         <div class="slide bg-red-500">
-<img src="Image/EcoCook.png">
+<img src="../assets/shrek-5.jpg">
 
 </div>
         <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="Image/EcoCook.svg"></div>
+        <div class="slide1"><img src="../assets/shrek-5.jpg"></div>
        
       </div>
     </div>
@@ -105,11 +105,11 @@ if (isset($_GET['query'])) {
     <div class="slider">
       <div class="slide-track">
         <div class="slide bg-red-500">
-<img src="Image/EcoCook.png">
+<img src="../assets/shrek-5.jpg">
 
 </div>
         <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="Image/EcoCook.svg"></div>
+        <div class="slide1"><img src="../assets/shrek-5.jpg"></div>
        
       </div>
     </div>
@@ -119,11 +119,11 @@ if (isset($_GET['query'])) {
     <div class="slider">
       <div class="slide-track">
         <div class="slide bg-red-500">
-<img src="Image/EcoCook.png">
+<img src="../assets/shrek-5.jpg">
 
 </div>
         <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="Image/EcoCook.svg"></div>
+        <div class="slide1"><img src="../assets/shrek-5.jpg"></div>
        
       </div>
     </div>
