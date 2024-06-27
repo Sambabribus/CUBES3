@@ -23,7 +23,7 @@ session_start(); // Important pour accéder aux variables de session
                         <li><a href="about.php">A propos</a></li>
                         <li><a href="contact.php">Contact</a></li>
                         <?php if (isset($_SESSION['user'])): ?>
-                            <li><a href="logout.php">Déconnexion</a></li>
+                            <li><a href="../controllers/logout.php">Déconnexion</a></li>
                         <?php else: ?>
                             <li><a href="login.php">Connexion / Inscription</a></li>
                         <?php endif; ?>
