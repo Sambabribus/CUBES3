@@ -1,7 +1,7 @@
 <?php
 session_start(); // Important pour accéder aux variables de session
 
-include 'controllers/db_connection.php.php';  // Inclut ton script de connexion à la base de données
+include '../controllers/db_connection.php';  // Inclut ton script de connexion à la base de données
 
 if (isset($_GET['query'])) {
     $query = $_GET['query'];  // Récupère la chaîne de recherche de l'utilisateur
@@ -39,7 +39,7 @@ if (isset($_GET['query'])) {
 
     <div class="container">
         <nav>
-            <img src="../assets/EcoCook.png" class="logo">
+            <img src="../assets/img/EcoCook.png" class="logo">
             <ul>
                 <li><a href="main.php">Accueil</a></li>
                 <li><a href="recipe.php">Recettes</a></li>
@@ -67,11 +67,11 @@ if (isset($_GET['query'])) {
 <div class="slider">
       <div class="slide-track">
         <div class="slide bg-red-500">
-<img src="../assets/shrek-5.jpg">
+<img src="../assets/img/shrek-5.jpg">
 
 </div>
         <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="../assets/shrek-5.jpg"></div>
+        <div class="slide1"><img src="../assets/img/shrek-5.jpg"></div>
        
       </div>
     </div>
@@ -80,7 +80,7 @@ if (isset($_GET['query'])) {
     <div class="slider">
       <div class="slide-track">
         <div class="slide bg-red-500">
-<img src="../assets/shrek-5.jpg">
+<img src="../assets/img/shrek-5.jpg">
 
 </div>
         <!-- same 9 slides doubled (duplicate) -->
@@ -92,11 +92,11 @@ if (isset($_GET['query'])) {
     <div class="slider">
       <div class="slide-track">
         <div class="slide bg-red-500">
-<img src="../assets/shrek-5.jpg">
+<img src="../assets/img/shrek-5.jpg">
 
 </div>
         <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="../assets/shrek-5.jpg"></div>
+        <div class="slide1"><img src="../assets/img/shrek-5.jpg"></div>
        
       </div>
     </div>
@@ -105,11 +105,11 @@ if (isset($_GET['query'])) {
     <div class="slider">
       <div class="slide-track">
         <div class="slide bg-red-500">
-<img src="../assets/shrek-5.jpg">
+<img src="../assets/img/shrek-5.jpg">
 
 </div>
         <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="../assets/shrek-5.jpg"></div>
+        <div class="slide1"><img src="../assets/img/shrek-5.jpg"></div>
        
       </div>
     </div>
@@ -119,11 +119,11 @@ if (isset($_GET['query'])) {
     <div class="slider">
       <div class="slide-track">
         <div class="slide bg-red-500">
-<img src="Image/EcoCook.png">
+<img src="../assets/img/shrek-5.jpg">
 
 </div>
         <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="../assets/shrek-5.jpg"></div>
+        <div class="slide1"><img src="../assets/img/shrek-5.jpg"></div>
        
       </div>
     </div>
