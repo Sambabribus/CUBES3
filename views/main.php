@@ -16,14 +16,14 @@ session_start(); // Important pour accéder aux variables de session
         <nav>
             <img src="Image/EcoCook.png" class="logo">
             <ul>
-                <li><a href="acceuil.php">Accueil</a></li>
-                <li><a href="recettes.php">Recettes</a></li>
-                <li><a href="a propos.php">A propos</a></li>
+                <li><a href="main.php">Accueil</a></li>
+                <li><a href="recipes.php">Recettes</a></li>
+                <li><a href="about.php">A propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <?php if (isset($_SESSION['user'])): ?>
-                    <li><a href="logout.php">Déconnexion</a></li>
+                    <li><a href="..\controllers\logout.php">Déconnexion</a></li>
                 <?php else: ?>
-                    <li><a href="inscription.php">Connexion / Inscription</a></li>
+                    <li><a href="login.php">Connexion / Inscription</a></li>
                 <?php endif; ?>
             </ul>    
             <?php if (isset($_SESSION['user'])): ?>
@@ -40,8 +40,7 @@ session_start(); // Important pour accéder aux variables de session
 
 
 <footer>
-Copyright © Ez by Lemon
+Copyright © VNTM
     </footer>
-    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </body>
 </html>

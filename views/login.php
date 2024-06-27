@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($user && password_verify($pwd_user, $user['pwd_user'])) {
                 $_SESSION['user'] = $mail_user; // Stocker l'email de l'utilisateur dans $_SESSION
-                header('Location: acceuil.php'); // Rediriger vers acceuil.php après connexion réussie
+                header('Location: main.php'); // Rediriger vers acceuil.php après connexion réussie
                 exit;
             } else {
                 $messageConnexion = "Identifiants incorrects.";
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Inscription / Connexion</title>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="inscription.css">
+    <link rel="stylesheet" href="css\inscription.css">
 </head>
 <body>
 <div class="form-container">

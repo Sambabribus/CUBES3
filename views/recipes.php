@@ -1,7 +1,7 @@
 <?php
 session_start(); // Important pour accéder aux variables de session
 
-include 'connexion_bdd.php';  // Inclut ton script de connexion à la base de données
+include '..\controllers\db_connection.php';  // Inclut ton script de connexion à la base de données
 
 if (isset($_GET['query'])) {
     $query = $_GET['query'];  // Récupère la chaîne de recherche de l'utilisateur
@@ -30,7 +30,7 @@ if (isset($_GET['query'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/output.css">
+    <link rel="stylesheet" href="css\output.css">
     <title>Document</title>
 </head>
 <body>
@@ -41,14 +41,14 @@ if (isset($_GET['query'])) {
         <nav>
             <img src="Image/EcoCook.png" class="logo">
             <ul>
-                <li><a href="acceuil.php">Accueil</a></li>
-                <li><a href="recettes.php">Recettes</a></li>
-                <li><a href="a propos.php">A propos</a></li>
+                <li><a href="main.php">Accueil</a></li>
+                <li><a href="recipes.php">Recettes</a></li>
+                <li><a href="about.php">A propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <?php if (isset($_SESSION['user'])): ?>
                     <li><a href="logout.php">Déconnexion</a></li>
                 <?php else: ?>
-                    <li><a href="inscription.php">Connexion / Inscription</a></li>
+                    <li><a href="login.php">Connexion / Inscription</a></li>
                 <?php endif; ?>
             </ul>    
             <?php if (isset($_SESSION['user'])): ?>
@@ -61,10 +61,15 @@ if (isset($_GET['query'])) {
             <?php endif; ?>
         </nav>  
     </div>
-    <input type="text" id="disabled-input" aria-label="disabled input" class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value="Disabled input" disabled>
     </div> 
 </header>
-<script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+<a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="/docs/images/blog/image-4.jpg" alt="">
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+    </div>
+</a>
 <a href="ajout_recettes.php" class="btn btn-primary">Ajouter une recette</a>
 
 
