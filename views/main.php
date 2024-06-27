@@ -17,7 +17,7 @@ session_start(); // Important pour accéder aux variables de session
         <nav>
             <img src="../assets/EcoCook.png" class="logo">
             <ul>
-                <li><a href="about.php">Accueil</a></li>
+                <li><a href="main.php">Accueil</a></li>
                 <li><a href="recipes.php">Recettes</a></li>
                 <li><a href="about.php">A propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
