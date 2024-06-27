@@ -1,20 +1,16 @@
 <?php
-$host = '127.0.0.1'; // ou localhost
-$dbname = 'eco_cook';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
+// db_connection.php
 
-$dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES => false,
-];
+define('DB_SERVER', 'localhost'); // Remplace par ton serveur de base de données
+define('DB_USERNAME', 'root'); // Remplace par ton nom d'utilisateur
+define('DB_PASSWORD', ''); // Remplace par ton mot de passe
+define('DB_NAME', 'eco_cook'); // Remplace par le nom de ta base de données
 
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int)$e->getCode());
+// Connexion à la base de données
+$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
+// Vérifie la connexion
+if ($conn->connect_error) {
+    die("La connexion a échoué: " . $conn->connect_error);
 }
 ?>
