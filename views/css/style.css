@@ -16,7 +16,7 @@ html{
 }
 
 body{
-    background: #bda18a;
+    background: #E8D5CC;
     color: #E8D5CC;
 }
 
@@ -64,7 +64,7 @@ nav ul li{
 }
 
 nav ul li a{
-    color: #F5EFE6;
+    color: #C49D83;
     text-decoration: none;
     font-size: 20px;
     position: relative;
@@ -74,7 +74,7 @@ nav ul li a::after{
     content: '';
     width: 0;
     height: 3px;
-    background: #E8D5CC;
+    background: #A17C5E;
     position: absolute;
     left: 0;
     bottom: -6px;
@@ -109,7 +109,7 @@ main {
     margin: auto;
     margin-top: 250px; 
     animation: float 3s ease-in-out infinite; 
-    opacity: 0.7;
+    opacity: 0.6;
 
 }
 
@@ -160,17 +160,20 @@ button:hover {
 
 
 .btn-primary {
-    margin: 150px;
-    background-color: #A17C5E; /* Couleur de fond bleue */
-    color: white; /* Texte blanc */
-    border: none; /* Pas de bordure */
-    padding: 10px 20px; /* Padding intérieur pour un meilleur visuel */
-    font-size: 16px; /* Taille de police appropriée */
-    border-radius: 5px; /* Bords arrondis pour un look moderne */
-    text-decoration: none; /* Enlever le soulignement des liens */
-    display: inline-block; /* Permet au bouton d'être aligné avec d'autres éléments si nécessaire */
-    cursor: pointer; /* Changement du curseur pour indiquer qu'il s'agit d'un bouton cliquable */
-    transition: background-color 0.3s; /* Transition douce pour le survol */
+    position: absolute; /* Positionnement absolu par rapport à son conteneur positionné le plus proche */
+    top: 150px; /* Hauteur de la nav bar plus un petit espace */
+    left: 1200px; /* À gauche du conteneur */
+    margin: 0; /* Supprimer les marges par défaut */
+    background-color: #A17C5E;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .btn-primary:hover {
@@ -189,4 +192,188 @@ footer {
     line-height: 50px; /* Centrer le texte verticalement */
     margin-top: 900px;
     opacity: 0.8;
+}
+
+/* ajout-recetteeee exemple test */
+
+
+
+/* Conteneur principal du formulaire */
+.recipe-form-container {
+    background-color: #A17C5E; /* Fond blanc pour plus de clarté */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ombre légère pour un effet de profondeur */
+    max-width: 600px; /* Largeur maximale pour le formulaire */
+    margin: 50px auto; /* Centrage et espacement autour du formulaire */
+    animation: float 3s ease-in-out infinite;
+    margin-top: 150px;
+}
+
+/* Titre du formulaire */
+.recipe-form-title {
+    text-align: center;
+    color: #333333; /* Couleur foncée pour le texte pour assurer un bon contraste */
+    margin-bottom: 20px; /* Espacement avant les champs */
+}
+
+/* Styles globaux pour les champs du formulaire */
+.recipe-form input[type="text"],
+.recipe-form select,
+.recipe-form textarea {
+    width: 100%; /* Pleine largeur pour s'aligner avec le conteneur */
+    padding: 10px; /* Espacement intérieur pour le confort de frappe */
+    margin-top: 5px; /* Espacement au-dessus du champ */
+    margin-bottom: 15px; /* Espacement en dessous du champ */
+    border: 1px solid #5D3C2E; /* Bordure discrète */
+    border-radius: 5px; /* Bords arrondis */
+}
+
+/* Amélioration de l'expérience de focus pour l'accessibilité */
+.recipe-form input[type="text"]:focus,
+.recipe-form select:focus,
+.recipe-form textarea:focus {
+    border-color: #5D3C2E; /* Bleu pour indiquer le focus */
+    outline: none; /* Retirer l'outline par défaut */
+    box-shadow: 0 0 0 2px #5D3C2E; /* Ajout d'une ombre pour un effet de focus clair */
+}
+
+/* Bouton de soumission */
+.recipe-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5D3C2E; /* Vert pour une action positive */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Hover sur le bouton pour un feedback visuel */
+.recipe-form button:hover {
+    background-color: #A17C5E; /* Un ton plus foncé de vert au survol */
+}
+
+/* Réponse du formulaire ou message d'erreur */
+.form-response {
+    text-align: center;
+    color: #d9534f; /* Rouge pour les erreurs */
+    margin-top: 10px;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive design: ajustement pour petits écrans */
+@media (max-width: 768px) {
+    .recipe-form-container {
+        width: 90%; /* Plus étroit sur les petits écrans */
+        margin: 20px auto; /* Moins de marge pour économiser de l'espace */
+    }
+}
+
+.slider {
+    margin: 20px;
+    height: 150px;
+    width: 100%;
+    display: contents;
+    place-items: center;
+    overflow: hidden;
+}
+
+.slider::before{
+  left:0;
+  top:0;
+}
+.slider::after{
+  right:0;
+  top:0;
+  transform:rotateZ(180deg);
+}
+
+/*  IMPORTANT CODE BELOW */
+
+.slide-track {
+    margin-top: 150px;
+    width: 100%;
+    display: flex;
+    animation: scroll 30s linear infinite;
+    justify-content: space-between;
+}
+
+.slide-track2 {
+  width: calc(150px * 15);
+  display: flex;
+  animation: scroll2 15s linear infinite;
+  justify-content: space-between;
+}
+
+.slide {
+    width: 100%;
+    height: 60px;
+    display: contents;
+    place-items: center;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.slide:hover{
+  transform:scale(0.8)
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(calc(-150px * 10));
+  }
+}
+
+@keyframes scroll2 {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(calc(-150px * 5));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slide-track {
+    width: calc(80px * 20);
+  }
+
+  .slide-track2 {
+    width: calc(80px * 15);
+  }
+
+  .slide {
+    width: 80px;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(calc(-80px * 10));
+    }
+  }
+
+  @keyframes scroll2 {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(calc(-80px * 5));
+    }
+  }
 }

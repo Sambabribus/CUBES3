@@ -1,4 +1,4 @@
 <?php
 session_start();
 
-include "../views/acceuil.php";
+include "../views/main.php";
