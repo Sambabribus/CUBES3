@@ -42,7 +42,7 @@ if (isset($_GET['query'])) {
             <img src="../assets/img/EcoCook.png" class="logo">
             <ul>
                 <li><a href="main.php">Accueil</a></li>
-                <li><a href="recipe.php">Recettes</a></li>
+                <li><a href="recipes.php">Recettes</a></li>
                 <li><a href="about.php">A propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <?php if (isset($_SESSION['user'])): ?>
@@ -130,7 +130,7 @@ if (isset($_GET['query'])) {
      
 
 
-<a href="ajout_recette.php" class="btn btn-primary">Ajouter une recette</a>
+<a href="ajout_recettes.php" class="btn btn-primary">Ajouter une recette</a>
 
 </body>
 </html>
