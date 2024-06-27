@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajouter une Recette</title>
-    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="../../public/assets/css/style.css">
 </head>
 
 <body>
     <div class="recipe-form-container">
         <h1 class="recipe-form-title">Ajouter une nouvelle recette</h1>
-        <form action="../controllers/traitement_ajout_recette.php" method="post" enctype="multipart/form-data" class="recipe-form">
+        <form action="../app/controllers/traitement_ajout_recette.php" method="post" enctype="multipart/form-data" class="recipe-form">
             <div class="form-group">
                 <input type="text" name="title" placeholder="Titre de la recette" required>
             </div>

@@ -1,5 +1,5 @@
 <?php
-include 'db_connection.php';  // Assure-toi que ce chemin est correct
+include '../models/db_connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collecter les informations de la recette
@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre_personnes = $_POST['serves'];
 
     // Traitement de l'image téléchargée
-    $target_dir = "../uploads/";
+    $target_dir = "../../../uploads/";
     $target_file = $target_dir . basename($_FILES["images"]["name"]);
     if (move_uploaded_file($_FILES["images"]["tmp_name"], $target_file)) {
         // Insertion de la recette dans la table recettes
