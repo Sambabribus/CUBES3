@@ -1,7 +1,13 @@
 <?php
-session_start(); // Important pour accéder aux variables de session
-?>
 
+use src\app\controllers\RecipeController;
+
+require_once '../app/controllers/recipes_controller.php';
+require '../../vendor/autoload.php';
+
+$controller = new RecipeController();
+$recipes = $controller->main();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -39,10 +45,25 @@ session_start(); // Important pour accéder aux variables de session
     </div>
     </div> 
 </header>
-
+<div class="container">
+    <h1>Partage de Recettes</h1>
+    <p>Bienvenue sur notre site de partage de recettes. Vous pouvez consulter les recettes partagées par les autres utilisateurs, ou bien partager vos propres recettes. Bon appétit !</p>
+</div>
+<div class="slider-container">
+    <div class="slider">
+        <?php
+            foreach ($recipes as $row) {
+                echo "<div class='slide'>
+                    <h3>" . htmlspecialchars($row['title']) . "</h3>
+                    <p>Description : " . htmlspecialchars($row['description']) . "</p>
+                    </div>";
+            }
+        ?>
+    </div>
+</div>
 
 <footer>
-Copyright © Ez by Lemon
+Copyright © 
     </footer>
 </body>
 </html>

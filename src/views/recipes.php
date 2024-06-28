@@ -1,28 +1,10 @@
 <?php
-session_start(); // Important pour accéder aux variables de session
+use src\app\controllers\RecipeController;
 
-include '../app/models/db_connection.php';  // Inclut ton script de connexion à la base de données
+require_once '../app/controllers/recipes_controller.php';
 
-if (isset($_GET['query'])) {
-    $query = $_GET['query'];  // Récupère la chaîne de recherche de l'utilisateur
-    $query = mysqli_real_escape_string($conn, $query);  // Nettoie la chaîne de recherche
-
-    // Requête SQL pour rechercher les recettes
-    $sql = "SELECT * FROM recipe WHERE title LIKE '%$query%' OR description LIKE '%$query%'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        // Préparer un tableau pour stocker les résultats
-        $results = [];
-        while ($row = $result->fetch_assoc()) {
-            $results[] = $row;
-        }
-    } else {
-        $results = null;
-    }
-    $conn->close();
-}
-
+$controller = new RecipeController();
+$recipes = $controller->search();
 ?>
 
 <!DOCTYPE html>
@@ -35,11 +17,12 @@ if (isset($_GET['query'])) {
 </head>
 <body>
 <header>
+
 <div class="top-band">
 
     <div class="container">
         <nav>
-            <img src="../../public/assets/img/EcoCook.png" class="logo">
+          <img src="../../public/assets/img/EcoCook.png" class="logo">
             <ul>
                 <li><a href="main.php">Accueil</a></li>
                 <li><a href="recipes.php">Recettes</a></li>
@@ -64,74 +47,13 @@ if (isset($_GET['query'])) {
     </div> 
 </header>
 
-<div class="slider">
-      <div class="slide-track">
-        <div class="slide bg-red-500">
-<img src="../../public/assets/img/shrek-5.jpg">
+<form  >
+    
+</form>
 
-</div>
-        <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="../../public/assets/img/shrek-5.jpg"></div>
-       
-      </div>
-    </div>
-
-
-    <div class="slider">
-      <div class="slide-track">
-        <div class="slide bg-red-500">
-<img src="../../public/assets/img/shrek-5.jpg">
-
-</div>
-        <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="../../public/assets/img/shrek-5.jpg"></div>
-       
-      </div>
-    </div>
-
-    <div class="slider">
-      <div class="slide-track">
-        <div class="slide bg-red-500">
-<img src="../../public/assets/img/shrek-5.jpg">
-
-</div>
-        <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="../../public/assets/img/shrek-5.jpg"></div>
-       
-      </div>
-    </div>
-
-
-    <div class="slider">
-      <div class="slide-track">
-        <div class="slide bg-red-500">
-<img src="../../public/assets/img/shrek-5.jpg">
-
-</div>
-        <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="../../public/assets/img/shrek-5.jpg"></div>
-       
-      </div>
-    </div>
-
-
-
-    <div class="slider">
-      <div class="slide-track">
-        <div class="slide bg-red-500">
-<img src="../../public/assets/img/shrek-5.jpg">
-
-</div>
-        <!-- same 9 slides doubled (duplicate) -->
-        <div class="slide1"><img src="../../public/assets/img/shrek-5.jpg"></div>
-       
-      </div>
-    </div>
-     
 
 
 <a href="ajout_recettes.php" class="btn btn-primary">Ajouter une recette</a>
 
 </body>
 </html>
-

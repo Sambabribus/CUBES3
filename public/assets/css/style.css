@@ -17,7 +17,7 @@ html{
 
 body{
     background: #E8D5CC;
-    color: #E8D5CC;
+    color: #fff;
 }
 
 #header{
@@ -99,12 +99,68 @@ main {
     }
 }
 
-/* Styles spécifiques pour le formulaire de contact */
+/* Styles pour le formulaire d'inscription */
+.form-container {
+    width: 40%;
+    background: #F5EFE6;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px #bda18a;
+    opacity: 0.7;
+    animation: float 3s ease-in-out infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+input[type=email], input[type=text], input[type=password], button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    opacity: 0.5;
+}
+
+button {
+    background-color: white;
+    color: #C49D83;
+    padding: 5px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 10px auto;
+    width: auto;
+}
+
+button:hover, button:focus {
+    background-color: #C49D83;
+    color: white;
+    box-shadow: 0 0 20px #E8D5CC,
+                0 0 40px #E8D5CC,
+                0 0 60px #E8D5CC;
+    text-shadow: 0 0 5px #ffffff,
+                 0 0 10px #E8D5CC,
+                 0 0 20px #E8D5CC,
+                 0 0 40px #E8D5CC;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Styles spÃ©cifiques pour le formulaire de contact */
 .contact-form {
     background-color: #F5EFE6;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 8px 20px #5D3C2E;
+    box-shadow: 0 8px 20px #A17C5E;
     max-width: 500px;
     margin: auto;
     margin-top: 250px; 
@@ -114,18 +170,20 @@ main {
 }
 
 .contact-form h2 {
-    color: #A17C5E;
+    color: #C49D83;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .form-group {
     margin-bottom: 15px;
+    color: #C49D83;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #5D3C2E;
+    color: #C49D83;
 }
 
 .form-group input, .form-group textarea {
@@ -144,7 +202,7 @@ main {
 }
 
 button {
-    background-color: #A17C5E;
+    background-color: #5D3C2E;
     color: #F5EFE6;
     padding: 10px 15px;
     border: none;
@@ -160,10 +218,10 @@ button:hover {
 
 
 .btn-primary {
-    position: absolute; /* Positionnement absolu par rapport à son conteneur positionné le plus proche */
-    top: 150px; /* Hauteur de la nav bar plus un petit espace */
-    left: 1200px; /* À gauche du conteneur */
-    margin: 0; /* Supprimer les marges par défaut */
+    position: absolute;
+    top: 150px;
+    left: 1200px;
+    margin: 0;
     background-color: #A17C5E;
     color: white;
     border: none;
@@ -177,10 +235,8 @@ button:hover {
 }
 
 .btn-primary:hover {
-    background-color: #C49D83; /* Couleur de fond un peu plus foncée au survol */
+    background-color: #C49D83;
 }
-
-/* footer */
 
 footer, .content:after {
     height: 50px; 
@@ -189,60 +245,58 @@ footer {
     background-color: rgba(255, 255, 255, 0.2);
     color: white;
     text-align: center;
-    line-height: 50px; /* Centrer le texte verticalement */
+    line-height: 50px;
     margin-top: 900px;
     opacity: 0.8;
 }
 
 /* ajout-recetteeee exemple test */
 
-
-
-/* Conteneur principal du formulaire */
 .recipe-form-container {
-    background-color: #A17C5E; /* Fond blanc pour plus de clarté */
+    background-color: #bda18a;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ombre légère pour un effet de profondeur */
-    max-width: 600px; /* Largeur maximale pour le formulaire */
-    margin: 50px auto; /* Centrage et espacement autour du formulaire */
+    box-shadow: 0 4px 8px #bda18a(0,0,0,0.1);
+    max-width: 600px;
+    margin: 50px auto;
     animation: float 3s ease-in-out infinite;
     margin-top: 150px;
+    opacity: 0.7;
 }
 
-/* Titre du formulaire */
 .recipe-form-title {
     text-align: center;
-    color: #333333; /* Couleur foncée pour le texte pour assurer un bon contraste */
-    margin-bottom: 20px; /* Espacement avant les champs */
+    color: #fff; /* Couleur blanche pour le texte */
+    text-shadow:
+      0 0 5px #fff,   /* Glow blanc */
+      0 0 10px #fff,  /* Glow plus large blanc */
+      0 0 20px #fff, /* Glow bleu */
+      0 0 30px #fff, /* Glow plus large bleu */;
+    margin-bottom: 20px;
 }
 
-/* Styles globaux pour les champs du formulaire */
 .recipe-form input[type="text"],
 .recipe-form select,
 .recipe-form textarea {
-    width: 100%; /* Pleine largeur pour s'aligner avec le conteneur */
-    padding: 10px; /* Espacement intérieur pour le confort de frappe */
-    margin-top: 5px; /* Espacement au-dessus du champ */
-    margin-bottom: 15px; /* Espacement en dessous du champ */
-    border: 1px solid #5D3C2E; /* Bordure discrète */
-    border-radius: 5px; /* Bords arrondis */
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
 }
 
-/* Amélioration de l'expérience de focus pour l'accessibilité */
 .recipe-form input[type="text"]:focus,
 .recipe-form select:focus,
 .recipe-form textarea:focus {
-    border-color: #5D3C2E; /* Bleu pour indiquer le focus */
-    outline: none; /* Retirer l'outline par défaut */
-    box-shadow: 0 0 0 2px #5D3C2E; /* Ajout d'une ombre pour un effet de focus clair */
+    border-color: #5D3C2E;
+    outline: none;
+    box-shadow: 0 0 0 2px #5D3C2E;
 }
 
-/* Bouton de soumission */
 .recipe-form button {
     width: 100%;
     padding: 10px;
-    background-color: #5D3C2E; /* Vert pour une action positive */
+    background-color: #5D3C2E;
     color: white;
     border: none;
     border-radius: 5px;
@@ -251,15 +305,13 @@ footer {
     transition: background-color 0.3s;
 }
 
-/* Hover sur le bouton pour un feedback visuel */
 .recipe-form button:hover {
-    background-color: #A17C5E; /* Un ton plus foncé de vert au survol */
+    background-color: #A17C5E;
 }
 
-/* Réponse du formulaire ou message d'erreur */
 .form-response {
     text-align: center;
-    color: #d9534f; /* Rouge pour les erreurs */
+    color: #d9534f;
     margin-top: 10px;
 }
 
@@ -272,11 +324,10 @@ footer {
     }
 }
 
-/* Responsive design: ajustement pour petits écrans */
 @media (max-width: 768px) {
     .recipe-form-container {
-        width: 90%; /* Plus étroit sur les petits écrans */
-        margin: 20px auto; /* Moins de marge pour économiser de l'espace */
+        width: 90%;
+        margin: 20px auto;
     }
 }
 
@@ -298,8 +349,6 @@ footer {
   top:0;
   transform:rotateZ(180deg);
 }
-
-/*  IMPORTANT CODE BELOW */
 
 .slide-track {
     margin-top: 150px;
@@ -376,4 +425,34 @@ footer {
       transform: translateX(calc(-80px * 5));
     }
   }
+}
+
+
+form {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-right: 5px;
+    width: 300px; /* ajustez la largeur selon vos besoins */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #C49D83;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #A17C5E;
 }
