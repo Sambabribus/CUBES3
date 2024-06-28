@@ -2,14 +2,78 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CookEco.LoginPage"
-             Title="LoginPage">
-    <StackLayout>
-        <Entry x:Name="UsernameEntry" Placeholder="Username" />
-        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
-        <Button Text="Login" Clicked="OnLoginClicked" />
-        <Button Text="Don't have an account? Register" Clicked="OnRegisterClicked" />
-        <Label x:Name="API_FILD" Text="" FontSize="10"/>
-        <Label x:Name="Input_Password" Text="" FontSize="2"/>
-        <Label x:Name="Hashed_Password" Text="" FontSize="2"/>
-    </StackLayout>
+             BackgroundColor="#FFF9F1"
+             Title="Se connecter"
+             Shell.BackgroundColor="#a17c5e">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label
+          Text="Créer une recette"
+          BackgroundColor="#a17c5e"
+          TextColor="White"
+          VerticalTextAlignment="Center"
+          VerticalOptions="Center"
+          HeightRequest="50"
+          FontSize="Title" />
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Spacing="20" Padding="30">
+            <!-- Logo -->
+            <Image Source="Resources/Images/logo.png" 
+                   HeightRequest="300" 
+                   WidthRequest="300"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"/>
+
+            <!-- Email textbox -->
+            <Frame BackgroundColor="Transparent" CornerRadius="5" Padding="0">
+                <Entry x:Name="UsernameEntry" Placeholder="Email" 
+                       BackgroundColor="Transparent" 
+                       TextColor="#000000" 
+                       Margin="0" 
+                       HeightRequest="40"/>
+            </Frame>
+
+            <!-- mot de passe -->
+            <Frame BackgroundColor="Transparent" CornerRadius="5" Padding="0">
+                <Entry x:Name="PasswordEntry" Placeholder="Mot de passe" 
+                       BackgroundColor="Transparent" 
+                       TextColor="#000000" 
+                       IsPassword="True" 
+                       Margin="0" 
+                       HeightRequest="40"/>
+            </Frame>
+
+            <!-- oubli du mdp -->
+            <Label Text="mot de passe oublié ?" 
+                   FontSize="12" 
+                   TextColor="#a17c5e" 
+                   HorizontalOptions="End" 
+                   Margin="0,0,0,10" />
+
+            <!-- bouton connexion -->
+            <Button Text="Se connecter" 
+                    BackgroundColor="#a17c5e" 
+                    TextColor="White" 
+                    CornerRadius="25" 
+                    HeightRequest="50" 
+                    WidthRequest="200" 
+                    HorizontalOptions="Center" 
+                    Clicked="OnLoginClicked"/>
+
+            <!-- lien d'inscription -->
+            <Label Text="S’inscrire gratuitement" 
+                   FontSize="12" 
+                   TextColor="#a17c5e" 
+                   HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnRegisterClicked" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

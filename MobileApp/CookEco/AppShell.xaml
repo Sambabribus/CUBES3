@@ -6,17 +6,46 @@
     x:Class="CookEco.AppShell"
     Shell.FlyoutBehavior="Disabled"
     Title="CookEco">
+
+        
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#a17c5e</Color>
+            <Color x:Key="SecondaryColor">#f1ebe2</Color>
+
+            <Style TargetType="TabBar">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White" />
+            </Style>
+            <Style TargetType="Tab">
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource SecondaryColor}" />
+                <Setter Property="Shell.TabBarTitleColor" Value="White" />
+            </Style>
+
+            <ControlTemplate x:Key="TitleViewTemplate">
+                <Grid BackgroundColor="{StaticResource PrimaryColor}" VerticalOptions="FillAndExpand">
+                    <Label
+                        Text="{TemplateBinding Title}"
+                        TextColor="White"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        FontSize="Title"
+                        Margin="0"/>
+                </Grid>
+            </ControlTemplate>
+
+        </ResourceDictionary>
+    </Shell.Resources>
+    
+
     <TabBar>
-        <Tab Title="Main" Icon="home.png">
+        <Tab Title="Accueil" Icon="home.png">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-        <Tab Title="Create Recipe" Icon="create.png">
+        <Tab Title="Créer une recette" Icon="recipe.png">
             <ShellContent ContentTemplate="{DataTemplate local:CreateRecipePage}" />
         </Tab>
-        <Tab Title="Gallery" Icon="gallery.png">
-            <ShellContent ContentTemplate="{DataTemplate local:GalleryPage}" />
-        </Tab>
-        <Tab Title="Profile" Icon="profile.png">
+        <Tab Title="Profil" Icon="profile.png">
             <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" />
         </Tab>
     </TabBar>

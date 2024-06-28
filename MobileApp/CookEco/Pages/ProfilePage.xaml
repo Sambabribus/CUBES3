@@ -2,11 +2,94 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CookEco.ProfilePage"
-             Title="ProfilePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             BackgroundColor="#f1ebe2"
+             Title="Profil"
+             Shell.BackgroundColor="#a17c5e">
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label
+          Text="Créer une recette"
+          
+          TextColor="White"
+          VerticalTextAlignment="Center"
+          VerticalOptions="Center"
+          HeightRequest="50"
+          FontSize="Title" />
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <ScrollView>
+        <StackLayout Spacing="20" Padding="20">
+
+
+            <!-- Profile Section -->
+            <Frame BackgroundColor="#FFFFFF" Padding="10" CornerRadius="10" BorderColor="#D0D0D0">
+                <Grid RowSpacing="10" ColumnSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Profile Image -->
+                    <Image Source="default_user.png"
+                        Grid.Row="0"
+                           Grid.RowSpan="2"
+                           Grid.Column="0"
+                           HeightRequest="100"
+                           WidthRequest="100"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Aspect="AspectFill"
+                           Margin="10" />
+
+                        <!-- Empty Space for Layout Alignment -->
+                        <BoxView Grid.Row="0"
+                             Grid.Column="1"
+                             HeightRequest="100"
+                             WidthRequest="100"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             BackgroundColor="Transparent" />
+
+                        <!-- Title "Vos Recettes" -->
+                        <Label Text="VOS RECETTES"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="#a17c5e"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+
+            <!-- Recipe Section -->
+            <StackLayout BindableLayout.ItemsSource="{Binding Recipes}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#FFFFFF" Padding="10" CornerRadius="10" BorderColor="#D0D0D0" Margin="0,0,0,10">
+                            <StackLayout Spacing="10">
+                                <!-- Recipe Image -->
+                                <Image Source="{Binding Image}" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" />
+
+                                <!-- Recipe Details -->
+                                <Label Text="Ingrédients" FontSize="18" FontAttributes="Bold" TextColor="#a17c5e" />
+                                <Label Text="{Binding Ingredients}" FontSize="14" TextColor="#000000" />
+
+                                <!-- Recipe Preparation -->
+                                <Label Text="Préparation de la recette" FontSize="18" FontAttributes="Bold" TextColor="#a17c5e" />
+                                <Label Text="{Binding Preparation}" FontSize="14" TextColor="#000000" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+
 </ContentPage>
