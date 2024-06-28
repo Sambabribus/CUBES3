@@ -3,9 +3,9 @@ using CookEco.Services;
 using Microsoft.Maui.Controls;
 using System;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 using BCrypt.Net;
+using static CookEco.Services.FetchUserPassword;
 
 namespace CookEco
 {
@@ -16,41 +16,58 @@ namespace CookEco
         public LoginPage()
         {
             InitializeComponent();
-            _fetchUserPassword = new FetchUserPassword();   
+            _fetchUserPassword = new FetchUserPassword();
+            LoadApiDataAsync();
+        }
+
+        private async Task LoadApiDataAsync()
+        {
+            var usersResponse = await _fetchUserPassword.GetUsersResponse();
+            if (usersResponse != null && usersResponse.Records != null)
+            {
+                API_FILD.Text = string.Join("\n", usersResponse.Records.Select(u => u.Username));
+            }
+            else
+            {
+                API_FILD.Text = "Failed to retrieve users list.";
+            }
         }
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(UsernameEntry.Text) || string.IsNullOrWhiteSpace(PasswordEntry.Text))
+            var usersResponse = await _fetchUserPassword.GetUsersResponse();
+            if (usersResponse?.Records != null)
             {
-                await DisplayAlert("Error", "Username and password are required", "OK");
-                return;
-            }
-
-            try
-            {
-                var usersResponse = await _fetchUserPassword.GetUsersResponse();
-                var user = usersResponse?.Records?.FirstOrDefault(u => u.Username == UsernameEntry.Text);
+                Console.WriteLine("Users list retrieved successfully.");
+                var user = usersResponse.Records.FirstOrDefault(u => u.Username == UsernameEntry.Text);
 
                 if (user != null)
                 {
-                    Console.WriteLine($"Entered Username: {UsernameEntry.Text}");
+                    Console.WriteLine($"User found: {user.Username}");
                     Console.WriteLine($"Stored Hashed Password: {user.Password}");
 
                     if (BCrypt.Net.BCrypt.Verify(PasswordEntry.Text, user.Password))
                     {
-                        HashedPasswordLabel.Text = $"Hashed Password: {user.Password}";
                         await DisplayAlert("Success", "Login successful", "OK");
                         ((App)Application.Current).LoginSuccessful();
                         return;
                     }
+                    else
+                    {
+                        Console.WriteLine("Password verification failed.");
+                        await DisplayAlert("Error", "Incorrect password.", "OK");
+                    }
                 }
-
-                await DisplayAlert("Error", "Invalid username or password", "OK");
+                else
+                {
+                    Console.WriteLine("User not found.");
+                    await DisplayAlert("Error", "User not found.", "OK");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                await DisplayAlert("Error", ex.Message, "OK");
+                Console.WriteLine("Failed to retrieve users list.");
+                await DisplayAlert("Error", "Failed to retrieve users list.", "OK");
             }
         }
 
@@ -61,15 +78,7 @@ namespace CookEco
 
         private async void OnShowApiDataClicked(object sender, EventArgs e)
         {
-            try
-            {
-                var usersResponse = await _fetchUserPassword.GetUsersResponse();
-                ApiDataEditor.Text = JsonSerializer.Serialize(usersResponse);
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", ex.Message, "OK");
-            }
+            var usersResponse = await _fetchUserPassword.GetUsersResponse();
         }
     }
 }

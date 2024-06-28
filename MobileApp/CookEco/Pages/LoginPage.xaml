@@ -8,8 +8,8 @@
         <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
         <Button Text="Login" Clicked="OnLoginClicked" />
         <Button Text="Don't have an account? Register" Clicked="OnRegisterClicked" />
-        <Label x:Name="HashedPasswordLabel" Text="Hashed Password will be shown here" />
-        <Button Text="Show API Data" Clicked="OnShowApiDataClicked" />
-        <Editor x:Name="ApiDataEditor" Placeholder="API data will be shown here" IsReadOnly="True" HeightRequest="200"/>
+        <Label x:Name="API_FILD" Text="" FontSize="10"/>
+        <Label x:Name="Input_Password" Text="" FontSize="2"/>
+        <Label x:Name="Hashed_Password" Text="" FontSize="2"/>
     </StackLayout>
 </ContentPage>

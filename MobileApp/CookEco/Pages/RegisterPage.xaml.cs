@@ -20,8 +20,8 @@ public partial class RegisterPage : ContentPage
         await ManagerDB.SaveUserAsync(user);
         await DisplayAlert("Success", "User registered", "OK");
         await Navigation.PopAsync(); 
-    }
 
+    }
     private async void OnLoginClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync(); 
