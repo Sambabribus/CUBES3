@@ -12,65 +12,65 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CookEco
-build_property.ProjectDir = c:\Users\samba\CUBES3\MobileApp\CookEco\
+build_property.ProjectDir = C:\ProjectCESI\CUBES3\MobileApp\CookEco\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[c:/Users/samba/CUBES3/MobileApp/CookEco/App.xaml]
+[C:/ProjectCESI/CUBES3/MobileApp/CookEco/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CookEco.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[c:/Users/samba/CUBES3/MobileApp/CookEco/AppShell.xaml]
+[C:/ProjectCESI/CUBES3/MobileApp/CookEco/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CookEco.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[c:/Users/samba/CUBES3/MobileApp/CookEco/Pages/CreateRecipePage.xaml]
+[C:/ProjectCESI/CUBES3/MobileApp/CookEco/Pages/CreateRecipePage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Pages.CreateRecipePage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\CreateRecipePage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\CreateRecipePage.xaml
 
-[c:/Users/samba/CUBES3/MobileApp/CookEco/Pages/GalleryPage.xaml]
+[C:/ProjectCESI/CUBES3/MobileApp/CookEco/Pages/GalleryPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Pages.GalleryPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\GalleryPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\GalleryPage.xaml
 
-[c:/Users/samba/CUBES3/MobileApp/CookEco/Pages/LoginPage.xaml]
+[C:/ProjectCESI/CUBES3/MobileApp/CookEco/Pages/LoginPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Pages.LoginPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\LoginPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\LoginPage.xaml
 
-[c:/Users/samba/CUBES3/MobileApp/CookEco/Pages/MainPage.xaml]
+[C:/ProjectCESI/CUBES3/MobileApp/CookEco/Pages/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Pages.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\MainPage.xaml
 
-[c:/Users/samba/CUBES3/MobileApp/CookEco/Pages/ProfilePage.xaml]
+[C:/ProjectCESI/CUBES3/MobileApp/CookEco/Pages/ProfilePage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Pages.ProfilePage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\ProfilePage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\ProfilePage.xaml
 
-[c:/Users/samba/CUBES3/MobileApp/CookEco/Pages/RegisterPage.xaml]
+[C:/ProjectCESI/CUBES3/MobileApp/CookEco/Pages/RegisterPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Pages.RegisterPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\RegisterPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\RegisterPage.xaml
 
-[c:/Users/samba/CUBES3/MobileApp/CookEco/Resources/Styles/Colors.xaml]
+[C:/ProjectCESI/CUBES3/MobileApp/CookEco/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
-[c:/Users/samba/CUBES3/MobileApp/CookEco/Resources/Styles/Styles.xaml]
+[C:/ProjectCESI/CUBES3/MobileApp/CookEco/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml

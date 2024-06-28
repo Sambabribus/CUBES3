@@ -2206,3 +2206,10 @@ C:\Users\samba\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\CookEco.csproj.
 C:\Users\samba\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\CookEco.sourcelink.json
 C:\Users\samba\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\CookEco.dll
 C:\Users\samba\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\CookEco.pdb
+C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\resizetizer\r\drawable\camera.png
+C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\resizetizer\r\drawable\check.png
+C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\resizetizer\r\drawable\default_user.png
+C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\resizetizer\r\drawable\home.png
+C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\resizetizer\r\drawable\logo.png
+C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\resizetizer\r\drawable\profile.png
+C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\resizetizer\r\drawable\recipe.png
