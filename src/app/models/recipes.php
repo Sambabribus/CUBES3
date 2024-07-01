@@ -4,130 +4,94 @@ namespace src\app\models;
 use PDOException;
 
 class Recipe {
+    //region properties
     private int $id;
     private string $title;
     private string $description;
-    private $cooking_time;
-    private $preparation_time;
-    private $serves;
-    private $url_image;
-    private Database $db;
+    private float $cooking_time;
+    private float $preparation_time;
+    private int $serves;
+    private string $url_image;
+    //endregion
 
-    public function __construct(Database $conn) {
-        $this->db = $conn;
-    }
+    //region constructor
+    public function __construct() {}
+    //endregion
 
-    public function getId() {
+    //region id
+    public function getId(): int {
         return $this->id;
     }
+    public function setId(int $id): Recipe {
+        $this->id = $id;
 
-    public function getTitle() {
+        return $this;
+    }
+    //endregion
+
+    //region title
+    public function getTitle(): string {
         return $this->title;
     }
+    public function setTitle(string $title): Recipe {
+        $this->title = $title;
 
-    public function getDescription() {
+        return $this;
+    }
+    //endregion
+
+    //region description
+    public function getDescription(): string {
         return $this->description;
     }
+    public function setDescription(string $description): Recipe {
+        $this->description = $description;
 
-    public function getCookingTime() {
+        return $this;
+    }
+    //endregion
+
+    //region cooking_time
+    public function getCookingTime(): float {
         return $this->cooking_time;
     }
+    public function setCookingTime(float $cooking_time): Recipe {
+        $this->cooking_time = $cooking_time;
 
-    public function getPreparationTime() {
+        return $this;
+    }
+    //endregion
+
+    //region preparation_time
+    public function getPreparationTime(): float {
         return $this->preparation_time;
     }
+    public function setPreparationTime(float $preparation_time): Recipe {
+        $this->preparation_time = $preparation_time;
 
-    public function getServes() {
+        return $this;
+    }
+    //endregion
+
+    //region serves
+    public function getServes(): int {
         return $this->serves;
     }
+    public function setServes(int $serves): Recipe {
+        $this->serves = $serves;
 
-    public function getUrlImage() {
+        return $this;
+    }
+    //endregion
+
+    //region url_image
+    public function getUrlImage(): string {
         return $this->url_image;
     }
-
-    public function setId($id) {
-        $this->id = $id;
-    }
-
-    public function setTitle($title) {
-        $this->title = $title;
-    }
-
-    public function setDescription($description) {
-        $this->description = $description;
-    }
-
-    public function setCookingTime($cooking_time) {
-        $this->cooking_time = $cooking_time;
-    }
-
-    public function setPreparationTime($preparation_time) {
-        $this->preparation_time = $preparation_time;
-    }
-
-    public function setServes($serves) {
-        $this->serves = $serves;
-    }
-
-    public function setUrlImage($url_image) {
+    public function setUrlImage(string $url_image): Recipe {
         $this->url_image = $url_image;
-    }
 
-    final public function getRecipe($id) {
-        try {
-            $this->db->query("SELECT * FROM recipes WHERE id = :id");
-            return $this->db->single([$id]);
-        } catch (PDOException $e) {
-            throw new PDOException("Error, no recipe here was found. " . $e->getMessage());
-        } 
+        return $this;
     }
-
-    final public function getAllRecipes() {
-        try {
-            $this->db->query("SELECT * FROM recipes");
-            return $this->db->resultSet();
-        } catch (PDOException $e) {
-            throw new PDOException("Error, no recipe was found. " . $e->getMessage());
-        }
-    }
-
-    final public function createRecipe(){
-        try {
-            $this->db->query("INSERT INTO recipes (title, description, preparation_time, cooking_time, serves, creation_date, user_id) VALUES (?, ?, ?, ?, ?, NOW(), ?)");
-            $this->db->execute([$this->title, $this->description, $this->preparation_time, $this->cooking_time, $this->serves, $this->user_id]);
-            return true;
-        } catch (PDOException $e) {
-            throw new PDOException("Error, no recipe were created. " . $e->getMessage());
-        }
-    }
-
-    
-    final public function deleteRecipe($id){
-        try {
-            $this->db->query("DELETE FROM recipes WHERE id = :id");
-            $this->db->execute([':id' => $id]); // Corrected to use associative array
-            return true;
-        } catch (PDOException $e) {
-            throw new PDOException("Error, no recipe were deleted. " . $e->getMessage());
-        }
-    }
-
-    final public function updateRecipe($id){
-        try {
-            $this->db->query("UPDATE recipes SET title = ?, description = ?, preparation_time = ?, cooking_time = ?, serves = ? WHERE id = :id");
-            $this->db->execute([$this->title, $this->description, $this->preparation_time, $this->cooking_time, $this->serves, $id]);
-            return true;
-        } catch (PDOException $e) {
-            throw new PDOException("Error, no recipe were updated" . $e->getMessage());
-        }
-    }
-
-    final public function getMainRecipes(){
-        try {
-            $this->db->query("SELECT * FROM recipes ORDER BY creation_date DESC LIMIT 6");
-            return $this->db->resultSet();
-        } catch (PDOException $e) {
-            throw new PDOException("Error, no recipe was found. " . $e->getMessage());
-        }        
-    }
+    //endregion
 }

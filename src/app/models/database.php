@@ -40,4 +40,14 @@ class Database {
     final public function query(string $sql): void {
         $this->stmt = $this->conn->prepare($sql);
     }
+    
+    final public function single(array $args = []): mixed {
+        $this->execute($args);
+        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    final public function rowCount(): int {
+        return $this->stmt->rowCount();
+    }
+
 }
