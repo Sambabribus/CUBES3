@@ -1,5 +1,6 @@
 <?php
-include '../models/db_connection.php';
+include 'src/app/models/db_connection.php';
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collecter les informations de la recette

@@ -456,3 +456,9 @@ button {
 button:hover {
     background-color: #A17C5E;
 }
+
+.recipe_main{
+        background-color: rgb(3, 128, 3); 
+        height: 100px;
+        width: 100px;
+}

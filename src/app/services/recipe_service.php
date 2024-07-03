@@ -1,11 +1,10 @@
 <?php
 namespace src\app\services;
 
-require "src\app\models";
-
 use src\app\models\Recipe;
 use src\app\models\Database;
 use PDOException;
+use PDO;
 
 class RecipeService {
     private Database $db;
@@ -78,17 +77,25 @@ class RecipeService {
         try  {
             $data = '%' . $data . '%';
             $this->db->query("SELECT recipes.id, title, description, cooking_time, preparation_time, serves, images.url_image FROM recipes LEFT JOIN images ON recipes.id = images.recipe_id WHERE recipes.title LIKE ? OR recipes.description LIKE ?");
-            $this->db->execute([$data, $data]);
-            $results = $this->db->fetchAll(PDO::FETCH_ASSOC);
+            $results = $this->db->resultSet([$data, $data]);
 
             foreach($results as $row) {
-                $recipe = new Recipe($row['id'], $row['title'], $row['description'], $row['cooking_time'], $row['preparation_time'], $row['serves'], $row['url_image']);
-                $searchResults[] = $recipe;
-            }
+                $recipe = new Recipe();
+                $recipe
+                    ->setId($row['id'])
+                    ->setTitle($row["title"])
+                    ->setDescription($row["description"])
+                    ->setCookingTime($row["cooking_time"])
+                    ->setPreparationTime($row["preparation_time"])
+                    ->setServes($row["serves"])
+                    ->setUrlImage($row["url_image"]);
 
-            return $searchResults;
+                    $searchResults[] = $recipe;
+            }
         } catch (PDOException $e) {
             throw new PDOException("Error, no recipe was found. " . $e->getMessage());
         }
+
+        return $searchResults;
     }
 }

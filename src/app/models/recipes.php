@@ -1,7 +1,7 @@
 <?php
 namespace src\app\models;
 
-use PDOException;
+require '../../vendor/autoload.php';
 
 class Recipe {
     //region properties
@@ -12,10 +12,6 @@ class Recipe {
     private float $preparation_time;
     private int $serves;
     private string $url_image;
-    //endregion
-
-    //region constructor
-    public function __construct() {}
     //endregion
 
     //region id

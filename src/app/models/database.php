@@ -32,7 +32,7 @@ class Database {
         return $this->stmt->execute($args);
     }
 
-    final public function resultSet(array $args = []): array|false {
+    final public function resultSet(array $args = []): array {
         $this->execute($args);
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -41,7 +41,7 @@ class Database {
         $this->stmt = $this->conn->prepare($sql);
     }
     
-    final public function single(array $args = []): mixed {
+    final public function single(array $args = []): array {
         $this->execute($args);
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }

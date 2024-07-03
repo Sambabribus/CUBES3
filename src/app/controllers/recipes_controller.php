@@ -1,13 +1,15 @@
 <?php
 namespace src\app\controllers;
 
-require 'S:/wamp64/www/repos/CUBES3/src/app/models/recipes.php';
-require 'S:/wamp64/www/repos/CUBES3/src/app/models/database.php';
+require_once '../app/models/recipes.php';
+require_once '../app/models/database.php';
+require_once '../app/services/recipe_service.php';
+
 use src\app\models\Recipe;
 use src\app\models\Database;
 use src\app\services\RecipeService;
 
-class RecipeController
+class recipe_controller
 {
     private RecipeService $recipeService;
 
@@ -17,24 +19,8 @@ class RecipeController
         $this->recipeService = new RecipeService($database);
     }
 
-    public function search()
-    {
-        $searchResults = [];
-        $searchMessage = "";
-
-        if (isset($_GET['search']) && !empty($_GET['search'])) {
-            $searchResults = $this->recipeService->filterByTitleOrDescription((string) $_GET['search']);
-
-        } else {
-            $searchMessage = "Aucune recette trouvée.";
-        }
-
-        if (empty($searchResults)) {
-            $searchMessage = "Aucune recette trouvée.";
-        }
-
-        $stmt = null;
-        require '../views/recipes.php';
+    public function search(string $query): array {
+        return $this->recipeService->filterByTitleOrDescription($query);
     }
 
     final public function create($title, $description, $preparation_time, $cooking_time, $serves, $creation_date, $user_id, $url_image): void
