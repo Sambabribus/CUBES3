@@ -7,8 +7,8 @@ require_once '../app/controllers/recipes_controller.php';
 use src\app\controllers\recipe_controller;
 
 $controller = new recipe_controller();
-$recipes = [];  // Initialiser $recipes comme un tableau vide
-$searchMessage = '';
+$recipes = [];
+
 
 if (isset($_GET['btn_search_recipe'])) {
     $controller = new recipe_controller();
@@ -16,7 +16,6 @@ if (isset($_GET['btn_search_recipe'])) {
 
     if (count($recipes) <= 0) {
         $searchMessage = "Aucune recette trouvée.";
-        $recipes = [];  // Assurer que $recipes est toujours un tableau
     }
 
     if (isset($_POST['search_recipe'])) {
@@ -85,7 +84,6 @@ if (isset($_GET['btn_search_recipe'])) {
                     <p>Temps de preparation : " . htmlspecialchars($row->getPreparationTime()) . "</p>
                     <p>Temps de cuisson : " . htmlspecialchars($row->getCookingTime()) . "</p>
                     <p>Nombre de personne : " . htmlspecialchars($row->getServes()) . "</p>
-                    <p>Images : " . htmlspecialchars($row->getUrlImage()) . "</p>
                     </div>";
     }
     ?>
