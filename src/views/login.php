@@ -21,7 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $controller->login($_POST['login-mail_user'], $_POST['login-pwd_user']);
 
         if ($result != null && password_verify($_POST['login-pwd_user'], $result->get_pwd_user())) {
-            $_SESSION['user_id'] = $result->get_mail_user();
+            $_SESSION['user_mail'] = $result->get_mail_user();
+            $_SESSION['user_id'] = $result->get_id_user();
             $_SESSION['user_isadmin'] = $result->get_isadmin_user();
             header('Location: main.php');
         } else {

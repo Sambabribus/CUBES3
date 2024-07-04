@@ -59,4 +59,23 @@ class user_service
             return null;
         }
     }
+
+    public function getAllUser(): array {
+        try { 
+            $this->db->query("SELECT username_user, mail_user, id_user, isadmin_user from user");
+            return $this->db->resultSet();
+        } catch (PDOException $e) {
+            throw new PDOException("Error, no users was found. " . $e->getMessage());
+        }
+    }
+
+    public function delUser(int $id) {
+        try {
+            $this->db->query("DELETE FROM user WHERE id_user = :id");
+            $this->db->execute([':id' => $id]);
+            return true;
+        } catch (PDOException $e) {
+            throw new PDOException("Error, no recipe were deleted. " . $e->getMessage());
+        }
+}
 }

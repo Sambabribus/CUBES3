@@ -36,7 +36,14 @@ class user_controller
     {
     }
 
-    public function delete()
+    public function delete(int $id)
     {
+        return $this->userService->delUser($id);
+    }
+
+    public function getAll()
+    {
+        return $this->userService->getAllUser();
+    
     }
 }

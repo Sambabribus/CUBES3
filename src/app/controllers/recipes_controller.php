@@ -23,7 +23,7 @@ class recipe_controller
         return $this->recipeService->filterByTitleOrDescription($query);
     }
 
-    final public function create($title, $description, $preparation_time, $cooking_time, $serves, $creation_date, $user_id, $url_image): void
+    final public function create($title, $description, $preparation_time, $cooking_time, $serves, $user_id/**, $url_image */): bool
     {
         $recipe = new Recipe();
         $recipe
@@ -31,10 +31,10 @@ class recipe_controller
             ->setDescription($description)
             ->setPreparationTime($preparation_time)
             ->setCookingTime($cooking_time)
-            ->setServes($serves)
-            ->setUrlImage($url_image);
+            ->setServes($serves);
+            //->setUrlImage($url_image);
         
-        $this->recipeService->create($recipe);
+        return $this->recipeService->create($recipe, $user_id);
     }
 
     final public function show($id): void

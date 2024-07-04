@@ -31,10 +31,10 @@ class RecipeService {
         }
     }
 
-    final public function create(Recipe $data): bool {
+    final public function create(Recipe $data, $user_id): bool {
         try {
             $this->db->query("INSERT INTO recipes (title, description, preparation_time, cooking_time, serves, creation_date, user_id) VALUES (?, ?, ?, ?, ?, NOW(), ?)");
-            $this->db->execute([$data->title, $data->description, $data->preparation_time, $data->cooking_time, $data->serves, $data->user_id]);
+            $this->db->execute([$data->getTitle(), $data->getDescription(), $data->getPreparationTime(), $data->getCookingTime(), $data->getServes(), $user_id]);
             return true;
         } catch (PDOException $e) {
             throw new PDOException("Error, no recipe were created. " . $e->getMessage());
@@ -88,7 +88,8 @@ class RecipeService {
                     ->setCookingTime($row["cooking_time"])
                     ->setPreparationTime($row["preparation_time"])
                     ->setServes($row["serves"])
-                    ->setUrlImage($row["url_image"]);
+                    //->setUrlImage($row["url_image"])
+                    ;
 
                     $searchResults[] = $recipe;
             }
