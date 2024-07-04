@@ -64,8 +64,10 @@
                     WidthRequest="200" 
                     HorizontalOptions="Center" 
                     Clicked="OnLoginClicked"/>
+            <Label x:Name="API_FILD" Text="">
+            </Label>
 
-            <!-- lien d'inscription -->
+                <!-- lien d'inscription -->
             <Label Text="S’inscrire gratuitement" 
                    FontSize="12" 
                    TextColor="#a17c5e" 

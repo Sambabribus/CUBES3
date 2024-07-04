@@ -3,6 +3,7 @@ public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
 		/* We need to ensure that "CookEco.dll" comes first in this list. */
 		"CookEco.dll",
+		"BCrypt.Net-Next.dll",
 		"GoogleGson.dll",
 		"Microsoft.Extensions.Configuration.dll",
 		"Microsoft.Extensions.Configuration.Abstractions.dll",

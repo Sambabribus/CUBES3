@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "f/s8yCxhw0HkC7f6B6PlsRon/fvCBUHBLajJZY3Rnu9Nb+KbHztOSdcYC68wWHl70v8DUKpIFdzHBC6pTqcf4Q==",
+  "dgSpecHash": "vPaVbHJ0RXBEjXAiCNLgMp9gjAroxVF4rxvtMBaN9istkvQM8qqgxwGrlk30idvIqEkRDydJ754q109uOgJgkA==",
   "success": true,
   "projectFilePath": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\CookEco.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\woter\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\woter\\.nuget\\packages\\googlegson\\2.10.1.4\\googlegson.2.10.1.4.nupkg.sha512",
     "C:\\Users\\woter\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\woter\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",

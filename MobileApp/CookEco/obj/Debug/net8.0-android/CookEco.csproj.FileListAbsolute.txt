@@ -2213,3 +2213,4 @@ C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\resizetizer\r\d
 C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\resizetizer\r\drawable\logo.png
 C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\resizetizer\r\drawable\profile.png
 C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\resizetizer\r\drawable\recipe.png
+C:\ProjectCESI\CUBES3\MobileApp\CookEco\obj\Debug\net8.0-android\android\assets\BCrypt.Net-Next.dll

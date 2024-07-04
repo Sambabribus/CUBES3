@@ -13,7 +13,7 @@ namespace CookEco.Services
         public FetchUserPassword()
         {
             _http = new HttpClient();
-            _http.BaseAddress = new Uri("http://172.27.144.1/");
+            _http.BaseAddress = new Uri("http://192.168.0.29/");
         }
 
         public async Task<UsersResponse> GetUsersResponse()
@@ -21,7 +21,20 @@ namespace CookEco.Services
             try
             {
                 var usersResponse = await _http.GetFromJsonAsync<UsersResponse>("/API/CUBES3/CUBES3-api/index.php/users");
+                if (usersResponse == null)
+                {
+                    Console.WriteLine("Error: usersResponse is null.");
+                }
+                else if (usersResponse.Records == null)
+                {
+                    Console.WriteLine("Error: usersResponse.Records is null.");
+                }
                 return usersResponse;
+            }
+            catch (HttpRequestException httpEx)
+            {
+                Console.WriteLine("HTTP Request Error: " + httpEx.Message);
+                return null;
             }
             catch (Exception ex)
             {
