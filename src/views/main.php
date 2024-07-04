@@ -58,18 +58,6 @@ $recipes = $controller->main();
     <h1>Partage de Recettes</h1>
     <p>Bienvenue sur notre site de partage de recettes. Vous pouvez consulter les recettes partagées par les autres utilisateurs, ou bien partager vos propres recettes. Bon appétit !</p>
 </div>
-<div class="slider-container">
-    <div class="slider">
-        <?php
-            foreach ($recipes as $row) {
-                echo "<div class='main_recipe'>
-                    <h3>" . htmlspecialchars($row['title']) . "</h3>
-                    <p>Description : " . htmlspecialchars($row['description']) . "</p>
-                    </div>";
-            }
-        ?>
-    </div>
-</div>
 
 <footer>
 Copyright © 

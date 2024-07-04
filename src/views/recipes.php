@@ -7,6 +7,8 @@ require_once '../app/controllers/recipes_controller.php';
 use src\app\controllers\recipe_controller;
 
 $controller = new recipe_controller();
+$recipes = [];  // Initialiser $recipes comme un tableau vide
+$searchMessage = '';
 
 if (isset($_GET['btn_search_recipe'])) {
     $controller = new recipe_controller();
@@ -14,11 +16,12 @@ if (isset($_GET['btn_search_recipe'])) {
 
     if (count($recipes) <= 0) {
         $searchMessage = "Aucune recette trouvée.";
+        $recipes = [];  // Assurer que $recipes est toujours un tableau
     }
 
     if (isset($_POST['search_recipe'])) {
         $result = $controller->search($_POST['search_recipe']);
-        
+
         if ($result != null) {
             $_SESSION[''] = $result;
         }
@@ -28,16 +31,18 @@ if (isset($_GET['btn_search_recipe'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/assets/css/style.css">
     <title>Document</title>
 </head>
-<body>
-<header>
 
-<div class="top-band">
+<body>
+    <header>
+
+        <div class="top-band">
 
     <div class="container">
         <nav>
@@ -66,20 +71,25 @@ if (isset($_GET['btn_search_recipe'])) {
     </div> 
 </header>
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="get">
-            <input type="text" name="search_recipe" placeholder="Rechercher une recette" required>
-            <button type="submit" name="btn_search_recipe">Rechercher</button>
-</form>
-<a href="ajout_recettes.php" class="btn btn-primary">Ajouter une recette</a>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="get">
+        <input type="text" name="search_recipe" placeholder="Rechercher une recette" required>
+        <button type="submit" name="btn_search_recipe">Rechercher</button>
+    </form>
+    <a href="ajout_recettes.php" class="btn btn-primary">Ajouter une recette</a>
 
-        <?php
-            foreach ($recipes as $row) {
-                echo "<div class='recipes_recipe'>
+    <?php
+    foreach ($recipes as $row) {
+        echo "<div class='recipes_recipe'>
                     <h3>" . htmlspecialchars($row->getTitle()) . "</h3>
                     <p>Description : " . htmlspecialchars($row->getDescription()) . "</p>
+                    <p>Temps de preparation : " . htmlspecialchars($row->getPreparationTime()) . "</p>
+                    <p>Temps de cuisson : " . htmlspecialchars($row->getCookingTime()) . "</p>
+                    <p>Nombre de personne : " . htmlspecialchars($row->getServes()) . "</p>
+                    <p>Images : " . htmlspecialchars($row->getUrlImage()) . "</p>
                     </div>";
-            }
-        ?>
+    }
+    ?>
 
 </body>
+
 </html>
