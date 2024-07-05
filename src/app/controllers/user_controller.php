@@ -2,8 +2,8 @@
 #region Setup and Imports
 // Définition de l'espace de noms et importation des classes nécessaires pour le contrôleur.
 namespace src\app\controllers;
-require_once '../app/models/database.php';
-require_once '../app/services/user_service.php';
+require_once "../app/models/database.php";
+require_once "../app/services/user_service.php";
 use src\app\models\Database;
 use src\app\models\User;
 use src\app\services\user_service;
@@ -42,8 +42,11 @@ class user_controller
 
     #region Sign Up Function
     // Méthode pour gérer l'inscription d'un nouvel utilisateur.
-    public function sign_up(string $username, string $password, string $email): ?User
-    {
+    public function sign_up(
+        string $username,
+        string $password,
+        string $email
+    ): ?User {
         return $this->userService->sign_up($username, $password, $email);
     }
     #endregion

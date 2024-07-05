@@ -1,74 +1,81 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(#D5CABC, #bda18a);
-    color: #BDA18A;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(#d5cabc, #bda18a);
+  color: #bda18a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .form-container {
-    width: 40%; /* Définissez une largeur pour le conteneur */
-    background: #F5EFE6;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 8px 40px #bda18a;
-    opacity: 0.7; /* Augmentez l'opacité pour une meilleure lisibilité */
-    animation: float 3s ease-in-out infinite;
-    display: flex; /* Ajoutez Flexbox pour mieux gérer le contenu */
-    flex-direction: column; /* Organise les enfants verticalement */
-    align-items: center; /* Centre les enfants horizontalement */
-    margin: auto; /* Centre le conteneur dans la vue */
+  width: 40%; /* Définissez une largeur pour le conteneur */
+  background: #f5efe6;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px #bda18a;
+  opacity: 0.7; /* Augmentez l'opacité pour une meilleure lisibilité */
+  animation: float 3s ease-in-out infinite;
+  display: flex; /* Ajoutez Flexbox pour mieux gérer le contenu */
+  flex-direction: column; /* Organise les enfants verticalement */
+  align-items: center; /* Centre les enfants horizontalement */
+  margin: auto; /* Centre le conteneur dans la vue */
 }
 
-input[type=email], input[type=text], input[type=password], button {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-    opacity: 0.5;
+input[type="email"],
+input[type="text"],
+input[type="password"],
+button {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  opacity: 0.5;
 }
 
 button {
-    background-color: white;
-    color: #C49D83;
-    padding: 5px 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
-    position: relative;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin: 10px auto; /* Centre le bouton horizontalement */
-    width: auto; /* Laissez la largeur être déterminée par le contenu ou ajustez selon vos besoins */
+  background-color: white;
+  color: #c49d83;
+  padding: 5px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 10px auto; /* Centre le bouton horizontalement */
+  width: auto; /* Laissez la largeur être déterminée par le contenu ou ajustez selon vos besoins */
 }
 
-button:hover, button:focus {
-    background-color: #C49D83;
-    color: white;
-    box-shadow: 0 0 20px #E8D5CC, 
-                0 0 40px #E8D5CC, 
-                0 0 60px #E8D5CC;
-    text-shadow: 0 0 5px #ffffff, 
-                 0 0 10px #E8D5CC, 
-                 0 0 20px #E8D5CC, 
-                 0 0 40px #E8D5CC;
+button:hover,
+button:focus {
+  background-color: #c49d83;
+  color: white;
+  box-shadow:
+    0 0 20px #e8d5cc,
+    0 0 40px #e8d5cc,
+    0 0 60px #e8d5cc;
+  text-shadow:
+    0 0 5px #ffffff,
+    0 0 10px #e8d5cc,
+    0 0 20px #e8d5cc,
+    0 0 40px #e8d5cc;
 }
 
 button:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }

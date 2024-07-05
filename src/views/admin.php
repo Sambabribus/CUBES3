@@ -1,23 +1,21 @@
-<?php 
+<?php
 session_start();
 
 use src\app\controllers\user_controller;
 
-require_once '../../vendor/autoload.php';
-require_once '../app/controllers/user_controller.php';
+require_once "../../vendor/autoload.php";
+require_once "../app/controllers/user_controller.php";
 
 $controller = new user_controller();
 $user = $controller->getAll();
 
-if (isset($_POST['btn_del_user'])) {
+if (isset($_POST["btn_del_user"])) {
     $controller = new user_controller();
-    $user = $controller->delete($_POST['id_user']);
-
+    $user = $controller->delete($_POST["id_user"]);
 }
-
 ?>
 
-<?php if (isset($_SESSION['user_isadmin']) && $_SESSION['user_isadmin']): ?>
+<?php if (isset($_SESSION["user_isadmin"]) && $_SESSION["user_isadmin"]): ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -37,18 +35,23 @@ if (isset($_POST['btn_del_user'])) {
                 <li><a href="recipes.php">Recettes</a></li>
                 <li><a href="about.php">A propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <?php if (isset($_SESSION['user_mail'])): ?>
+                <?php if (isset($_SESSION["user_mail"])): ?>
                     <li><a href="../app/controllers/logout.php">Déconnexion</a></li>
                 <?php else: ?>
                     <li><a href="login.php">Connexion / Inscription</a></li>
                 <?php endif; ?>
             </ul>    
-            <?php if (isset($_SESSION['user_mail'])): ?>
+            <?php if (isset($_SESSION["user_mail"])): ?>
             <div class="login">
                 <div class="container">
                     <!-- Affiche le message de bienvenue -->
-                    <p>Bienvenue, <?php echo htmlspecialchars($_SESSION['user_mail']); ?> !
-                    <?php if (isset($_SESSION['user_isadmin']) && $_SESSION['user_isadmin']): ?>
+                    <p>Bienvenue, <?php echo htmlspecialchars(
+                        $_SESSION["user_mail"]
+                    ); ?> !
+                    <?php if (
+                        isset($_SESSION["user_isadmin"]) &&
+                        $_SESSION["user_isadmin"]
+                    ): ?>
                     Admin
                     <?php endif; ?>
                     </p>
@@ -78,21 +81,31 @@ if (isset($_POST['btn_del_user'])) {
             <thead>
             <tbody>
                 <tr>    
-                <?php
-                    foreach ($user as $row) {
-                        echo "
-                            <td>". htmlspecialchars($row['id_user']) ."</td>
-                            <td>". htmlspecialchars($row['username_user']) ."</td>
-                            <td>". htmlspecialchars($row['mail_user']) ."</td>
-                            <td>". htmlspecialchars($row['isadmin_user']) ."</td>
+                <?php foreach ($user as $row) {
+                    echo "
+                            <td>" .
+                        htmlspecialchars($row["id_user"]) .
+                        "</td>
+                            <td>" .
+                        htmlspecialchars($row["username_user"]) .
+                        "</td>
+                            <td>" .
+                        htmlspecialchars($row["mail_user"]) .
+                        "</td>
+                            <td>" .
+                        htmlspecialchars($row["isadmin_user"]) .
+                        "</td>
                             <td>
                                 <form method='post'>
-                                    <input type='hidden' name='id_user' value='". htmlspecialchars($row['id_user']) ."'>
-                                    <button type='submit' name='btn_del_user' value='".htmlspecialchars($row['id_user'])."'>Del</button>
+                                    <input type='hidden' name='id_user' value='" .
+                        htmlspecialchars($row["id_user"]) .
+                        "'>
+                                    <button type='submit' name='btn_del_user' value='" .
+                        htmlspecialchars($row["id_user"]) .
+                        "'>Del</button>
                                 </form>
                             </td>";
-                    }
-                ?>
+                } ?>
             </tr>
             </tbody>
         </table>
@@ -105,5 +118,5 @@ Copyright ©
 </body>
 </html>
 <?php else: ?>
-    <?php header('Location: main.php'); ?>
+    <?php header("Location: main.php"); ?>
 <?php endif; ?>

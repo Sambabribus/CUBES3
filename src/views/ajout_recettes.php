@@ -1,6 +1,6 @@
 <?php
-require_once '../app/controllers/user_controller.php';
-require_once '../app/controllers/recipes_controller.php';
+require_once "../app/controllers/user_controller.php";
+require_once "../app/controllers/recipes_controller.php";
 
 use src\app\controllers\user_controller;
 use src\app\controllers\recipe_controller;
@@ -9,8 +9,15 @@ session_start(); // Démarre ou reprend une session au début de chaque script
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $controller = new recipe_controller();
-        $result = $controller->create($_POST['title'], $_POST['description'], $_POST['preparation_time'], $_POST['cooking_time'], $_POST['serves'], $_SESSION['user_id']/**, $_POST['$url_image']**/);
-    }
+    $result = $controller->create(
+        $_POST["title"],
+        $_POST["description"],
+        $_POST["preparation_time"],
+        $_POST["cooking_time"],
+        $_POST["serves"],
+        $_SESSION["user_id"] /**, $_POST['$url_image']**/
+    );
+}
 ?>
 
 
@@ -26,7 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="recipe-form-container">
         <h1 class="recipe-form-title">Ajouter une nouvelle recette</h1>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="<?php echo htmlspecialchars(
+            $_SERVER["PHP_SELF"]
+        ); ?>" method="post">
             <div class="form-group">
                 <input type="text" name="title" placeholder="Titre de la recette" required>
             </div>

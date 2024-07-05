@@ -2,11 +2,12 @@
 
 #region Namespace and Imports
 namespace src\app\models;
-require '../../vendor/autoload.php';
+require "../../vendor/autoload.php";
 #endregion
 
 // Définition de la classe Recipe.
-class Recipe {
+class Recipe
+{
     #region Properties
     private int $id;
     private string $title;
@@ -19,10 +20,12 @@ class Recipe {
 
     #region ID Accessors
     // Méthodes pour obtenir et définir l'ID de la recette.
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->id;
     }
-    public function setId(int $id): Recipe {
+    public function setId(int $id): Recipe
+    {
         $this->id = $id;
         return $this;
     }
@@ -30,10 +33,12 @@ class Recipe {
 
     #region Title Accessors
     // Méthodes pour obtenir et définir le titre de la recette.
-    public function getTitle(): string {
+    public function getTitle(): string
+    {
         return $this->title;
     }
-    public function setTitle(string $title): Recipe {
+    public function setTitle(string $title): Recipe
+    {
         $this->title = $title;
         return $this;
     }
@@ -41,10 +46,12 @@ class Recipe {
 
     #region Description Accessors
     // Méthodes pour obtenir et définir la description de la recette.
-    public function getDescription(): string {
+    public function getDescription(): string
+    {
         return $this->description;
     }
-    public function setDescription(string $description): Recipe {
+    public function setDescription(string $description): Recipe
+    {
         $this->description = $description;
         return $this;
     }
@@ -52,10 +59,12 @@ class Recipe {
 
     #region Cooking Time Accessors
     // Méthodes pour obtenir et définir le temps de cuisson de la recette.
-    public function getCookingTime(): float {
+    public function getCookingTime(): float
+    {
         return $this->cooking_time;
     }
-    public function setCookingTime(float $cooking_time): Recipe {
+    public function setCookingTime(float $cooking_time): Recipe
+    {
         $this->cooking_time = $cooking_time;
         return $this;
     }
@@ -63,10 +72,12 @@ class Recipe {
 
     #region Preparation Time Accessors
     // Méthodes pour obtenir et définir le temps de préparation de la recette.
-    public function getPreparationTime(): float {
+    public function getPreparationTime(): float
+    {
         return $this->preparation_time;
     }
-    public function setPreparationTime(float $preparation_time): Recipe {
+    public function setPreparationTime(float $preparation_time): Recipe
+    {
         $this->preparation_time = $preparation_time;
         return $this;
     }
@@ -74,10 +85,12 @@ class Recipe {
 
     #region Serves Accessors
     // Méthodes pour obtenir et définir le nombre de portions de la recette.
-    public function getServes(): int {
+    public function getServes(): int
+    {
         return $this->serves;
     }
-    public function setServes(int $serves): Recipe {
+    public function setServes(int $serves): Recipe
+    {
         $this->serves = $serves;
         return $this;
     }
@@ -85,10 +98,12 @@ class Recipe {
 
     #region URL Image Accessors
     // Méthodes pour obtenir et définir l'URL de l'image de la recette.
-    public function getUrlImage(): string {
+    public function getUrlImage(): string
+    {
         return $this->url_image;
     }
-    public function setUrlImage(string $url_image): Recipe {
+    public function setUrlImage(string $url_image): Recipe
+    {
         $this->url_image = $url_image;
         return $this;
     }

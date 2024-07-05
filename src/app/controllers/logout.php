@@ -3,5 +3,5 @@ session_start(); // Accès à la session
 session_unset(); // Supprimer toutes les variables de session
 session_destroy(); // Détruire la session
 
-header('Location: ../../views/main.php'); // Rediriger vers la page d'accueil
-exit;
+header("Location: ../../views/main.php"); // Rediriger vers la page d'accueil
+exit();
