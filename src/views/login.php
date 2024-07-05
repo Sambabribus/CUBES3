@@ -56,12 +56,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="form-container">
         <h2>Inscription</h2>
-        <?php if ($messageInscription !== ""): ?>
+        <?php if ($messageInscription !== "") : ?>
             <p><?php echo htmlspecialchars($messageInscription); ?></p>
         <?php endif; ?>
         <form action="<?php echo htmlspecialchars(
-            $_SERVER["PHP_SELF"]
-        ); ?>" method="post">
+                            $_SERVER["PHP_SELF"]
+                        ); ?>" method="post">
             <input type="email" name="mail_user" placeholder="Email" required>
             <input type="text" name="username_user" placeholder="Pseudo" required>
             <input type="password" name="pwd_user" placeholder="Mot de passe" required>
@@ -69,12 +69,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
 
         <h2>Connexion</h2>
-        <?php if ($messageConnexion !== ""): ?>
+        <?php if ($messageConnexion !== "") : ?>
             <p><?php echo htmlspecialchars($messageConnexion); ?></p>
         <?php endif; ?>
         <form action="<?php echo htmlspecialchars(
-            $_SERVER["PHP_SELF"]
-        ); ?>" method="post">
+                            $_SERVER["PHP_SELF"]
+                        ); ?>" method="post">
             <input type="email" name="login-mail_user" placeholder="Email" required>
             <input type="password" name="login-pwd_user" placeholder="Mot de passe" required>
             <button type="submit" name="login">Se connecter</button>

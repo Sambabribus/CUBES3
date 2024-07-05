@@ -69,102 +69,102 @@ if (isset($_POST["btn_update_comment"])) {
 
         <div class="top-band">
 
-    <div class="container">
-        <nav>
-          <img src="../../public/assets/img/EcoCook.png" class="logo">
-            <ul>
-                <li><a href="main.php">Accueil</a></li>
-                <li><a href="recipes.php">Recettes</a></li>
-                <li><a href="about.php">A propos</a></li>
-                <li><a href="contact.php">Contact</a></li>
-                <?php if (isset($_SESSION["user_mail"])): ?>
-                    <li><a href="../app/controllers/logout.php">Déconnexion</a></li>
-                <?php else: ?>
-                    <li><a href="login.php">Connexion / Inscription</a></li>
-                <?php endif; ?>
-            </ul>    
-            <?php if (isset($_SESSION["user_mail"])): ?>
-            <div class="login">
-                <div class="container">
-                    <!-- Affiche le message de bienvenue -->
-                    <p>Bienvenue, <?php echo htmlspecialchars(
-                        $_SESSION["user_mail"]
-                    ); ?> !</p>
-                </div>
+            <div class="container">
+                <nav>
+                    <img src="../../public/assets/img/EcoCook.png" class="logo">
+                    <ul>
+                        <li><a href="main.php">Accueil</a></li>
+                        <li><a href="recipes.php">Recettes</a></li>
+                        <li><a href="about.php">A propos</a></li>
+                        <li><a href="contact.php">Contact</a></li>
+                        <?php if (isset($_SESSION["user_mail"])) : ?>
+                            <li><a href="../app/controllers/logout.php">Déconnexion</a></li>
+                        <?php else : ?>
+                            <li><a href="login.php">Connexion / Inscription</a></li>
+                        <?php endif; ?>
+                    </ul>
+                    <?php if (isset($_SESSION["user_mail"])) : ?>
+                        <div class="login">
+                            <div class="container">
+                                <!-- Affiche le message de bienvenue -->
+                                <p>Bienvenue, <?php echo htmlspecialchars(
+                                                    $_SESSION["user_mail"]
+                                                ); ?> !</p>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </nav>
             </div>
-            <?php endif; ?>
-        </nav>  
-    </div>
-    </div> 
-</header>
+        </div>
+    </header>
 
     <form action="<?php echo htmlspecialchars(
-        $_SERVER["PHP_SELF"]
-    ); ?>" method="get">
-        <input type="text" name="search_recipe" placeholder="Rechercher une recette" 
-            value="<?php if (isset($_SESSION["search_recipe"])) {
-                echo htmlspecialchars($_SESSION["search_recipe"]);
-            } ?>"required>
+                        $_SERVER["PHP_SELF"]
+                    ); ?>" method="get">
+        <input type="text" name="search_recipe" placeholder="Rechercher une recette" value="<?php if (isset($_SESSION["search_recipe"])) {
+                                                                                                echo htmlspecialchars($_SESSION["search_recipe"]);
+                                                                                            } ?>" required>
         <button type="submit" name="btn_search_recipe">Rechercher</button>
     </form>
     <a href="ajout_recettes.php" class="btn btn-primary">Ajouter une recette</a>
 
     <?php foreach ($recipes as $row) { ?> <div class='recipes_recipe'>
-                    <div class='content'>
-                        <h3 class='title'><?php echo htmlspecialchars(
-                            $row->getTitle()
-                        ); ?></h3>
-                        <p>Description : <?php echo htmlspecialchars(
-                            $row->getDescription()
-                        ); ?></p>
-                        <p>Temps de preparation : <?php echo htmlspecialchars(
-                            $row->getPreparationTime()
-                        ); ?></p>
-                        <p>Temps de cuisson : <?php echo htmlspecialchars(
-                            $row->getCookingTime()
-                        ); ?></p>
-                        <p>Nombre de personne : <?php echo htmlspecialchars(
-                            $row->getServes()
-                        ); ?></p>
-                    </div>
-                    <div class="display-comment">
-                    <?php
-                    $com_controller = new comments_controller();
-                    $getcomments = $com_controller->get($row->getId());
-                    foreach ($getcomments as $contentcomment) { ?>
-                        <p><?php echo htmlspecialchars(
+            <div class='content'>
+                <h3 class='title'><?php echo htmlspecialchars(
+                                        $row->getTitle()
+                                    ); ?></h3>
+                <p>Description : <?php echo htmlspecialchars(
+                                        $row->getDescription()
+                                    ); ?></p>
+                <p>Temps de preparation : <?php echo htmlspecialchars(
+                                                $row->getPreparationTime()
+                                            ); ?></p>
+                <p>Temps de cuisson : <?php echo htmlspecialchars(
+                                            $row->getCookingTime()
+                                        ); ?></p>
+                <p>Nombre de personne : <?php echo htmlspecialchars(
+                                            $row->getServes()
+                                        ); ?></p>
+            </div>
+            <div class="display-comment">
+                <?php
+                $com_controller = new comments_controller();
+                $getcomments = $com_controller->get($row->getId());
+                foreach ($getcomments as $contentcomment) { ?>
+                    <p><?php echo htmlspecialchars(
                             $contentcomment->getcomComment()
                         ); ?></p>
-                                <?php if (
-                                    $contentcomment->getUserIdComment() ==
-                                    $_SESSION["user_id"]
-                                ) { ?>
-                                    <form method='post'>
-                                        <input type='hidden' name='<?php echo htmlspecialchars(
-                                            $contentcomment->getcomComment()
-                                        ); ?>' value=''>
-                                        <button type='submit' name='btn_del_user' value='d'>Del</button>
-                                    </form>
-                                <?php } ?>
-                            <?php }
-                    ?>                                
-
-                    </div>
-
-                    <div class='comments'>
-                        <form action="<?php echo htmlspecialchars(
-                            $_SERVER["PHP_SELF"]
-                        ); ?>" method='post'>
-                            <input type='text' name="comments_recipe" placeholder='Commenter' required>
-                            <input type="hidden" name="recipe_id" value="<?php echo $row->getId(); ?>" />
-                            <input type="hidden" name="search_rec" value="<?php echo htmlspecialchars(
-                                $_SESSION["search_recipe"]
-                            ); ?>" />
-                            <button type='submit' name='btn_post_comments_recipe'>Poster</button>
+                    <?php if (
+                        $contentcomment->getUserIdComment() ==
+                        $_SESSION["user_id"]
+                    ) { ?>
+                        <form method='post'>
+                            <input type='hidden' name='<?php echo htmlspecialchars(
+                                                            $contentcomment->getcomComment()
+                                                        ); ?>' value=''>
+                            <button type='submit' name='btn_del_user' value='d'>Del</button>
                         </form>
-                    </div>
-                </div>
+                    <?php } ?>
+                <?php }
+                ?>
+
+            </div>
+
+            <div class='comments'>
+                <form action="<?php echo htmlspecialchars(
+                                    $_SERVER["PHP_SELF"]
+                                ); ?>" method='post'>
+                    <input type='text' name="comments_recipe" placeholder='Commenter' required>
+                    <input type="hidden" name="recipe_id" value="<?php echo $row->getId(); ?>" />
+                    <input type="hidden" name="search_rec" value="<?php echo htmlspecialchars(
+                                                                        $_SESSION["search_recipe"]
+                                                                    ); ?>" />
+                    <button type='submit' name='btn_post_comments_recipe'>Poster</button>
+                </form>
+            </div>
+        </div>
     <?php } ?>
-    
+
 </body>
+
 </html>

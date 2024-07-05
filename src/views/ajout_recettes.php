@@ -15,7 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST["preparation_time"],
         $_POST["cooking_time"],
         $_POST["serves"],
-        $_SESSION["user_id"] /**, $_POST['$url_image']**/
+        $_SESSION["user_id"]
+        /**, $_POST['$url_image']**/
     );
 }
 ?>
@@ -34,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="recipe-form-container">
         <h1 class="recipe-form-title">Ajouter une nouvelle recette</h1>
         <form action="<?php echo htmlspecialchars(
-            $_SERVER["PHP_SELF"]
-        ); ?>" method="post">
+                            $_SERVER["PHP_SELF"]
+                        ); ?>" method="post">
             <div class="form-group">
                 <input type="text" name="title" placeholder="Titre de la recette" required>
             </div>
