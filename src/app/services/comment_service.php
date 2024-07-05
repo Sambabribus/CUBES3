@@ -30,9 +30,9 @@ class comment_service {
             foreach ($results as $row) {
                 $comment = new Comment();
                 $comment
-                    ->setcomComment($row["com_comment"])
                     ->setUserIdComment($row["user_id_comment"])
-                    ->setRecipeIdComment($row["recipe_id_comment"]);
+                    ->setRecipeIdComment($row["recipe_id_comment"])
+                    ->setcomComment($row["com_comment"]);
             
                     $comResults[] = $comment;
                 }
