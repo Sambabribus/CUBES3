@@ -3,11 +3,14 @@
 session_start();
 
 require_once '../app/controllers/recipes_controller.php';
+require_once '../app/controllers/comments_controller.php';
 
 use src\app\controllers\recipe_controller;
+use src\app\controllers\comments_controller;
 
 $controller = new recipe_controller();
 $recipes = [];
+$getcomments = [];
 
 
 if (isset($_GET['btn_search_recipe'])) {
@@ -26,6 +29,13 @@ if (isset($_GET['btn_search_recipe'])) {
         }
     }
 }
+
+if (isset($_POST['btn_post_comments_recipe'])) {
+    $controller = new comments_controller();
+    $comments = $controller->post($_POST['comments_recipe'], $_SESSION['user_id'], $_POST['recipe_id']);
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -78,15 +88,36 @@ if (isset($_GET['btn_search_recipe'])) {
 
     <?php
     foreach ($recipes as $row) {
-        echo "<div class='recipes_recipe'>
-                    <h3>" . htmlspecialchars($row->getTitle()) . "</h3>
-                    <p>Description : " . htmlspecialchars($row->getDescription()) . "</p>
-                    <p>Temps de preparation : " . htmlspecialchars($row->getPreparationTime()) . "</p>
-                    <p>Temps de cuisson : " . htmlspecialchars($row->getCookingTime()) . "</p>
-                    <p>Nombre de personne : " . htmlspecialchars($row->getServes()) . "</p>
-                    </div>";
+        ?> <div class='recipes_recipe'>
+                    <div class='content'>
+                        <h3 class='title'><?php echo htmlspecialchars($row->getTitle()) ?></h3>
+                        <p>Description : <?php echo htmlspecialchars($row->getDescription()); ?></p>
+                        <p>Temps de preparation : <?php echo htmlspecialchars($row->getPreparationTime()); ?></p>
+                        <p>Temps de cuisson : <?php echo htmlspecialchars($row->getCookingTime()); ?></p>
+                        <p>Nombre de personne : <?php echo htmlspecialchars($row->getServes()); ?></p>
+                    </div>
+                    <div class="display-comment">
+                        <?php
+                            $com_controller = new comments_controller();
+                            $getcomments = $com_controller->get($row->getId());
+                            foreach  ($getcomments as $contentcomment){
+                                
+                            echo "<p>" . htmlspecialchars($contentcomment->getcomComment()) . "</p>";
+                            }?>
+                    </div>
+
+                    <div class='comments'>
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method='post'>
+                            <input type='text' name="comments_recipe" placeholder='Commenter' required>
+                            <input type="hidden" name="recipe_id" value="<?php echo $row->getId(); ?>" />
+                            <button type='submit' name='btn_post_comments_recipe'>Poster</button>
+                        </form>
+                    </div>
+                </div>
+    <?php
     }
     ?>
+    
 
 </body>
 
