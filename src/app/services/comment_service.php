@@ -51,4 +51,24 @@ class comment_service {
             throw new PDOException("No Comment was created". $e->getMessage());
         }
     }
+
+    public function delete_comment($id_comment) {
+        try {
+            $this->db->query("DELETE FROM comment WHERE id_comment = :id");
+            $this->db->execute([$id_comment]);
+            return true;
+        } catch (PDOException $e) {
+            throw new PDOException("". $e->getMessage());
+        }
+    }
+
+    public function update_comment(Comment $data, $id_comment) {
+        try {
+            $this->db->query("UPDATE comment SET com_comment = ? WHERE id_comment = :id");
+            $this->db->execute([$data->com_comment,$id_comment]);
+            return true;
+        } catch (PDOException $e) {
+            throw new PDOException("". $e->getMessage());
+        }
+    }
 }

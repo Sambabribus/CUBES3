@@ -493,3 +493,15 @@ caption {
   caption-side: bottom;
   padding: 10px;
 }
+
+.recipes_recipe {
+  display: flex;
+  flex-direction: column;
+  border: #AAAAAA solid;
+}
+
+.recipes_recipe > .content > .title {
+  color: black;
+  font-size: larger;
+  border-bottom: black dashed;
+}

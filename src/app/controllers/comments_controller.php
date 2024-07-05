@@ -37,4 +37,9 @@ class comments_controller {
         $comments = $this->comment_service->get_comment_by_recipe_id($recipe_id, 3);
         return $comments;
     }
+
+    public function update($content, $id_comment): bool {
+        $comment = $this->comment_service->update_comment($content, $id_comment,);
+        return $comment;
+    }
 }

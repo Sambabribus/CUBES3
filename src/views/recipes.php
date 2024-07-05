@@ -13,10 +13,14 @@ $recipes = [];
 $getcomments = [];
 
 
-if (isset($_GET['btn_search_recipe'])) {
+if (isset($_GET['btn_search_recipe']) or isset($_POST['btn_post_comments_recipe'])) {
     $controller = new recipe_controller();
+    
+    if (isset($_POST['search_rec'])){
+        $_GET['search_recipe'] = $_POST['search_rec'];
+        }
     $recipes = $controller->search($_GET['search_recipe']);
-
+    $_SESSION['search_recipe'] = $_GET['search_recipe'];
     if (count($recipes) <= 0) {
         $searchMessage = "Aucune recette trouvée.";
     }
@@ -28,6 +32,8 @@ if (isset($_GET['btn_search_recipe'])) {
             $_SESSION[''] = $result;
         }
     }
+
+    
 }
 
 if (isset($_POST['btn_post_comments_recipe'])) {
@@ -35,6 +41,10 @@ if (isset($_POST['btn_post_comments_recipe'])) {
     $comments = $controller->post($_POST['comments_recipe'], $_SESSION['user_id'], $_POST['recipe_id']);
 }
 
+if (isset($_POST['btn_update_comment'])) {
+    $controller = new comments_controller();
+    $comments = $controller->update($_POST['comments_recipe'], $contentcomment->getIdCom());
+}
 
 ?>
 
@@ -81,7 +91,8 @@ if (isset($_POST['btn_post_comments_recipe'])) {
 </header>
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="get">
-        <input type="text" name="search_recipe" placeholder="Rechercher une recette" required>
+        <input type="text" name="search_recipe" placeholder="Rechercher une recette" 
+            value="<?php if(isset($_SESSION['search_recipe'])){ echo htmlspecialchars($_SESSION['search_recipe']);} ?>"required>
         <button type="submit" name="btn_search_recipe">Rechercher</button>
     </form>
     <a href="ajout_recettes.php" class="btn btn-primary">Ajouter une recette</a>
@@ -100,16 +111,22 @@ if (isset($_POST['btn_post_comments_recipe'])) {
                         <?php
                             $com_controller = new comments_controller();
                             $getcomments = $com_controller->get($row->getId());
-                            foreach  ($getcomments as $contentcomment){
-                                
-                            echo "<p>" . htmlspecialchars($contentcomment->getcomComment()) . "</p>";
-                            }?>
+                            foreach  ($getcomments as $contentcomment){ ?>
+                                <p><?php echo htmlspecialchars($contentcomment->getcomComment()); ?></p>
+                                    <?php if($contentcomment->getUserIdComment() == $_SESSION['user_id']){ ?>
+                                        <form method='post'>
+                                            <input type='hidden' name=' . htmlspecialchars($contentcomment->getcomComment()); .' value=''>
+                                            <button type='submit' name='btn_del_user' value='d'>Del</button>
+                                        </form>"
+                                    <?php } ?>                                
+
                     </div>
 
                     <div class='comments'>
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method='post'>
                             <input type='text' name="comments_recipe" placeholder='Commenter' required>
                             <input type="hidden" name="recipe_id" value="<?php echo $row->getId(); ?>" />
+                            <input type="hidden" name="search_rec" value="<?php echo htmlspecialchars($_SESSION['search_recipe']); ?>" />
                             <button type='submit' name='btn_post_comments_recipe'>Poster</button>
                         </form>
                     </div>
