@@ -108,17 +108,18 @@ if (isset($_POST['btn_update_comment'])) {
                         <p>Nombre de personne : <?php echo htmlspecialchars($row->getServes()); ?></p>
                     </div>
                     <div class="display-comment">
-                        <?php
-                            $com_controller = new comments_controller();
-                            $getcomments = $com_controller->get($row->getId());
-                            foreach  ($getcomments as $contentcomment){ ?>
-                                <p><?php echo htmlspecialchars($contentcomment->getcomComment()); ?></p>
-                                    <?php if($contentcomment->getUserIdComment() == $_SESSION['user_id']){ ?>
-                                        <form method='post'>
-                                            <input type='hidden' name=' . htmlspecialchars($contentcomment->getcomComment()); .' value=''>
-                                            <button type='submit' name='btn_del_user' value='d'>Del</button>
-                                        </form>"
-                                    <?php } ?>                                
+                    <?php   
+                        $com_controller = new comments_controller();
+                        $getcomments = $com_controller->get($row->getId());
+                        foreach  ($getcomments as $contentcomment){ ?>
+                        <p><?php echo htmlspecialchars($contentcomment->getcomComment()); ?></p>
+                                <?php if($contentcomment->getUserIdComment() == $_SESSION['user_id']){ ?>
+                                    <form method='post'>
+                                        <input type='hidden' name='<?php echo htmlspecialchars($contentcomment->getcomComment()); ?>' value=''>
+                                        <button type='submit' name='btn_del_user' value='d'>Del</button>
+                                    </form>
+                                <?php } ?>
+                            <?php } ?>                                
 
                     </div>
 
@@ -132,10 +133,8 @@ if (isset($_POST['btn_update_comment'])) {
                     </div>
                 </div>
     <?php
-    }
+    } 
     ?>
     
-
 </body>
-
 </html>
