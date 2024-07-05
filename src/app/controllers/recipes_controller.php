@@ -1,11 +1,10 @@
 <?php
 #region Required Classes
+// Définition de l'espace de noms et importation des classes nécessaires.
 namespace src\app\controllers;
-
 require_once '../app/models/recipes.php';
 require_once '../app/models/database.php';
 require_once '../app/services/recipe_service.php';
-
 use src\app\models\Recipe;
 use src\app\models\Database;
 use src\app\services\RecipeService;
@@ -13,8 +12,12 @@ use src\app\services\RecipeService;
 
 class recipe_controller
 {
-    private RecipeService $recipeService;
+    #region Properties
+    private RecipeService $recipeService; // Instance du service de recettes.
+    #endregion
+
     #region Constructor
+    // Constructeur qui initialise le service de recettes avec une instance de la base de données.
     public function __construct()
     {
         $database = new Database();
@@ -23,13 +26,15 @@ class recipe_controller
     #endregion
 
     #region Search Function
+    // Méthode pour rechercher des recettes par titre ou description.
     public function search(string $query): array {
         return $this->recipeService->filterByTitleOrDescription($query);
     }
     #endregion
 
     #region Create Function
-    final public function create($title, $description, $preparation_time, $cooking_time, $serves, $user_id/**, $url_image */): bool
+    // Méthode pour créer une nouvelle recette.
+    final public function create($title, $description, $preparation_time, $cooking_time, $serves, $user_id): bool
     {
         $recipe = new Recipe();
         $recipe
@@ -38,20 +43,22 @@ class recipe_controller
             ->setPreparationTime($preparation_time)
             ->setCookingTime($cooking_time)
             ->setServes($serves);
-            //->setUrlImage($url_image);
         
         return $this->recipeService->create($recipe, $user_id);
     }
+    #endregion
 
     #region Show Function
+    // Méthode pour afficher une recette spécifique par son ID.
     final public function show($id): void
     {
         $recipe = $this->recipeService->getById($id);
         require '../views/recipe.php';
     }
     #endregion
-
+    
     #region Main Function
+    // Méthode pour récupérer un nombre limité de recettes triées par date de création.
     final public function main(): array
     {
         $recipes = $this->recipeService->getLimitOrderByCreateDate(6);
@@ -60,6 +67,7 @@ class recipe_controller
     #endregion
 
     #region Index Function
+    // Méthode pour récupérer toutes les recettes.
     final public function index(): void
     {
         $recipes = $this->recipeService->getAll();
@@ -67,6 +75,7 @@ class recipe_controller
     #endregion
 
     #region Edit Function
+    // Méthode pour préparer l'édition d'une recette spécifique par son ID.
     final public function edit($id): void
     {
         $recipe = $this->recipeService->getById($id);
@@ -75,6 +84,7 @@ class recipe_controller
     #endregion
 
     #region Update Function
+    // Méthode pour mettre à jour une recette existante.
     final public function update($id, $title, $description, $preparation_time, $cooking_time, $serves): void
     {
         $recipe = new Recipe();
@@ -90,6 +100,7 @@ class recipe_controller
     #endregion
 
     #region Delete Function
+    // Méthode pour supprimer une recette par son ID.
     final public function delete($id): void
     {
         $this->recipeService->delete($id);

@@ -1,5 +1,6 @@
 <?php
 #region Imports
+//
 namespace src\app\services;
 require_once '../app/models/user.php';
 require_once '../app/models/database.php';
@@ -11,10 +12,12 @@ use src\app\models\User;
 class user_service
 {
     #region Properties
+    // Propriété pour la base de données.
     private Database $db;
     #endregion
 
     #region Constructor
+    // Constructeur de la classe UserService.
     public function __construct(Database $db)
     {
         $this->db = $db;
@@ -22,6 +25,7 @@ class user_service
     #endregion
 
     #region login Function
+    // Fonction pour se connecter.
     public function login(string $username, string $password): ?User
     {
         try {
@@ -42,6 +46,7 @@ class user_service
     #endregion
 
     #region sign_up Function
+    // Fonction pour s'inscrire.
     public function sign_up(string $username, string $password, string $email): ?User {
         try {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -63,6 +68,7 @@ class user_service
     #endregion
 
     #region getAllUser Function
+    // Fonction pour obtenir tous les utilisateurs.
     public function getAllUser(): array {
         try {
             $this->db->query("SELECT username_user, mail_user, id_user, isadmin_user from user");
@@ -74,6 +80,7 @@ class user_service
     #endregion
 
     #region delUser Function
+    // Fonction pour supprimer un utilisateur.
     public function delUser(int $id) {
         try {
             $this->db->query("DELETE FROM user WHERE id_user = :id");

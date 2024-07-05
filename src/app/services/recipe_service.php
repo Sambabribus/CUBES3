@@ -1,5 +1,6 @@
 <?php
 #region Imports
+// Définit l'espace de noms pour le service Recipe et importe les dépendances nécessaires.
 namespace src\app\services;
 
 use src\app\models\Recipe;
@@ -10,16 +11,19 @@ use PDO;
 
 class RecipeService {
     #region Properties
+    // 
     private Database $db;
     #endregion
 
     #region Constructor
+    // Constructeur de la classe RecipeService.
     public function __construct(Database $db) {
         $this->db = $db;
     }
     #endregion
 
     #region getById Function
+    // Fonction pour obtenir une recette par son identifiant.
     final public function getById(int $id): Recipe {
         try {
             $this->db->query("SELECT * FROM recipes WHERE id = :id");
@@ -31,6 +35,7 @@ class RecipeService {
     #endregion
 
     #region getAll Function
+    // Fonction pour obtenir toutes les recettes.
     final public function getAll(): array{
         try {
             $this->db->query("SELECT * FROM recipes");
@@ -42,6 +47,7 @@ class RecipeService {
     #endregion
 
     #region create Function
+    // Fonction pour créer une recette.
     final public function create(Recipe $data, $user_id): bool {
         try {
             $this->db->query("INSERT INTO recipes (title, description, preparation_time, cooking_time, serves, creation_date, user_id) VALUES (?, ?, ?, ?, ?, NOW(), ?)");
@@ -54,6 +60,7 @@ class RecipeService {
     #endregion
 
     #region delete Function
+    // Fonction pour supprimer une recette.
     final public function delete(int $id): bool {
         try {
             $this->db->query("DELETE FROM recipes WHERE id = :id");
@@ -66,6 +73,7 @@ class RecipeService {
     #endregion
 
     #region update Function
+    // Fonction pour mettre à jour une recette.
     final public function update(int $id, Recipe $data): bool {
         try {
             $this->db->query("UPDATE recipes SET title = ?, description = ?, preparation_time = ?, cooking_time = ?, serves = ? WHERE id = :id");
@@ -78,6 +86,7 @@ class RecipeService {
     #endregion
 
     #region getLimitOrderByCreateDate Function
+    // Fonction pour obtenir un nombre limité de recettes triées par date de création.
     final public function getLimitOrderByCreateDate(int $limit): array {
         try {
             $this->db->query("SELECT * FROM recipes ORDER BY creation_date DESC LIMIT ?");
@@ -89,6 +98,7 @@ class RecipeService {
     #endregion
 
     #region filterByTitleOrDescription Function
+    // Fonction pour filtrer les recettes par titre ou description.
     public final function filterByTitleOrDescription(string $data): Array {
         
         $searchResults = [];
