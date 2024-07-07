@@ -1,11 +1,11 @@
 <?php
-function sendResponse($status, $data, $message = '')
+
+class ResponseHelper
 {
-    header("Content-Type: application/json");
-    http_response_code($status);
-    echo json_encode([
-        'status' => $status,
-        'data' => $data,
-        'message' => $message
-    ]);
+    public static function sendResponse($status, $data)
+    {
+        http_response_code($status);
+        echo json_encode($data);
+        exit;
+    }
 }

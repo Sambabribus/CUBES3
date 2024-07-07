@@ -3,6 +3,7 @@ require '../config/database.php';
 require '../controllers/RecipeController.php';
 require '../controllers/UserController.php';
 require '../controllers/IngredientController.php';
+require '../controllers/CommentController.php'; // Importation du contrôleur pour les commentaires
 
 $database = new Database();
 $db = $database->getConnection();
@@ -24,6 +25,11 @@ switch ($path[0]) {
     case 'ingredients':
         $ingredientId = isset($path[1]) ? (int)$path[1] : null;
         $controller = new IngredientController($db, $requestMethod, $ingredientId);
+        $controller->processRequest();
+        break;
+    case 'comments': // Ajout du cas pour les commentaires
+        $commentId = isset($path[1]) ? (int)$path[1] : null;
+        $controller = new CommentController($db, $requestMethod, $commentId);
         $controller->processRequest();
         break;
     default:
