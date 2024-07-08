@@ -101,10 +101,11 @@ if (isset($_POST["btn_update_comment"])) {
     <form action="<?php echo htmlspecialchars(
                         $_SERVER["PHP_SELF"]
                     ); ?>" method="get">
-        <input type="text" name="search_recipe" placeholder="Rechercher une recette" value="<?php if (isset($_SESSION["search_recipe"])) {
-                                                                                                echo htmlspecialchars($_SESSION["search_recipe"]);
-                                                                                            } ?>" required>
-        <button type="submit" name="btn_search_recipe">Rechercher</button>
+        <input type="texts" name="search_recipe" class="search-bar" placeholder="Rechercher une recette" value="<?php if (isset($_SESSION["search_recipe"])) {
+                                                                                                                    echo htmlspecialchars($_SESSION["search_recipe"]);
+                                                                                                                } ?>" required>
+
+        <button type="submit" name="btn_search_recipe" class="buttonsearch">Rechercher</button>
     </form>
     <a href="ajout_recettes.php" class="btn btn-primary">Ajouter une recette</a>
 
