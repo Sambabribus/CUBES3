@@ -42,7 +42,7 @@ class recipe_controller
         $cooking_time,
         $serves,
         $user_id
-    ): bool {
+    ): int {
         $recipe = new Recipe();
         $recipe
             ->setTitle($title)
@@ -65,10 +65,13 @@ class recipe_controller
     #endregion
 
     #region Main Function
-    // Méthode pour récupérer un nombre limité de recettes triées par date de création.
+    /**
+     * Méthode pour récupérer un nombre limité de recettes triées par date de création.
+     * @return array<Recipe>
+     */
     final public function main(): array
     {
-        $recipes = $this->recipeService->getLimitOrderByCreateDate(6);
+        $recipes = $this->recipeService->getLimitOrderByCreateDate(12);
         return $recipes;
     }
     #endregion

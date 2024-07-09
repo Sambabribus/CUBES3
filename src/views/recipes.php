@@ -12,6 +12,10 @@ $controller = new recipe_controller();
 $recipes = [];
 $getcomments = [];
 
+if(!isset($_SESSION["user_id"])){
+    $_SESSION["user_id"] = -1;
+}
+
 if (
     isset($_GET["btn_search_recipe"]) or
     isset($_POST["btn_post_comments_recipe"])
@@ -150,7 +154,7 @@ if (isset($_POST["btn_update_comment"])) {
                 ?>
 
             </div>
-
+            <?php if ($_SESSION["user_id"] !== -1){?>
             <div class='comments'>
                 <form action="<?php echo htmlspecialchars(
                                     $_SERVER["PHP_SELF"]
@@ -163,6 +167,7 @@ if (isset($_POST["btn_update_comment"])) {
                     <button type='submit' name='btn_post_comments_recipe'>Poster</button>
                 </form>
             </div>
+            <?php } ?>
         </div>
     <?php } ?>
 

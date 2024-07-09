@@ -3,10 +3,13 @@
 // Définit l'espace de noms pour le service Recipe et importe les dépendances nécessaires.
 namespace src\app\services;
 
+require_once "image_service.php";
+
 use src\app\models\Recipe;
 use src\app\models\Database;
+use src\app\services\ImageService;
 use PDOException;
-use PDO;
+
 #endregion
 
 class RecipeService
@@ -14,6 +17,7 @@ class RecipeService
     #region Properties
     //
     private Database $db;
+    private ImageService $imageService;
     #endregion
 
     #region Constructor
@@ -21,6 +25,7 @@ class RecipeService
     public function __construct(Database $db)
     {
         $this->db = $db;
+        $this->imageService = new ImageService($db);
     }
     #endregion
 
@@ -30,10 +35,22 @@ class RecipeService
     {
         try {
             $this->db->query("SELECT * FROM recipes WHERE id = :id");
-            return $this->db->single([$id]);
+            $recipeResult = $this->db->single([$id]);
+
+            $output = new Recipe();
+            $output
+                ->setId($recipeResult["id"])
+                ->setTitle($recipeResult["title"])
+                ->setDescription($recipeResult["description"])
+                ->setCookingTime($recipeResult["cooking_time"])
+                ->setPreparationTime($recipeResult["preparation_time"])
+                ->setServes($recipeResult["serves"])
+                ->setImages($this->imageService->getContentByRecipeId($recipeResult["id"]));
+
+            return $output;
         } catch (PDOException $e) {
             throw new PDOException(
-                "Error, no recipe here was found. " . $e->getMessage()
+                "Error, no recipe was found. " . $e->getMessage()
             );
         }
     }
@@ -56,7 +73,7 @@ class RecipeService
 
     #region create Function
     // Fonction pour créer une recette.
-    final public function create(Recipe $data, $user_id): bool
+    final public function create(Recipe $data, $user_id): int
     {
         try {
             $this->db->query(
@@ -70,7 +87,7 @@ class RecipeService
                 $data->getServes(),
                 $user_id,
             ]);
-            return true;
+            return (int) $this->db->lastInsertId();
         } catch (PDOException $e) {
             throw new PDOException(
                 "Error, no recipe were created. " . $e->getMessage()
@@ -124,11 +141,26 @@ class RecipeService
     // Fonction pour obtenir un nombre limité de recettes triées par date de création.
     final public function getLimitOrderByCreateDate(int $limit): array
     {
+        $searchResults = [];
+
         try {
-            $this->db->query(
-                "SELECT * FROM recipes ORDER BY creation_date DESC LIMIT ?"
-            );
-            return $this->db->resultSet([$limit]);
+            $this->db->query("SELECT * FROM recipes ORDER BY creation_date DESC LIMIT ?");
+            $results = $this->db->resultSet([$limit]);
+
+            foreach ($results as $row) {
+                $recipe = new Recipe();
+                $recipe
+                    ->setId($row["id"])
+                    ->setTitle($row["title"])
+                    ->setDescription($row["description"])
+                    ->setCookingTime($row["cooking_time"])
+                    ->setPreparationTime($row["preparation_time"])
+                    ->setServes($row["serves"])
+                    ->setImages($this->imageService->getByRecipeId($row["id"]));
+                $searchResults[] = $recipe;
+            }
+
+            return $searchResults;
         } catch (PDOException $e) {
             throw new PDOException(
                 "Error, no recipe was found. " . $e->getMessage()
@@ -146,7 +178,7 @@ class RecipeService
         try {
             $data = "%" . $data . "%";
             $this->db->query(
-                "SELECT recipes.id, title, description, cooking_time, preparation_time, serves, images.url_image FROM recipes LEFT JOIN images ON recipes.id = images.recipe_id WHERE recipes.title LIKE ? OR recipes.description LIKE ?"
+                "SELECT recipes.id, title, description, cooking_time, preparation_time, serves FROM recipes WHERE recipes.title LIKE ? OR recipes.description LIKE ?"
             );
             $results = $this->db->resultSet([$data, $data]);
             foreach ($results as $row) {
@@ -157,10 +189,8 @@ class RecipeService
                     ->setDescription($row["description"])
                     ->setCookingTime($row["cooking_time"])
                     ->setPreparationTime($row["preparation_time"])
-                    ->setServes(
-                        $row["serves"]
-                        //->setUrlImage($row["url_image"])
-                    );
+                    ->setImages($this->imageService->getContentByRecipeId($row["id"]))
+                    ->setServes($row["serves"]);
                 $searchResults[] = $recipe;
             }
         } catch (PDOException $e) {

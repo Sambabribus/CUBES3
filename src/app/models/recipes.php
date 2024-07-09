@@ -15,7 +15,7 @@ class Recipe
     private float $cooking_time;
     private float $preparation_time;
     private int $serves;
-    private string $url_image;
+    private array $images;
     #endregion
 
     #region ID Accessors
@@ -97,14 +97,21 @@ class Recipe
     #endregion
 
     #region URL Image Accessors
-    // Méthodes pour obtenir et définir l'URL de l'image de la recette.
-    public function getUrlImage(): string
+    /**
+     * Méthodes pour obtenir et définir l'URL de l'image de la recette.
+     * @return array<Image>
+     */
+    public function getImages(): array
     {
-        return $this->url_image;
+        return $this->images;
     }
-    public function setUrlImage(string $url_image): Recipe
+    /**
+     * Set image of Recipe
+     * @param array<Image>
+     */
+    public function setImages(array $images): Recipe
     {
-        $this->url_image = $url_image;
+        $this->images = $images;
         return $this;
     }
     #endregion

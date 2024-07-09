@@ -118,6 +118,7 @@ main {
 form {
   display: flex;
   flex-direction: column;
+  padding: 212px;
 }
 
 h2 {

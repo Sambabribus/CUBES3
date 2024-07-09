@@ -55,6 +55,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <div class="form-container">
+        <button>
+            <a href="main.php">Retour Acceuil</a>
+        </button>
         <h2>Inscription</h2>
         <?php if ($messageInscription !== "") : ?>
             <p><?php echo htmlspecialchars($messageInscription); ?></p>

@@ -39,6 +39,7 @@ $recipes = $controller->main();
                         <?php endif; ?>
                         <?php if (isset($_SESSION["user_mail"])) : ?>
                             <li><a href="../app/controllers/logout.php">Déconnexion</a></li>
+                            <li><a href="">Profil</a></li>
                         <?php else : ?>
                             <li><a href="login.php">Connexion / Inscription</a></li>
                         <?php endif; ?>
@@ -73,12 +74,16 @@ $recipes = $controller->main();
             <?php foreach ($recipes as $row) {
                 echo "<div class='main_recipe'>
                     <h3>" .
-                    htmlspecialchars($row["title"]) .
+                    htmlspecialchars($row->getTitle()) .
                     "</h3>
                     <p>Description : " .
-                    htmlspecialchars($row["description"]) .
+                    htmlspecialchars($row->getDescription()) .
                     "</p>
                     </div>";
+
+                    foreach($row->getImages() as $image) {
+                        echo "<img src=\"" . 'data: ' . $image->getMimeType() . ';base64,' . base64_encode(file_get_contents($image->getFilePath())) . "\" />";
+                    }
             } ?>
         </div>
     </div>

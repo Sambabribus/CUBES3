@@ -89,4 +89,9 @@ class Database
         return $this->stmt->rowCount();
     }
     #endregion
+
+    final public function lastInsertId(string $name = null): string
+    {
+        return $this->conn->lastInsertId($name);
+    }
 }

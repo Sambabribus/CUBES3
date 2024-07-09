@@ -34,9 +34,7 @@ session_start();
                         <div class="login">
                             <div class="container">
                                 <!-- Affiche le message de bienvenue -->
-                                <p>Bienvenue, <?php echo htmlspecialchars(
-                                                    $_SESSION["user"]
-                                                ); ?> !</p>
+                                <p>Bienvenue, <?php echo htmlspecialchars($_SESSION["user"]); ?> !</p>
                             </div>
                         </div>
                     <?php endif; ?>

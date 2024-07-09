@@ -1,8 +1,9 @@
 <?php
 require_once "../app/controllers/user_controller.php";
 require_once "../app/controllers/recipes_controller.php";
+require_once "../app/controllers/image_controller.php";
 
-use src\app\controllers\user_controller;
+use src\app\controllers\image_controller;
 use src\app\controllers\recipe_controller;
 
 session_start(); // Démarre ou reprend une session au début de chaque script
@@ -16,11 +17,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST["cooking_time"],
         $_POST["serves"],
         $_SESSION["user_id"]
-        /**, $_POST['$url_image']**/
+    );
+
+    $image_controller = new image_controller();
+    $path_parts = pathinfo($_FILES["images"]["name"]);
+    $resultImage = $image_controller->post(
+        $result,
+        $path_parts["filename"],
+        $_FILES["images"]["tmp_name"],
+        $path_parts["extension"],
+        mime_content_type($_FILES["images"]["tmp_name"])
     );
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -36,7 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1 class="recipe-form-title">Ajouter une nouvelle recette</h1>
         <form action="<?php echo htmlspecialchars(
                             $_SERVER["PHP_SELF"]
-                        ); ?>" method="post">
+                        ); ?>" method="post"
+                        enctype="multipart/form-data">
             <div class="form-group">
                 <input type="text" name="title" placeholder="Titre de la recette" required>
             </div>
