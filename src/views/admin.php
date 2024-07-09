@@ -33,7 +33,7 @@ if (isset($_POST["btn_del_user"])) {
                     <nav>
                         <img src="../../public/assets/img/EcoCook.png" class="logo">
                         <ul>
-                            <li><a href="main.php">Accueil</a></li>
+                            <li><a href="index.php">Accueil</a></li>
                             <li><a href="recipes.php">Recettes</a></li>
                             <li><a href="about.php">A propos</a></li>
                             <li><a href="contact.php">Contact</a></li>
@@ -121,5 +121,5 @@ if (isset($_POST["btn_del_user"])) {
 
     </html>
 <?php else : ?>
-    <?php header("Location: main.php"); ?>
+    <?php header("Location: index.php"); ?>
 <?php endif; ?>

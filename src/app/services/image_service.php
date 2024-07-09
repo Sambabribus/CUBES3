@@ -73,6 +73,8 @@ class ImageService
                     ->setMimeType($imageResult["mime_type"])
                     ->setRecipeId($imageResult["recipe_id"]);
                 return $output;
+            } else {
+                return null;
             }
         } catch (PDOException $e) {
             throw new PDOException(

@@ -4,7 +4,7 @@ VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=yzhang.
 
 # TODO LIST :
 - [ ] CSS
-- [ ] Rajouter des recettes dans main.php
+- [x] Rajouter des recettes dans index.php
 - [ ] Afficher les recettes les plus commenter dans recipes.php
 - [ ] Finir l'affichage des recettes
 - [X] Gerer les images

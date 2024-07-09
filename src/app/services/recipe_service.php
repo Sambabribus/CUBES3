@@ -45,7 +45,7 @@ class RecipeService
                 ->setCookingTime($recipeResult["cooking_time"])
                 ->setPreparationTime($recipeResult["preparation_time"])
                 ->setServes($recipeResult["serves"])
-                ->setImages($this->imageService->getContentByRecipeId($recipeResult["id"]));
+                ->setImages($this->imageService->getByRecipeId($recipeResult["id"]));
 
             return $output;
         } catch (PDOException $e) {
@@ -189,7 +189,7 @@ class RecipeService
                     ->setDescription($row["description"])
                     ->setCookingTime($row["cooking_time"])
                     ->setPreparationTime($row["preparation_time"])
-                    ->setImages($this->imageService->getContentByRecipeId($row["id"]))
+                    ->setImages($this->imageService->getByRecipeId($row["id"]))
                     ->setServes($row["serves"]);
                 $searchResults[] = $recipe;
             }
