@@ -101,7 +101,7 @@ if (isset($_POST["btn_update_comment"])) {
     <form action="<?php echo htmlspecialchars(
                         $_SERVER["PHP_SELF"]
                     ); ?>" method="get">
-        <input type="texts" name="search_recipe" class="search-bar" placeholder="Rechercher une recette" value="<?php if (isset($_SESSION["search_recipe"])) {
+        <input type="text" name="search_recipe" class="search-bar" placeholder="Rechercher une recette" value="<?php if (isset($_SESSION["search_recipe"])) {
                                                                                                                     echo htmlspecialchars($_SESSION["search_recipe"]);
                                                                                                                 } ?>" required>
 
