@@ -3,15 +3,15 @@ VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=yzhang.
 
 
 # TODO LIST :
-- [ ] CSS
 - [x] Rajouter des recettes dans index.php
-- [ ] Afficher les recettes les plus commenter dans recipes.php
-- [ ] Finir l'affichage des recettes
 - [X] Gerer les images
-- [ ] Pouvoir modifier : recettes/utilisateur
+- [X] Pouvoir modifier : recettes 
+- [X] Ajouter un bouton dans la page Connexion/Inscription
+- [ ] CSS
+- [ ] Finir l'affichage des recettes
+- [ ] Pouvoir modifier : utilisateur 
+- [ ] Faire la page contact
+- [ ] Faire la page a propos
+- [ ] Afficher les recettes les plus commenter dans recipes.php
 - [ ] Envoie d'une recettes par mail
 - [ ] Support PDF
-- [ ] Faire la page contact
-- [X] Ajouter un bouton dans la page Connexion/Inscription
-- [ ] Pour modifier son utilisateur actuel
-- [ ] Faire la page a propos

@@ -57,10 +57,10 @@ class recipe_controller
 
     #region Show Function
     // Méthode pour afficher une recette spécifique par son ID.
-    final public function show($id): void
+    final public function show($id): Recipe
     {
         $recipe = $this->recipeService->getById($id);
-        require "../views/recipe.php";
+        return $recipe;
     }
     #endregion
 
@@ -89,7 +89,7 @@ class recipe_controller
     final public function edit($id): void
     {
         $recipe = $this->recipeService->getById($id);
-        require "../views/edit_recipe.php";
+        require "../views/edit_recipe.php?id=".$id."&edit=true";
     }
     #endregion
 
@@ -102,7 +102,7 @@ class recipe_controller
         $preparation_time,
         $cooking_time,
         $serves
-    ): void {
+    ): bool {
         $recipe = new Recipe();
         $recipe
             ->setTitle($title)
@@ -111,15 +111,16 @@ class recipe_controller
             ->setCookingTime($cooking_time)
             ->setServes($serves);
 
-        $this->recipeService->update($id, $recipe);
+        return $this->recipeService->update($id, $recipe);
     }
     #endregion
 
     #region Delete Function
     // Méthode pour supprimer une recette par son ID.
-    final public function delete($id): void
+    final public function delete($id): bool
     {
         $this->recipeService->delete($id);
+        return true;
     }
     #endregion
 }

@@ -9,6 +9,12 @@ require_once "../app/controllers/recipes_controller.php";
 
 $controller = new recipe_controller();
 $recipes = $controller->main();
+
+if (isset($_GET["btn_del_recipe"])) {
+    $controller = new recipe_controller();
+    $recipe = $controller->delete($_GET["btn_del_recipe"]);
+    header("Location: index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +85,7 @@ $recipes = $controller->main();
     <main class="container py-6 mx-auto">
         <section class="px-8 mx-auto">
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
-                <?php foreach ($recipes as $recipe) { ?>
+                <?php foreach ($recipes as $recipe): ?>
                     <div class="relative flex flex-col items-center border border-gray-200 rounded-lg min-h-64 max-h-96">
                         <?php $menuId = "dropdownRecipeMenu-" . $recipe->getId() ?>
                         <?php $toggleId = "dropdownRecipeToggle-" . $recipe->getId() ?>
@@ -98,14 +104,16 @@ $recipes = $controller->main();
                                 class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-40">
                                 <ul class="py-2 text-sm text-gray-700" aria-labelledby="<?php echo $toggleId ?>">
                                     <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100/50">Details</a>
+                                        <a href="recipe.php?id=<?php echo $recipe->getId()?>&edit=false" class="block px-4 py-2 hover:bg-gray-100/50">Details</a>
+                                    </li>
+                                    <?php if(isset(($_SESSION["user_id"])) && ($_SESSION["user_id"]) == $recipe->getUserId() || isset(($_SESSION["user_isadmin"])) && ($_SESSION["user_isadmin"]) == 1){ ?>
+                                    <li>
+                                        <a href="recipe.php?id=<?php echo $recipe->getId()?>&edit=true" class="block px-4 py-2 hover:bg-gray-100/50">Edit</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100/50">Edit</a>
+                                        <a href="?btn_del_recipe=<?php echo $recipe->getId()?>" class="block px-4 py-2 hover:bg-gray-100/50">Delete</a>
                                     </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100/50">Delete</a>
-                                    </li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
@@ -131,11 +139,11 @@ $recipes = $controller->main();
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php endforeach; ?>
             </div>
         </section>
-        </mainclass>
-        <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>
 
 </html>

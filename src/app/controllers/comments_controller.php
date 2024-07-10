@@ -47,7 +47,10 @@ class comments_controller
     #endregion
 
     #region Get Comments
-    // Méthode pour récupérer les commentaires d'une recette spécifique par son ID.
+    /**
+     * Méthode pour récupérer les commentaires d'une recette spécifique par son ID.
+     * @return array<Comment>
+     */
     public function get($recipe_id): ?array
     {
         $comments = $this->comment_service->get_comment_by_recipe_id(
@@ -69,4 +72,9 @@ class comments_controller
         return $comment;
     }
     #endregion
+
+    public function delete($id_comment): bool
+    {
+        return $this->comment_service->delete_comment($id_comment);
+    }
 }

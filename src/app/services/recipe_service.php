@@ -118,14 +118,14 @@ class RecipeService
     {
         try {
             $this->db->query(
-                "UPDATE recipes SET title = ?, description = ?, preparation_time = ?, cooking_time = ?, serves = ? WHERE id = :id"
+                "UPDATE recipes SET title = ?, description = ?, preparation_time = ?, cooking_time = ?, serves = ? WHERE id = ?"
             );
             $this->db->execute([
-                $data->title,
-                $data->description,
-                $data->preparation_time,
-                $data->cooking_time,
-                $data->serves,
+                $data->getTitle(),
+                $data->getDescription(),
+                $data->getPreparationTime(),
+                $data->getCookingTime(),
+                $data->getServes(),
                 $id,
             ]);
             return true;
@@ -156,6 +156,7 @@ class RecipeService
                     ->setCookingTime($row["cooking_time"])
                     ->setPreparationTime($row["preparation_time"])
                     ->setServes($row["serves"])
+                    ->setUserId($row["user_id"])
                     ->setImages($this->imageService->getByRecipeId($row["id"]));
                 $searchResults[] = $recipe;
             }

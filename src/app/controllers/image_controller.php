@@ -24,6 +24,10 @@ class image_controller{
         return $this->imageService->post($recipe_id, $file_name, $tmp_file_name, $extension, $mime_type);
     }
 
+    /**
+     * Get Image instances with their Content
+     * @return array<Image>
+     */
     public function getByRecipeId(int $int): array
     {
         return $this->imageService->getByRecipeId($int);

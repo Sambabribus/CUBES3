@@ -49,12 +49,9 @@ if (isset($_POST["btn_post_comments_recipe"])) {
     );
 }
 
-if (isset($_POST["btn_update_comment"])) {
+if (isset($_POST["btn_del_comment"])) {
     $controller = new comments_controller();
-    $comments = $controller->update(
-        $_POST["comments_recipe"],
-        $contentcomment->getIdCom()
-    );
+    $comments = $controller->delete($_POST['id_com']);
 }
 ?>
 
@@ -144,10 +141,8 @@ if (isset($_POST["btn_update_comment"])) {
                         $_SESSION["user_id"]
                     ) { ?>
                         <form method='post'>
-                            <input type='hidden' name='<?php echo htmlspecialchars(
-                                                            $contentcomment->getcomComment()
-                                                        ); ?>' value=''>
-                            <button type='submit' name='btn_del_user' value='d'>Del</button>
+                            <input type='hidden' name='id_com' value='<?php echo htmlspecialchars($contentcomment->getIdCom()); ?>'>
+                            <button type='submit' name='btn_del_comment'>Del</button>
                         </form>
                     <?php } ?>
                 <?php }
@@ -156,9 +151,7 @@ if (isset($_POST["btn_update_comment"])) {
             </div>
             <?php if ($_SESSION["user_id"] !== -1){?>
             <div class='comments'>
-                <form action="<?php echo htmlspecialchars(
-                                    $_SERVER["PHP_SELF"]
-                                ); ?>" method='post'>
+                <form method='post'>
                     <input type='text' name="comments_recipe" placeholder='Commenter' required>
                     <input type="hidden" name="recipe_id" value="<?php echo $row->getId(); ?>" />
                     <input type="hidden" name="search_rec" value="<?php echo htmlspecialchars(

@@ -28,7 +28,10 @@ class comment_service
     #endregion
 
     #region Get Comments by Recipe ID
-    // Fonction pour obtenir les commentaires par identifiant de recette.
+    /**
+     * Fonction pour obtenir les commentaires par identifiant de recette.
+     * @return array<Comment>
+     */
     public function get_comment_by_recipe_id(int $recipe_id, int $limit): ?array
     {
         $comResults = [];
@@ -41,6 +44,7 @@ class comment_service
             foreach ($results as $row) {
                 $comment = new Comment();
                 $comment
+                ->setIdCom($row["id_comment"])
                     ->setUserIdComment($row["user_id_comment"])
                     ->setRecipeIdComment($row["recipe_id_comment"])
                     ->setcomComment($row["com_comment"]);

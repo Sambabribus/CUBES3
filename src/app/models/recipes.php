@@ -16,6 +16,7 @@ class Recipe
     private float $preparation_time;
     private int $serves;
     private array $images;
+    private ?int $user_id;
     #endregion
 
     #region ID Accessors
@@ -115,4 +116,18 @@ class Recipe
         return $this;
     }
     #endregion
+
+    #region UserID Accessors
+    public function getUserId(): ?int
+    {
+        return $this->user_id;
+    }
+
+    public function setUserId(?int $user_id): Recipe
+    {
+        $this->user_id = $user_id;
+        return $this;
+    }
+    #endregion
+    
 }
