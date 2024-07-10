@@ -59,7 +59,8 @@ class RecipeController
                     "cooking_time" => $cooking_time,
                     "serves" => $serves,
                     "creation_date" => $creation_date,
-                    "user_id" => $user_id
+                    "user_id" => $user_id,
+                    "images" => $recipe->get_images()
                 );
                 array_push($recipes_arr["records"], $recipe_item);
             }
@@ -88,7 +89,8 @@ class RecipeController
                 "cooking_time" => $cooking_time,
                 "serves" => $serves,
                 "creation_date" => $creation_date,
-                "user_id" => $user_id
+                "user_id" => $user_id,
+                "images" => $recipe->get_images()
             );
             http_response_code(200);
             echo json_encode($recipe_item);

@@ -3,13 +3,11 @@ require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/controllers/RecipeController.php';
 require_once __DIR__ . '/controllers/UserController.php';
 require_once __DIR__ . '/controllers/IngredientController.php';
-require_once __DIR__ . '/controllers/CommentController.php'; // Importation du CommentController
+require_once __DIR__ . '/controllers/CommentController.php';
 
-// Initialize database connection
 $database = new Database();
 $db = $database->getConnection();
 
-// Get the request method and path
 $request_method = $_SERVER["REQUEST_METHOD"];
 $path_info = isset($_SERVER['PATH_INFO']) ? explode('/', trim($_SERVER['PATH_INFO'], '/')) : [];
 
@@ -30,7 +28,7 @@ if (count($path_info) > 0) {
             $controller = new IngredientController($db, $request_method, $ingredientId);
             $controller->processRequest();
             break;
-        case 'comments': // Ajout du cas pour les commentaires
+        case 'comments':
             $commentId = isset($path_info[1]) ? (int)$path_info[1] : null;
             $controller = new CommentController($db, $request_method, $commentId);
             $controller->processRequest();

@@ -104,4 +104,14 @@ class Recipe
         }
         return false;
     }
+
+    public function get_images()
+    {
+        $query = "SELECT file_path FROM images WHERE recipe_id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->id);
+        $stmt->execute();
+        $images = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        return $images;
+    }
 }
