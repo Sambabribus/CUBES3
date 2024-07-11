@@ -7,12 +7,11 @@ VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=yzhang.
 - [X] Gerer les images
 - [X] Pouvoir modifier : recettes 
 - [X] Ajouter un bouton dans la page Connexion/Inscription
+- [X] Faire la page a propos
+- [X] Finir l'affichage des recettes
 - [ ] CSS
-- [ ] Finir l'affichage des recettes
-- [ ] Page de profil
-- [ ] Pouvoir modifier : utilisateur 
+- [ ] Page de profil - Pouvoir modifier : utilisateur 
+- [ ] Afficher le pseudo sur les commentaires
 - [ ] Faire la page contact
-- [ ] Faire la page a propos
-- [ ] Afficher les recettes les plus commenter dans recipes.php
 - [ ] Envoie d'une recettes par mail
 - [ ] Support PDF
