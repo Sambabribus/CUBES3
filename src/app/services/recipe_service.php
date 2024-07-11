@@ -179,7 +179,7 @@ class RecipeService
         try {
             $data = "%" . $data . "%";
             $this->db->query(
-                "SELECT recipes.id, title, description, cooking_time, preparation_time, serves FROM recipes WHERE recipes.title LIKE ? OR recipes.description LIKE ?"
+                "SELECT recipes.id, title, description, cooking_time, preparation_time, serves, user_id FROM recipes WHERE recipes.title LIKE ? OR recipes.description LIKE ?"
             );
             $results = $this->db->resultSet([$data, $data]);
             foreach ($results as $row) {
@@ -190,8 +190,9 @@ class RecipeService
                     ->setDescription($row["description"])
                     ->setCookingTime($row["cooking_time"])
                     ->setPreparationTime($row["preparation_time"])
-                    ->setImages($this->imageService->getByRecipeId($row["id"]))
-                    ->setServes($row["serves"]);
+                    ->setServes($row["serves"])
+                    ->setUserId($row["user_id"])
+                    ->setImages($this->imageService->getByRecipeId($row["id"]));
                 $searchResults[] = $recipe;
             }
         } catch (PDOException $e) {
