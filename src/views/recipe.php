@@ -11,8 +11,8 @@ use src\app\controllers\comments_controller;
 
 session_start(); // Démarre ou reprend une session au début de chaque script
 
-$id = $_GET['id'];
-$editable = $_GET['edit'];
+$id = $_GET["id"];
+$editable = $_GET["edit"];
 
 $image_controller = new image_controller();
 
@@ -24,7 +24,7 @@ $getcomments = $com_controller->get($recipe->getId());
 
 $mustRefresh = false;
 
-if (isset($_POST['update_recipe'])) {
+if (isset($_POST["update_recipe"])) {
     $controller = new recipe_controller();
     $result = $controller->update(
         $id,
@@ -51,13 +51,13 @@ if (isset($_POST["btn_post_comments_recipe"])) {
 
 if (isset($_POST["btn_del_comment"])) {
     $controller = new comments_controller();
-    $comments = $controller->delete($_POST['id_com']);
+    $comments = $controller->delete($_POST["id_com"]);
 
     $mustRefresh = true;
 }
 
 if ($mustRefresh) {
-    header('Location: ' . $_SERVER['REQUEST_URI']);
+    header("Location: " . $_SERVER["REQUEST_URI"]);
 }
 ?>
 
@@ -67,7 +67,7 @@ if ($mustRefresh) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detali de la recette <?php echo $recipe->getTitle() ?></title>
+    <title>Detali de la recette <?php echo $recipe->getTitle(); ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
 </head>
@@ -90,12 +90,25 @@ if ($mustRefresh) {
                     </svg>
                 </button>
                 <a href="" class="">
-                    <?php if (isset($_SESSION["user_isadmin"]) && $_SESSION["user_isadmin"]): ?>
+                    <?php if (
+                        isset($_SESSION["user_isadmin"]) &&
+                        $_SESSION["user_isadmin"]
+                    ): ?>
                         <img alt="Profile icon"
-                            src="data: image/svg+xml;base64,<?php echo base64_encode(file_get_contents(FileManager::rootDirectory() . 'public/assets/icon/su_user.svg')) ?>" />
+                            src="data: image/svg+xml;base64,<?php echo base64_encode(
+                                file_get_contents(
+                                    FileManager::rootDirectory() .
+                                        "public/assets/icon/su_user.svg"
+                                )
+                            ); ?>" />
                     <?php else: ?>
                         <img alt="Profile icon"
-                            src="data: image/svg+xml;base64,<?php echo base64_encode(file_get_contents(FileManager::rootDirectory() . 'public/assets/icon/user.svg')) ?>" />
+                            src="data: image/svg+xml;base64,<?php echo base64_encode(
+                                file_get_contents(
+                                    FileManager::rootDirectory() .
+                                        "public/assets/icon/user.svg"
+                                )
+                            ); ?>" />
                     <?php endif; ?>
                 </a>
             </div>
@@ -110,7 +123,10 @@ if ($mustRefresh) {
                         class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Contact</a>
                     <!-- Is user connected -->
                     <!-- Is user admin -->
-                    <?php if (isset($_SESSION["user_isadmin"]) && $_SESSION["user_isadmin"]): ?>
+                    <?php if (
+                        isset($_SESSION["user_isadmin"]) &&
+                        $_SESSION["user_isadmin"]
+                    ): ?>
                         <a href="admin.php"
                             class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Admin</a>
                     <?php endif; ?>
@@ -140,11 +156,11 @@ if ($mustRefresh) {
                                     <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title</label>
                                     <input type="text" id="title" name="title"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-                                        value="<?php echo $recipe->getTitle() ?>" required />
+                                        value="<?php echo $recipe->getTitle(); ?>" required />
                                 </div>
                             <?php else: ?>
                                 <h1 class="text-3xl font-bold leading-tight">
-                                    <?php echo $recipe->getTitle() ?>
+                                    <?php echo $recipe->getTitle(); ?>
                                 </h1>
                             <?php endif; ?>
                             <div class="flex flex-col text-gray-400 font-light text-md">
@@ -154,7 +170,7 @@ if ($mustRefresh) {
                                             personnes</label>
                                         <input type="number" id="serves" name="serves"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-                                            value="<?php echo $recipe->getServes() ?>" required />
+                                            value="<?php echo $recipe->getServes(); ?>" required />
                                     </div>
                                     <div class="pb-2">
                                         <label for="preparation_time"
@@ -162,7 +178,7 @@ if ($mustRefresh) {
                                             personnes</label>
                                         <input type="number" id="preparation_time" name="preparation_time"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-                                            value="<?php echo $recipe->getPreparationTime() ?>" required />
+                                            value="<?php echo $recipe->getPreparationTime(); ?>" required />
                                     </div>
                                     <div class="pb-2">
                                         <label for="cooking_time"
@@ -170,21 +186,21 @@ if ($mustRefresh) {
                                             personnes</label>
                                         <input type="number" id="cooking_time" name="cooking_time"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-                                            value="<?php echo $recipe->getCookingTime() ?>" required />
+                                            value="<?php echo $recipe->getCookingTime(); ?>" required />
                                     </div>
                                 <?php else: ?>
                                     <span class="text-normal font-normal leading-tight">
                                         <span class="underline font-semibold text-black">Pour</span>
-                                        <?php echo $recipe->getServes() ?>. pers
+                                        <?php echo $recipe->getServes(); ?>. pers
                                     </span>
                                     <span class="text-normal font-normal leading-tight divide-x-2 pb-2">
                                         <span>
                                             <span class="underline font-semibold text-black">Temps de préparation :</span>
-                                            <?php echo $recipe->getPreparationTime() ?> minute(s)
+                                            <?php echo $recipe->getPreparationTime(); ?> minute(s)
                                         </span>
                                         <span class="pl-2">
                                             <span class="underline font-semibold text-black">Temps de cuisson :</span>
-                                            <?php echo $recipe->getCookingTime() ?> minute(s)
+                                            <?php echo $recipe->getCookingTime(); ?> minute(s)
                                         </span>
                                     </span>
                                 <?php endif; ?>
@@ -196,13 +212,13 @@ if ($mustRefresh) {
                                             class="block mb-2 text-sm font-medium text-gray-900">Title</label>
                                         <textarea id="description" name="description"
                                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300"
-                                            required><?php echo $recipe->getDescription() ?></textarea>
+                                            required><?php echo $recipe->getDescription(); ?></textarea>
                                     </div>
                                 <?php else: ?>
                                     <p class="text-normal font-normal leading-tight pt-1">
                                         <span class="underline font-semibold text-black">Description :</span>
                                         <br />
-                                        <span class="whitespace-pre-wrap"><?php echo $recipe->getDescription() ?></span>
+                                        <span class="whitespace-pre-wrap"><?php echo $recipe->getDescription(); ?></span>
                                     </p>
                                 <?php endif; ?>
                             </div>
@@ -216,10 +232,14 @@ if ($mustRefresh) {
                             </form>
                         <?php endif; ?>
                     </div>
-                    <?php $recipe_images = $image_controller->getByRecipeId($recipe->getId()) ?>
+                    <?php $recipe_images = $image_controller->getByRecipeId(
+                        $recipe->getId()
+                    ); ?>
                     <?php if (!empty($recipe_images)): ?>
                         <div class="flex flex-col basis-2/5">
-                            <img src="data: <?php echo $recipe_images[0]->getMimeType() ?>;base64,<?php echo base64_encode(file_get_contents($recipe_images[0]->getFilePath())) ?>"
+                            <img src="data: <?php echo $recipe_images[0]->getMimeType(); ?>;base64,<?php echo base64_encode(
+    file_get_contents($recipe_images[0]->getFilePath())
+); ?>"
                                 class="basis-2/5 m-4 h-12 object-cover rounded-xl shadow-md" alt="...">
                         </div>
                     <?php endif; ?>
@@ -242,13 +262,18 @@ if ($mustRefresh) {
                             <?php foreach ($getcomments as $comment): ?>
                                 <div class="flex flex-row border border-gray-200 rounded-lg p-6 divide-x gap-2">
                                     <img alt="Profile icon"
-                                        src="data: image/svg+xml;base64,<?php echo base64_encode(file_get_contents(FileManager::rootDirectory() . 'public/assets/icon/user.svg')) ?>" />
+                                        src="data: image/svg+xml;base64,<?php echo base64_encode(
+                                            file_get_contents(
+                                                FileManager::rootDirectory() .
+                                                    "public/assets/icon/user.svg"
+                                            )
+                                        ); ?>" />
                                     <div class="flex flex-row justify-between items-center w-full">
                                         <span class="pl-2">
-                                            <?php echo $comment->getcomComment() ?>
+                                            <?php echo $comment->getcomComment(); ?>
                                         </span>
                                         <form method="post">
-                                            <input hidden value="<?php echo $comment->getIdCom()?>" name="id_com">
+                                            <input hidden value="<?php echo $comment->getIdCom(); ?>" name="id_com">
                                             <button type="submit" name="btn_del_comment"
                                                 class="text-white bg-red-600 font-medium rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-700 text-sm px-5 py-2.5 m-1">Supprimer</button>
                                         </form>

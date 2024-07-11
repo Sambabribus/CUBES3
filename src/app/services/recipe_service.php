@@ -45,7 +45,9 @@ class RecipeService
                 ->setCookingTime($recipeResult["cooking_time"])
                 ->setPreparationTime($recipeResult["preparation_time"])
                 ->setServes($recipeResult["serves"])
-                ->setImages($this->imageService->getByRecipeId($recipeResult["id"]));
+                ->setImages(
+                    $this->imageService->getByRecipeId($recipeResult["id"])
+                );
 
             return $output;
         } catch (PDOException $e) {
@@ -144,7 +146,9 @@ class RecipeService
         $searchResults = [];
 
         try {
-            $this->db->query("SELECT * FROM recipes ORDER BY creation_date DESC LIMIT ?");
+            $this->db->query(
+                "SELECT * FROM recipes ORDER BY creation_date DESC LIMIT ?"
+            );
             $results = $this->db->resultSet([$limit]);
 
             foreach ($results as $row) {

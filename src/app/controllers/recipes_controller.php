@@ -89,7 +89,7 @@ class recipe_controller
     final public function edit($id): void
     {
         $recipe = $this->recipeService->getById($id);
-        require "../views/edit_recipe.php?id=".$id."&edit=true";
+        require "../views/edit_recipe.php?id=" . $id . "&edit=true";
     }
     #endregion
 

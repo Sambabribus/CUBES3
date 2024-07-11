@@ -45,12 +45,25 @@ if (isset($_POST["btn_del_user"])) {
                         </svg>
                     </button>
                     <a href="" class="">
-                        <?php if (isset($_SESSION["user_isadmin"]) && $_SESSION["user_isadmin"]): ?>
+                        <?php if (
+                            isset($_SESSION["user_isadmin"]) &&
+                            $_SESSION["user_isadmin"]
+                        ): ?>
                             <img alt="Profile icon"
-                                src="data: image/svg+xml;base64,<?php echo base64_encode(file_get_contents(FileManager::rootDirectory() . 'public/assets/icon/su_user.svg')) ?>" />
+                                src="data: image/svg+xml;base64,<?php echo base64_encode(
+                                    file_get_contents(
+                                        FileManager::rootDirectory() .
+                                            "public/assets/icon/su_user.svg"
+                                    )
+                                ); ?>" />
                         <?php else: ?>
                             <img alt="Profile icon"
-                                src="data: image/svg+xml;base64,<?php echo base64_encode(file_get_contents(FileManager::rootDirectory() . 'public/assets/icon/user.svg')) ?>" />
+                                src="data: image/svg+xml;base64,<?php echo base64_encode(
+                                    file_get_contents(
+                                        FileManager::rootDirectory() .
+                                            "public/assets/icon/user.svg"
+                                    )
+                                ); ?>" />
                         <?php endif; ?>
                     </a>
                 </div>
@@ -65,7 +78,10 @@ if (isset($_POST["btn_del_user"])) {
                             class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Contact</a>
                         <!-- Is user connected -->
                         <!-- Is user admin -->
-                        <?php if (isset($_SESSION["user_isadmin"]) && $_SESSION["user_isadmin"]): ?>
+                        <?php if (
+                            isset($_SESSION["user_isadmin"]) &&
+                            $_SESSION["user_isadmin"]
+                        ): ?>
                             <a href="admin.php"
                                 class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Admin</a>
                         <?php endif; ?>
@@ -109,7 +125,9 @@ if (isset($_POST["btn_del_user"])) {
                                         htmlspecialchars($row["id_user"]) .
                                         "</td>
                             <td>" .
-                                        htmlspecialchars($row["username_user"]) .
+                                        htmlspecialchars(
+                                            $row["username_user"]
+                                        ) .
                                         "</td>
                             <td>" .
                                         htmlspecialchars($row["mail_user"]) .

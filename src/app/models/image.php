@@ -86,7 +86,12 @@ class Image
         return $this;
     }
 
-    public function getFilePath() {
-        return FileManager::rootDirectory() . ImageService::DIR_PATH . $this->file_name . "." . $this->extension;
+    public function getFilePath()
+    {
+        return FileManager::rootDirectory() .
+            ImageService::DIR_PATH .
+            $this->file_name .
+            "." .
+            $this->extension;
     }
 }

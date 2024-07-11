@@ -3,7 +3,8 @@
 namespace src;
 require "../../vendor/autoload.php";
 
-class FileManager {
+class FileManager
+{
     public static function rootDirectory()
     {
         return dirname(__DIR__, 1) . "/";

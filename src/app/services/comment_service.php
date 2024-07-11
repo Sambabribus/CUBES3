@@ -44,7 +44,7 @@ class comment_service
             foreach ($results as $row) {
                 $comment = new Comment();
                 $comment
-                ->setIdCom($row["id_comment"])
+                    ->setIdCom($row["id_comment"])
                     ->setUserIdComment($row["user_id_comment"])
                     ->setRecipeIdComment($row["recipe_id_comment"])
                     ->setcomComment($row["com_comment"]);

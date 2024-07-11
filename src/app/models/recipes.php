@@ -129,5 +129,4 @@ class Recipe
         return $this;
     }
     #endregion
-    
 }
