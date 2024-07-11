@@ -16,11 +16,11 @@ $editable = $_GET['edit'];
 
 $image_controller = new image_controller();
 
-$com_controller = new comments_controller();
-$getcomments = $com_controller->get($id);
-
 $controller = new recipe_controller();
 $recipe = $controller->show($id);
+
+$com_controller = new comments_controller();
+$getcomments = $com_controller->get($recipe->getId());
 
 $mustRefresh = false;
 
@@ -43,7 +43,7 @@ if (isset($_POST["btn_post_comments_recipe"])) {
     $comments = $controller->post(
         $_POST["comments_recipe"],
         $_SESSION["user_id"],
-        $_POST["recipe_id"]
+        $recipe->getId()
     );
 
     $mustRefresh = true;
@@ -229,11 +229,13 @@ if ($mustRefresh) {
                         <h1 class="">Commentaires</h1>
                         <div class="bottom-0 flex flex-col border border-gray-200 rounded-lg p-2 gap-2">
                             <div class="flex flex-row justify-between items-center w-full">
-                                <textarea placeholder="Votre Commentaires" name="comment" id="small-input" rows="3"
-                                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:ring-blue-500 focus:border-blue-500"
-                                    required></textarea>
-                                <button type="button"
-                                    class="text-white bg-red-600 font-medium rounded-lg text-sm px-5 py-2.5 m-1">Supprimer</button>
+                                <form method="post">
+                                    <textarea placeholder="Votre Commentaires" name="comments_recipe" id="small-input" rows="3"
+                                        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:ring-blue-500 focus:border-blue-500"
+                                        required></textarea>
+                                    <button type="submit" name="btn_post_comments_recipe"
+                                        class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-1">Poster</button>
+                                </form>
                             </div>
                         </div>
                         <div class="flex flex-col gap-2 overflow-y-auto h-96">
@@ -245,8 +247,11 @@ if ($mustRefresh) {
                                         <span class="pl-2">
                                             <?php echo $comment->getcomComment() ?>
                                         </span>
-                                        <button type="submit" name="btn_del_comment"
-                                            class="text-white bg-red-600 font-medium rounded-lg text-sm px-5 py-2.5 m-1">Supprimer</button>
+                                        <form method="post">
+                                            <input hidden value="<?php echo $comment->getIdCom()?>" name="id_com">
+                                            <button type="submit" name="btn_del_comment"
+                                                class="text-white bg-red-600 font-medium rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-700 text-sm px-5 py-2.5 m-1">Supprimer</button>
+                                        </form>
                                     </div>
                                 </div>
                             <?php endforeach; ?>

@@ -29,7 +29,6 @@ if (isset($_GET["btn_del_recipe"])) {
 </head>
 
 <body>
-    <!-- Header of all pages -->
     <header class="sticky top-0 w-full z-20">
         <nav class="border-b border-gray-200 flex flex-wrap items-center justify-between p-4 start-0 bg-white">
             <a href="index.php" class="cursor-pointer flex items-center rtl:space-x-reverse space-x-3">
