@@ -13,6 +13,9 @@ if(!isset($_SESSION['user_id']))
     exit;
 }
 
+$messageInscription = "";
+$messageConnexion = "";
+
 $modify = $_GET["modify"] ?? false;
 
 $controller = new user_controller();
@@ -114,18 +117,13 @@ if (isset($_POST["update_user"])) {
         </nav>
     </header>
 
-    <main class="mx-auto py-4">
-        <section class="mx-auto px-32 max-w-screen-sm border border-gray-200 rounded-xl p-4">
+    <main class="mx-auto py-4 px-8 md:px-32">
+        <section class="mx-auto px-16 max-w-screen-sm border border-gray-200 rounded-xl p-4">
             <form class="grid"
                 action="<?php echo htmlspecialchars(
                     $_SERVER["PHP_SELF"]
                 ); ?>" method="post">
-                <?php if (!$modify): ?>
-                <a href="user.php?modify=true"
-                    class="justify-self-center w-full sm:w-3/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
-                    Modifier son compte</a>
-                <?php endif; ?>
-                <h2 class="text-2xl font-semibold leading-tight justify-self-center">Inscription</h2>
+                <h2 class="text-2xl font-semibold leading-tight justify-self-center">Mon compte</h2>
                 <?php if ($messageInscription): ?>
                     <p class="text-lg justify-self-center"><?php echo htmlspecialchars(
                         $messageInscription
@@ -145,7 +143,7 @@ if (isset($_POST["update_user"])) {
                         </div>
                         <input id="input-group-1" type="email" name="email" <?php if(!$modify){echo 'disabled';}?>
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
-                            placeholder="<?php echo $user->get_mail_user() ?>">
+                            value="<?php echo $user->get_mail_user() ?>" required>
                     </div>
                 </div>
                 <div class="flex flex-col mb-2">
@@ -163,7 +161,7 @@ if (isset($_POST["update_user"])) {
                         </div>
                         <input id="input-group-1" type="text" name="username" <?php if(!$modify){echo 'disabled';}?>
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
-                            placeholder="<?php echo $user->get_username_user() ?>">
+                            value="<?php echo $user->get_username_user() ?>" required>
                     </div>
                 </div>
                 <div class="flex flex-col mb-4">
@@ -181,13 +179,22 @@ if (isset($_POST["update_user"])) {
                         </span>
                         <input type="password" id="website-admin" name="password" <?php if(!$modify){echo 'disabled';}?>
                             class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5"
-                            placeholder="************">
+                            placeholder="************"
+                            required>
                     </div>
                 </div>
                 <input type="hidden" name="id_user" value="<?php echo $_SESSION["user_id"] ?>">
+                <?php if (!$modify): ?>
+                    <button name="update_user"
+                class="justify-self-center w-full sm:w-2/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                <a href="user.php?modify=true">
+                    Modifier son compte</a></button>
+                
+                <?php else: ?>
                 <button type="submit" name="update_user"
-                    class="justify-self-center w-full sm:w-3/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
-                    Se creer un compte</button>
+                class="justify-self-center w-full sm:w-2/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                Mettre à jour</button>
+                <?php endif; ?>
             </form>
         </section>
     </main>

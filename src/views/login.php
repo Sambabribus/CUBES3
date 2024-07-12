@@ -242,7 +242,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <button type="submit" name="sign_in"
                     class="justify-self-center w-full sm:w-3/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
-                    Se creer un compte</button>
+                    S'inscrire</button>
             </form>
         </section>
     </main>

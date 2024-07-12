@@ -184,9 +184,9 @@ class RecipeService
         try {
             $data = "%" . $data . "%";
             $this->db->query(
-                "SELECT recipes.id, title, description, cooking_time, preparation_time, serves, user_id FROM recipes WHERE recipes.title LIKE ? OR recipes.description LIKE ?"
+                "SELECT recipes.id, title, description, cooking_time, preparation_time, serves, user_id FROM recipes WHERE recipes.title LIKE ?"
             );
-            $results = $this->db->resultSet([$data, $data]);
+            $results = $this->db->resultSet([$data]);
             foreach ($results as $row) {
                 $recipe = new Recipe();
                 $recipe
