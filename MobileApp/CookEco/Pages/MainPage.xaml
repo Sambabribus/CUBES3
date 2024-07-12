@@ -3,14 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CookEco.MainPage"
              BackgroundColor="#F4F1E9">
-    <!-- Grid pour le placement du bouton et du contenu principal -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Bouton pour créer une recette -->
         <Button Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Start"
                 WidthRequest="50" HeightRequest="50" 
                 CornerRadius="25" BorderColor="Transparent"
@@ -18,27 +16,29 @@
                 Text="+" FontSize="24"
                 Clicked="OnCreateRecipeClicked" Margin="10"/>
 
-        <!-- CollectionView pour afficher les recettes -->
+        <Label x:Name="ApiFild" Text="{Binding APIstring}" />
+
         <CollectionView Grid.Row="1" x:Name="RecipeListView" ItemsSource="{Binding Recipes}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame CornerRadius="10" Margin="5" Padding="0" BorderColor="#D3C1AE">
                         <StackLayout>
-                            <!-- Image de la recette -->
-                            <Image Source="{Binding Image}" Aspect="AspectFill" HeightRequest="200" />
+                            <Image Source="{Binding ImagePath}" Aspect="AspectFill" HeightRequest="200" />
 
-                            <!-- Détails de la recette -->
                             <StackLayout Padding="10">
-                                <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold" TextColor="#50392C" />
+                                <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold" TextColor="#50392C" />
                                 <Label Text="{Binding Description}" FontSize="Small" TextColor="#50392C" LineBreakMode="TailTruncation" MaxLines="3" />
 
-                                <!-- Informations supplémentaires -->
                                 <StackLayout Orientation="Horizontal" Padding="0">
                                     <Image Source="time_icon.png" WidthRequest="15" HeightRequest="15"/>
                                     <Label Text="{Binding PreparationTime}" FontSize="Small" TextColor="#50392C" />
+                                    <Image Source="time_icon.png" WidthRequest="15" HeightRequest="15" Margin="10,0,0,0"/>
+                                    <Label Text="{Binding CookingTime}" FontSize="Small" TextColor="#50392C" />
                                     <Image Source="servings_icon.png" WidthRequest="15" HeightRequest="15" Margin="10,0,0,0"/>
-                                    <Label Text="{Binding Servings}" FontSize="Small" TextColor="#50392C" />
+                                    <Label Text="{Binding Serves}" FontSize="Small" TextColor="#50392C" />
                                 </StackLayout>
+                                <Label Text="{Binding CreationDate}" FontSize="Small" TextColor="#50392C" />
+                                <Label Text="{Binding UserId}" FontSize="Small" TextColor="#50392C" />
                             </StackLayout>
                         </StackLayout>
                     </Frame>
