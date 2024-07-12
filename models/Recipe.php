@@ -37,7 +37,7 @@ class Recipe
 
     public function create()
     {
-        $query = "INSERT INTO " . $this->table_name . " SET title=:title, description=:description, preparation_time=:preparation_time, cooking_time=:cooking_time, serves=:serves, creation_date=:creation_date, user_id=:user_id";
+        $query = "INSERT INTO " . $this->table_name . " SET title=:title, description=:description, prep_time=:preparation_time, cook_time=:cooking_time, serves=:serves, creation_date=:creation_date, user_id=:user_id";
         $stmt = $this->conn->prepare($query);
 
         $this->title = htmlspecialchars(strip_tags($this->title));
@@ -50,8 +50,8 @@ class Recipe
 
         $stmt->bindParam(":title", $this->title);
         $stmt->bindParam(":description", $this->description);
-        $stmt->bindParam(":preparation_time", $this->preparation_time);
-        $stmt->bindParam(":cooking_time", $this->cooking_time);
+        $stmt->bindParam(":prep_time", $this->preparation_time);
+        $stmt->bindParam(":cook_time", $this->cooking_time);
         $stmt->bindParam(":serves", $this->serves);
         $stmt->bindParam(":creation_date", $this->creation_date);
         $stmt->bindParam(":user_id", $this->user_id);
@@ -64,7 +64,7 @@ class Recipe
 
     public function update()
     {
-        $query = "UPDATE " . $this->table_name . " SET title=:title, description=:description, preparation_time=:preparation_time, cooking_time=:cooking_time, serves=:serves, creation_date=:creation_date, user_id=:user_id WHERE id = :id";
+        $query = "UPDATE " . $this->table_name . " SET title=:title, description=:description, prep_time=:preparation_time, cook_time=:cooking_time, serves=:serves, creation_date=:creation_date, user_id=:user_id WHERE id = :id";
         $stmt = $this->conn->prepare($query);
 
         $this->id = htmlspecialchars(strip_tags($this->id));
@@ -79,8 +79,8 @@ class Recipe
         $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":title", $this->title);
         $stmt->bindParam(":description", $this->description);
-        $stmt->bindParam(":preparation_time", $this->preparation_time);
-        $stmt->bindParam(":cooking_time", $this->cooking_time);
+        $stmt->bindParam(":prep_time", $this->preparation_time);
+        $stmt->bindParam(":cook_time", $this->cooking_time);
         $stmt->bindParam(":serves", $this->serves);
         $stmt->bindParam(":creation_date", $this->creation_date);
         $stmt->bindParam(":user_id", $this->user_id);

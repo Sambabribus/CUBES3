@@ -1,13 +1,13 @@
 <?php
 
-require_once __DIR__ . '/../config/config.php'; // Assurez-vous que le chemin est correct
+require_once __DIR__ . '/../config/config.php';
 
 class Comment
 {
 
     private static function connect()
     {
-        $config = require __DIR__ . '/../config/config.php'; // Chargez la configuration
+        $config = require __DIR__ . '/../config/config.php';
 
         if (!isset($config['db'])) {
             throw new Exception('Database configuration not found');
@@ -37,16 +37,16 @@ class Comment
 
     public static function create($db, $data)
     {
-        $query = 'INSERT INTO comments (user_id, post_id, content) VALUES (?, ?, ?)';
+        $query = 'INSERT INTO comments (user_id, recipe_id, content) VALUES (?, ?, ?)';
         $stmt = $db->prepare($query);
-        return $stmt->execute([$data['user_id'], $data['post_id'], $data['content']]);
+        return $stmt->execute([$data['user_id'], $data['recipe_id'], $data['content']]);
     }
 
     public static function update($db, $id, $data)
     {
-        $query = 'UPDATE comments SET user_id = ?, post_id = ?, content = ? WHERE id = ?';
+        $query = 'UPDATE comments SET user_id = ?, recipe_id = ?, content = ? WHERE id = ?';
         $stmt = $db->prepare($query);
-        return $stmt->execute([$data['user_id'], $data['post_id'], $data['content'], $id]);
+        return $stmt->execute([$data['user_id'], $data['recipe_id'], $data['content'], $id]);
     }
 
     public static function delete($db, $id)

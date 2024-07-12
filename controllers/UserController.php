@@ -52,10 +52,10 @@ class UserController
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 extract($row);
                 $user_item = array(
-                    "id_user" => $id_user,
-                    "mail_user" => $mail_user,
-                    "pwd_user" => $pwd_user,
-                    "username_user" => $username_user
+                    "id" => $id_user,
+                    "mail" => $mail_user,
+                    "password" => $pwd_user,
+                    "username" => $username_user
                 );
                 array_push($users_arr["records"], $user_item);
             }
@@ -77,10 +77,10 @@ class UserController
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             extract($row);
             $user_item = array(
-                "id_user" => $id_user,
-                "mail_user" => $mail_user,
-                "pwd_user" => $pwd_user,
-                "username_user" => $username_user
+                "id" => $id_user,
+                "mail" => $mail_user,
+                "password" => $pwd_user,
+                "username" => $username_user
             );
             http_response_code(200);
             echo json_encode($user_item);
