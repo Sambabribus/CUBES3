@@ -281,7 +281,7 @@ if ($mustRefresh) {
                                     ); ?>" />
                                     <div class="flex flex-row justify-between items-center w-full">
                                         <p class="text-sm font-semibold">
-                                            <?php echo $user_name[0]->get_username_user() ?></p>
+                                            <?php echo $user_name->get_username_user() ?></p>
                                         <span class="pl-2">
                                             <?php echo $comment->getcomComment(); ?>
                                         </span>
