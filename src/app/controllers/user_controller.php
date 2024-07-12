@@ -53,8 +53,9 @@ class user_controller
 
     #region Update Function
     // Méthode pour mettre à jour les informations d'un utilisateur (actuellement vide).
-    public function update()
+    final public function update($id, $username, $email, $password): ?User
     {
+        return $this->userService->update($id, $username, $email, $password);
     }
     #endregion
 
@@ -65,6 +66,11 @@ class user_controller
         return $this->userService->delUser($id);
     }
     #endregion
+
+    public function getOne(int $id): ?User
+    {
+        return $this->userService->getUser($id);
+    }
 
     #region Get All Users Function
     // Méthode pour récupérer tous les utilisateurs.

@@ -54,8 +54,7 @@ class comments_controller
     public function get($recipe_id): ?array
     {
         $comments = $this->comment_service->get_comment_by_recipe_id(
-            $recipe_id,
-            3
+            $recipe_id
         );
         return $comments;
     }

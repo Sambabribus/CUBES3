@@ -45,6 +45,7 @@ class RecipeService
                 ->setCookingTime($recipeResult["cooking_time"])
                 ->setPreparationTime($recipeResult["preparation_time"])
                 ->setServes($recipeResult["serves"])
+                ->setUserId($recipeResult["user_id"])
                 ->setImages(
                     $this->imageService->getByRecipeId($recipeResult["id"])
                 );

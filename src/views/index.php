@@ -44,7 +44,7 @@ if (isset($_GET["btn_del_recipe"])) {
                             d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
                 </button>
-                <a href="" class="">
+                <a href="user.php" class="">
                     <?php if (
                         isset($_SESSION["user_isadmin"]) &&
                         $_SESSION["user_isadmin"]

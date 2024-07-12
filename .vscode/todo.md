@@ -9,9 +9,9 @@ VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=yzhang.
 - [X] Ajouter un bouton dans la page Connexion/Inscription
 - [X] Faire la page a propos
 - [X] Finir l'affichage des recettes
+- [X] Page de profil - Pouvoir modifier : utilisateur 
+- [X] Afficher le pseudo sur les commentaires
 - [ ] CSS
-- [ ] Page de profil - Pouvoir modifier : utilisateur 
-- [ ] Afficher le pseudo sur les commentaires
 - [ ] Faire la page contact
 - [ ] Envoie d'une recettes par mail
 - [ ] Support PDF

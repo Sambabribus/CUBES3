@@ -32,14 +32,14 @@ class comment_service
      * Fonction pour obtenir les commentaires par identifiant de recette.
      * @return array<Comment>
      */
-    public function get_comment_by_recipe_id(int $recipe_id, int $limit): ?array
+    public function get_comment_by_recipe_id(int $recipe_id): ?array
     {
         $comResults = [];
         try {
             $this->db->query(
-                "SELECT * FROM comment WHERE recipe_id_comment = :recipe_id ORDER BY creat_date_comment DESC LIMIT :limit"
+                "SELECT * FROM comment WHERE recipe_id_comment = :recipe_id ORDER BY creat_date_comment "
             );
-            $results = $this->db->resultSet([$recipe_id, $limit]);
+            $results = $this->db->resultSet([$recipe_id]);
 
             foreach ($results as $row) {
                 $comment = new Comment();

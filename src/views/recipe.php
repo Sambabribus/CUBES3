@@ -3,7 +3,9 @@ require_once "../app/controllers/user_controller.php";
 require_once "../app/controllers/recipes_controller.php";
 require_once "../app/controllers/image_controller.php";
 require_once "../app/controllers/comments_controller.php";
+require_once "../app/controllers/user_controller.php";
 
+use src\app\controllers\user_controller;
 use src\app\controllers\image_controller;
 use src\FileManager;
 use src\app\controllers\recipe_controller;
@@ -15,6 +17,7 @@ $id = $_GET["id"];
 $editable = $_GET["edit"];
 
 $image_controller = new image_controller();
+$user_controller = new user_controller();
 
 $controller = new recipe_controller();
 $recipe = $controller->show($id);
@@ -89,26 +92,24 @@ if ($mustRefresh) {
                             d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
                 </button>
-                <a href="" class="">
+                <a href="user.php" class="">
                     <?php if (
                         isset($_SESSION["user_isadmin"]) &&
                         $_SESSION["user_isadmin"]
                     ): ?>
-                        <img alt="Profile icon"
-                            src="data: image/svg+xml;base64,<?php echo base64_encode(
-                                file_get_contents(
-                                    FileManager::rootDirectory() .
-                                        "public/assets/icon/su_user.svg"
-                                )
-                            ); ?>" />
+                        <img alt="Profile icon" src="data: image/svg+xml;base64,<?php echo base64_encode(
+                            file_get_contents(
+                                FileManager::rootDirectory() .
+                                "public/assets/icon/su_user.svg"
+                            )
+                        ); ?>" />
                     <?php else: ?>
-                        <img alt="Profile icon"
-                            src="data: image/svg+xml;base64,<?php echo base64_encode(
-                                file_get_contents(
-                                    FileManager::rootDirectory() .
-                                        "public/assets/icon/user.svg"
-                                )
-                            ); ?>" />
+                        <img alt="Profile icon" src="data: image/svg+xml;base64,<?php echo base64_encode(
+                            file_get_contents(
+                                FileManager::rootDirectory() .
+                                "public/assets/icon/user.svg"
+                            )
+                        ); ?>" />
                     <?php endif; ?>
                 </a>
             </div>
@@ -150,7 +151,7 @@ if ($mustRefresh) {
                 <div
                     class="flex flex-col md:flex-row md:basis-2/3 border border-gray-300 rounded-t-lg xl:rounded-l-lg xl:rounded-tr-none">
                     <div class="flex flex-col basis-3/5 p-4 divide-y divide-gray-200">
-                        <?php if ($editable == "true"): ?>
+                        <?php if ($editable == "true" && ($_SESSION["user_id"] == $recipe->getUserId() || $_SESSION["user_isadmin"])): ?>
                             <form method="post">
                                 <div class="pb-2">
                                     <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title</label>
@@ -158,7 +159,8 @@ if ($mustRefresh) {
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                                         value="<?php echo $recipe->getTitle(); ?>" required />
                                 </div>
-                            <?php else: ?>
+                            <?php else:
+                                $editable="false" ?>
                                 <h1 class="text-3xl font-bold leading-tight">
                                     <?php echo $recipe->getTitle(); ?>
                                 </h1>
@@ -238,45 +240,62 @@ if ($mustRefresh) {
                     <?php if (!empty($recipe_images)): ?>
                         <div class="flex flex-col basis-2/5">
                             <img src="data: <?php echo $recipe_images[0]->getMimeType(); ?>;base64,<?php echo base64_encode(
-    file_get_contents($recipe_images[0]->getFilePath())
-); ?>"
-                                class="basis-2/5 m-4 h-12 object-cover rounded-xl shadow-md" alt="...">
+                                   file_get_contents($recipe_images[0]->getFilePath())
+                               ); ?>" class="basis-2/5 m-4 h-12 object-cover rounded-xl shadow-md" alt="...">
                         </div>
                     <?php endif; ?>
                 </div>
                 <div class="md:basis-1/3 border border-gray-300 rounded-b-lg xl:rounded-r-lg xl:rounded-bl-none">
-                    <div class="h-full p-2 flex flex-col gap-1">
-                        <h1 class="">Commentaires</h1>
-                        <div class="bottom-0 flex flex-col border border-gray-200 rounded-lg p-2 gap-2">
-                            <div class="flex flex-row justify-between items-center w-full">
-                                <form method="post">
-                                    <textarea placeholder="Votre Commentaires" name="comments_recipe" id="small-input" rows="3"
-                                        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:ring-blue-500 focus:border-blue-500"
-                                        required></textarea>
-                                    <button type="submit" name="btn_post_comments_recipe"
-                                        class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-1">Poster</button>
-                                </form>
+                    <div class="h-full p-2 flex flex-col gap-1 grid">
+
+                        <?php if ($_SESSION["user_id"] > 0): ?>
+                            <h1 class="text-3xl font-semibold justify-self-center">Commentaires</h1>
+                            <div class="bottom-0 flex flex-col border border-gray-200 rounded-lg p-2 gap-2">
+                                <div class="flex flex-row justify-between items-center w-full">
+                                    <form method="post">
+                                        <textarea placeholder="Votre Commentaires" name="comments_recipe" id="small-input"
+                                            rows="3"
+                                            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-sm focus:ring-blue-500 focus:border-blue-500"
+                                            required></textarea>
+                                        <button type="submit" name="btn_post_comments_recipe"
+                                            class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-1">Poster</button>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
+                        <?php else: ?>
+                            <div class="grid border border-gray-200 rounded-lg size-fit mx-auto">
+                                <h1 class="text-xl font-semibold text-center justify-self-center p-2">Connectez-vous pour
+                                    poster un
+                                    commentaire</h1>
+                            </div>
+                        <?php endif; ?>
                         <div class="flex flex-col gap-2 overflow-y-auto h-96">
-                            <?php foreach ($getcomments as $comment): ?>
+                            <?php foreach ($getcomments as $comment):
+                                $user_name = $user_controller->getOne($comment->getUserIdComment()); ?>
                                 <div class="flex flex-row border border-gray-200 rounded-lg p-6 divide-x gap-2">
-                                    <img alt="Profile icon"
-                                        src="data: image/svg+xml;base64,<?php echo base64_encode(
-                                            file_get_contents(
-                                                FileManager::rootDirectory() .
-                                                    "public/assets/icon/user.svg"
-                                            )
-                                        ); ?>" />
+                                    <img alt="Profile icon" src="data: image/svg+xml;base64,<?php echo base64_encode(
+                                        file_get_contents(
+                                            FileManager::rootDirectory() .
+                                            "public/assets/icon/user.svg"
+                                        )
+                                    ); ?>" />
                                     <div class="flex flex-row justify-between items-center w-full">
+                                        <p class="text-sm font-semibold">
+                                            <?php echo $user_name[0]->get_username_user() ?></p>
                                         <span class="pl-2">
                                             <?php echo $comment->getcomComment(); ?>
                                         </span>
-                                        <form method="post">
-                                            <input hidden value="<?php echo $comment->getIdCom(); ?>" name="id_com">
-                                            <button type="submit" name="btn_del_comment"
-                                                class="text-white bg-red-600 font-medium rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-700 text-sm px-5 py-2.5 m-1">Supprimer</button>
-                                        </form>
+                                        <?php if (
+                                            isset($_SESSION["user_id"]) &&
+                                            $_SESSION["user_id"] == $comment->getUserIdComment() || ($_SESSION["user_isadmin"])
+                                        ): ?>
+                                            <form method="post">
+                                                <input hidden value="<?php echo $comment->getIdCom(); ?>" name="id_com">
+
+                                                <button type="submit" name="btn_del_comment"
+                                                    class="text-white bg-red-600 font-medium rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-700 text-sm px-2 py-1 md:px-5 md:py-2.5 m-1">Supprimer</button>
+                                            </form>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             <?php endforeach; ?>

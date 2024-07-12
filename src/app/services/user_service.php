@@ -90,6 +90,25 @@ class user_service
     }
     #endregion
 
+    public function getUser(int $id): ?User
+    {
+        try {
+            $this->db->query("SELECT * FROM user WHERE id_user = ?");
+            $userResult = $this->db->single([$id]);
+            $output = new User();
+            $output
+                ->set_username_user($userResult["username_user"])
+                ->set_mail_user($userResult["mail_user"])
+                ->set_pwd_user($userResult["pwd_user"]);
+            return $output;
+            
+        } catch (PDOException $e) {
+            throw new PDOException(
+                "Error, no user were updated" . $e->getMessage()
+            );
+        }
+    }
+
     #region delUser Function
     // Fonction pour supprimer un utilisateur.
     public function delUser(int $id)
@@ -105,4 +124,29 @@ class user_service
         }
     }
     #endregion
+    final public function update(int $id, string $username, string $mail_user, string $password): ?User
+    {
+        try {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $this->db->query(
+                "UPDATE user SET username_user = ?, mail_user = ?, pwd_user = ? WHERE id_user = ?"
+            );
+            $this->db->execute([$username, $mail_user, $hashedPassword, $id]);
+            $this->db->query("SELECT * FROM user WHERE mail_user = ?");
+            $userResult = $this->db->single([$mail_user]);
+            $output = new User();
+            $output
+                ->set_username_user($userResult["username_user"])
+                ->set_mail_user($userResult["mail_user"])
+                ->set_pwd_user($userResult["pwd_user"]);
+            return $output;
+            
+        } catch (PDOException $e) {
+            throw new PDOException(
+                "Error, no user were updated" . $e->getMessage()
+            );
+        }
+    }
+    
+    
 }
