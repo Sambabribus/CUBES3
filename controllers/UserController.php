@@ -52,10 +52,10 @@ class UserController
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 extract($row);
                 $user_item = array(
-                    "id" => $id_user,
-                    "mail" => $mail_user,
-                    "password" => $pwd_user,
-                    "username" => $username_user
+                    "id" => $id,
+                    "mail" => $mail,
+                    "password" => $password,
+                    "username" => $username
                 );
                 array_push($users_arr["records"], $user_item);
             }
@@ -70,17 +70,17 @@ class UserController
     public function getUser($id)
     {
         $user = new User($this->db);
-        $user->id_user = $id;
+        $user->id = $id;
         $stmt = $user->read();
 
         if ($stmt->rowCount() == 1) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             extract($row);
             $user_item = array(
-                "id" => $id_user,
-                "mail" => $mail_user,
-                "password" => $pwd_user,
-                "username" => $username_user
+                "id" => $id,
+                "mail" => $mail,
+                "password" => $password,
+                "username" => $username
             );
             http_response_code(200);
             echo json_encode($user_item);
@@ -95,9 +95,9 @@ class UserController
         $data = json_decode(file_get_contents("php://input"));
 
         $user = new User($this->db);
-        $user->mail_user = $data->mail_user;
-        $user->pwd_user = $data->pwd_user;
-        $user->username_user = $data->username_user;
+        $user->mail = $data->mail;
+        $user->password = $data->password;
+        $user->username = $data->username;
 
         if ($user->create()) {
             http_response_code(201);
@@ -113,10 +113,10 @@ class UserController
         $data = json_decode(file_get_contents("php://input"));
 
         $user = new User($this->db);
-        $user->id_user = $id;
-        $user->mail_user = $data->mail_user;
-        $user->pwd_user = $data->pwd_user;
-        $user->username_user = $data->username_user;
+        $user->id = $id;
+        $user->mail = $data->mail;
+        $user->password = $data->password;
+        $user->username = $data->username;
 
         if ($user->update()) {
             http_response_code(200);
@@ -130,7 +130,7 @@ class UserController
     public function deleteUser($id)
     {
         $user = new User($this->db);
-        $user->id_user = $id;
+        $user->id = $id;
 
         if ($user->delete()) {
             http_response_code(200);

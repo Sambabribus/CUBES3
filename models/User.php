@@ -4,10 +4,10 @@ class User
     private $conn;
     private $table_name = "users";
 
-    public $id_user;
-    public $mail_user;
-    public $pwd_user;
-    public $username_user;
+    public $id;
+    public $mail;
+    public $password;
+    public $username;
 
     public function __construct($db)
     {
@@ -26,23 +26,23 @@ class User
     {
         $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->id_user);
+        $stmt->bindParam(1, $this->id);
         $stmt->execute();
         return $stmt;
     }
 
     public function create()
     {
-        $query = "INSERT INTO " . $this->table_name . " SET mail=:mail_user, password=:pwd_user, username=:username_user";
+        $query = "INSERT INTO " . $this->table_name . " SET mail=:mail, password=:password, username=:username";
         $stmt = $this->conn->prepare($query);
 
-        $this->mail_user = htmlspecialchars(strip_tags($this->mail_user));
-        $this->pwd_user = htmlspecialchars(strip_tags($this->pwd_user));
-        $this->username_user = htmlspecialchars(strip_tags($this->username_user));
+        $this->mail = htmlspecialchars(strip_tags($this->mail));
+        $this->password = htmlspecialchars(strip_tags($this->password));
+        $this->username = htmlspecialchars(strip_tags($this->username));
 
-        $stmt->bindParam(":mail", $this->mail_user);
-        $stmt->bindParam(":password", $this->pwd_user);
-        $stmt->bindParam(":username", $this->username_user);
+        $stmt->bindParam(":mail", $this->mail);
+        $stmt->bindParam(":password", $this->password);
+        $stmt->bindParam(":username", $this->username);
 
         if ($stmt->execute()) {
             return true;
@@ -52,18 +52,18 @@ class User
 
     public function update()
     {
-        $query = "UPDATE " . $this->table_name . " SET mail=:mail_user, password=:pwd_user, username=:username_user WHERE id= :id_user";
+        $query = "UPDATE " . $this->table_name . " SET mail=:mail, password=:password, username=:username WHERE id= :id";
         $stmt = $this->conn->prepare($query);
 
-        $this->id_user = htmlspecialchars(strip_tags($this->id_user));
-        $this->mail_user = htmlspecialchars(strip_tags($this->mail_user));
-        $this->pwd_user = htmlspecialchars(strip_tags($this->pwd_user));
-        $this->username_user = htmlspecialchars(strip_tags($this->username_user));
+        $this->id = htmlspecialchars(strip_tags($this->id));
+        $this->mail = htmlspecialchars(strip_tags($this->mail));
+        $this->password = htmlspecialchars(strip_tags($this->password));
+        $this->username = htmlspecialchars(strip_tags($this->username));
 
-        $stmt->bindParam(":id_user", $this->id_user);
-        $stmt->bindParam(":mail_user", $this->mail_user);
-        $stmt->bindParam(":pwd_user", $this->pwd_user);
-        $stmt->bindParam(":username_user", $this->username_user);
+        $stmt->bindParam(":id", $this->id);
+        $stmt->bindParam(":mail", $this->mail);
+        $stmt->bindParam(":password", $this->password);
+        $stmt->bindParam(":username", $this->username);
 
         if ($stmt->execute()) {
             return true;
@@ -73,11 +73,11 @@ class User
 
     public function delete()
     {
-        $query = "DELETE FROM " . $this->table_name . " WHERE id = :id_user";
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
         $stmt = $this->conn->prepare($query);
 
-        $this->id_user = htmlspecialchars(strip_tags($this->id_user));
-        $stmt->bindParam(":id_user", $this->id_user);
+        $this->id = htmlspecialchars(strip_tags($this->id));
+        $stmt->bindParam(":id", $this->id);
 
         if ($stmt->execute()) {
             return true;

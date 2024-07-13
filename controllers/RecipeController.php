@@ -39,7 +39,12 @@ class RecipeController
         }
     }
 
-    public function getRecipes()
+    /**
+     * Get all recipes
+     * @param void
+     * @return void 
+     */
+    public function getRecipes(): void
     {
         $recipe = new Recipe($this->db);
         $stmt = $recipe->read_all();
@@ -55,8 +60,8 @@ class RecipeController
                     "id" => $id,
                     "title" => $title,
                     "description" => html_entity_decode($description),
-                    "prep_time" => $preparation_time,
-                    "cook_time" => $cooking_time,
+                    "prep_time" => $prep_time,
+                    "cook_time" => $cook_time,
                     "serves" => $serves,
                     "creation_date" => $creation_date,
                     "user_id" => $user_id,
@@ -85,8 +90,8 @@ class RecipeController
                 "id" => $id,
                 "title" => $title,
                 "description" => html_entity_decode($description),
-                "prep_time" => $preparation_time,
-                "cook_time" => $cooking_time,
+                "prep_time" => $prep_time,
+                "cook_time" => $cook_time,
                 "serves" => $serves,
                 "creation_date" => $creation_date,
                 "user_id" => $user_id,
@@ -107,8 +112,8 @@ class RecipeController
         $recipe = new Recipe($this->db);
         $recipe->title = $data->title;
         $recipe->description = $data->description;
-        $recipe->preparation_time = $data->preparation_time;
-        $recipe->cooking_time = $data->cooking_time;
+        $recipe->prep_time = $data->prep_time;
+        $recipe->cook_time = $data->cook_time;
         $recipe->serves = $data->serves;
         $recipe->creation_date = date('Y-m-d H:i:s');
         $recipe->user_id = $data->user_id;
@@ -130,8 +135,8 @@ class RecipeController
         $recipe->id = $id;
         $recipe->title = $data->title;
         $recipe->description = $data->description;
-        $recipe->preparation_time = $data->preparation_time;
-        $recipe->cooking_time = $data->cooking_time;
+        $recipe->prep_time = $data->prep_time;
+        $recipe->cook_time = $data->cook_time;
         $recipe->serves = $data->serves;
         $recipe->creation_date = date('Y-m-d H:i:s');
         $recipe->user_id = $data->user_id;
