@@ -11,6 +11,7 @@ namespace CookEco
     {
         public ObservableCollection<Recipe> Recipes { get; set; }
         private FetchUserRecipe fetchUserRecipe;
+        private FetchUserComments fetchUserComments;
 
         public MainPage()
         {
@@ -18,6 +19,7 @@ namespace CookEco
             Recipes = new ObservableCollection<Recipe>();
             RecipeListView.ItemsSource = Recipes;
             fetchUserRecipe = new FetchUserRecipe();
+            fetchUserComments = new FetchUserComments();
             LoadRecipes();
         }
 
@@ -30,12 +32,18 @@ namespace CookEco
                 Recipes.Add(recipe);
             }
             await FetchAndDisplayRecipesFromAPI();
+            await FetchAndDisplayCommentsFromAPI();
         }
 
         private async Task FetchAndDisplayRecipesFromAPI()
         {
             await fetchUserRecipe.AddAllRecipes();
             await RefreshRecipes();
+        }
+
+        private async Task FetchAndDisplayCommentsFromAPI()
+        {
+            await fetchUserComments.AddAllComments();
         }
 
         protected override async void OnAppearing()
@@ -54,11 +62,23 @@ namespace CookEco
                 Recipes.Add(recipe);
             }
         }
+
         private async void OnCreateRecipeClicked(object sender, EventArgs e)
         {
             var createRecipePage = new CreateRecipePage();
             createRecipePage.SetRecipesCollection(Recipes);
             await Navigation.PushAsync(createRecipePage);
+        }
+
+        private async void OnViewDetailsClicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var selectedRecipe = button?.CommandParameter as Recipe;
+            if (selectedRecipe != null)
+            {
+                var recipeDetailPage = new RecipeDetailPage(selectedRecipe);
+                await Navigation.PushAsync(recipeDetailPage);
+            }
         }
     }
 }

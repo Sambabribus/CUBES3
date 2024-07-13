@@ -30,12 +30,6 @@ build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Pages.CreateRecipe
 build_metadata.AdditionalFiles.TargetPath = Pages\CreateRecipePage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\CreateRecipePage.xaml
 
-[C:/ProjectCESI/CUBES3/MobileApp/CookEco/Pages/GalleryPage.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Pages.GalleryPage.xaml
-build_metadata.AdditionalFiles.TargetPath = Pages\GalleryPage.xaml
-build_metadata.AdditionalFiles.RelativePath = Pages\GalleryPage.xaml
-
 [C:/ProjectCESI/CUBES3/MobileApp/CookEco/Pages/LoginPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Pages.LoginPage.xaml
@@ -53,6 +47,12 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Pages.ProfilePage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\ProfilePage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\ProfilePage.xaml
+
+[C:/ProjectCESI/CUBES3/MobileApp/CookEco/Pages/RecipeDetailPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = CookEco.Pages.RecipeDetailPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\RecipeDetailPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\RecipeDetailPage.xaml
 
 [C:/ProjectCESI/CUBES3/MobileApp/CookEco/Pages/RegisterPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

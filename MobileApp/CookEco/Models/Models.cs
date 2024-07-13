@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
 using System.Text.Json.Serialization;
-using System.Text.Json;
+using SQLite;
 
 namespace CookEco.Models
 {
@@ -13,8 +9,10 @@ namespace CookEco.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+
         [JsonPropertyName("username")]
         public string Username { get; set; }
+
         [JsonPropertyName("password")]
         public string Password { get; set; }
     }
@@ -25,19 +23,22 @@ namespace CookEco.Models
         public List<User> Records { get; set; }
     }
 
-
     public class Comment
     {
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public int RecipeId { get; set; }
-        public string CreationDate { get; set; }
-        public string Content { get; set; }
-    }
 
-    public class CommentsResponse
-    {
-        public List<Comment> Records { get; set; }
+        [JsonPropertyName("user_id")]
+        public int UserId { get; set; }
+
+        [JsonPropertyName("recipe_id")]
+        public int RecipeId { get; set; }
+
+        [JsonPropertyName("creation_date")]
+        public string CreationDate { get; set; }
+
+        [JsonPropertyName("content")]
+        public string Content { get; set; }
     }
 
     public class Recipe
@@ -68,12 +69,11 @@ namespace CookEco.Models
 
         [JsonIgnore]
         public string ImagePath { get; set; }
-
     }
+
     public class RecipesResponse
     {
         [JsonPropertyName("records")]
         public List<Recipe> Records { get; set; }
     }
-
 }

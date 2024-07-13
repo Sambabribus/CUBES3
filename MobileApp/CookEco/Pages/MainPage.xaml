@@ -24,11 +24,9 @@
                     <Frame CornerRadius="10" Margin="5" Padding="0" BorderColor="#D3C1AE">
                         <StackLayout>
                             <Image Source="{Binding ImagePath}" Aspect="AspectFill" HeightRequest="200" />
-
                             <StackLayout Padding="10">
                                 <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold" TextColor="#50392C" />
                                 <Label Text="{Binding Description}" FontSize="Small" TextColor="#50392C" LineBreakMode="TailTruncation" MaxLines="3" />
-
                                 <StackLayout Orientation="Horizontal" Padding="0">
                                     <Image Source="time_icon.png" WidthRequest="15" HeightRequest="15"/>
                                     <Label Text="{Binding PreparationTime}" FontSize="Small" TextColor="#50392C" />
@@ -39,6 +37,7 @@
                                 </StackLayout>
                                 <Label Text="{Binding CreationDate}" FontSize="Small" TextColor="#50392C" />
                                 <Label Text="{Binding UserId}" FontSize="Small" TextColor="#50392C" />
+                                <Button Text="View Details" CommandParameter="{Binding .}" Clicked="OnViewDetailsClicked"/>
                             </StackLayout>
                         </StackLayout>
                     </Frame>

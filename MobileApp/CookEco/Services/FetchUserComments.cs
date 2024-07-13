@@ -20,14 +20,23 @@ namespace CookEco.Services
         {
             var response = await httpClient.GetAsync("/newAPI/CUBES3/index.php/comments");
             var jsonString = await response.Content.ReadAsStringAsync();
-            var commentsResponse = JsonSerializer.Deserialize<CommentsResponse>(jsonString);
-
-            if (commentsResponse?.Records != null)
+            try
             {
-                foreach (var comment in commentsResponse.Records)
+                var comments = JsonSerializer.Deserialize<List<Comment>>(jsonString);
+
+                if (comments != null)
                 {
-                    await ManagerDB.SaveCommentAsync(comment);
+                    foreach (var comment in comments)
+                    {
+                        await ManagerDB.SaveCommentAsync(comment);
+                    }
                 }
+            }
+            catch (JsonException ex)
+            {
+                Console.WriteLine($"Error deserializing JSON: {ex.Message}");
+                Console.WriteLine($"JSON: {jsonString}");
+                throw;
             }
 
             return "Comments added to the database";
