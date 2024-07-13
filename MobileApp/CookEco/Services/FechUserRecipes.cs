@@ -18,7 +18,7 @@ namespace CookEco.Services
 
         public async Task<string> AddAllRecipes()
         {
-            var response = await httpClient.GetAsync("/API/CUBES3/CUBES3-api/index.php/recipes/");
+            var response = await httpClient.GetAsync("newAPI/CUBES3/index.php/recipes/");
             var jsonString = await response.Content.ReadAsStringAsync();
 
             var recipesResponse = JsonSerializer.Deserialize<RecipesResponse>(jsonString);

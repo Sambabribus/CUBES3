@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace CookEco.Models
 {
@@ -12,9 +13,9 @@ namespace CookEco.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        [JsonPropertyName("username_user")]
+        [JsonPropertyName("username")]
         public string Username { get; set; }
-        [JsonPropertyName("pwd_user")]
+        [JsonPropertyName("password")]
         public string Password { get; set; }
     }
 
@@ -22,6 +23,21 @@ namespace CookEco.Models
     {
         [JsonPropertyName("records")]
         public List<User> Records { get; set; }
+    }
+
+
+    public class Comment
+    {
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public int RecipeId { get; set; }
+        public string CreationDate { get; set; }
+        public string Content { get; set; }
+    }
+
+    public class CommentsResponse
+    {
+        public List<Comment> Records { get; set; }
     }
 
     public class Recipe
@@ -35,10 +51,10 @@ namespace CookEco.Models
         [JsonPropertyName("description")]
         public string Description { get; set; }
 
-        [JsonPropertyName("preparation_time")]
+        [JsonPropertyName("prep_time")]
         public int PreparationTime { get; set; }
 
-        [JsonPropertyName("cooking_time")]
+        [JsonPropertyName("cook_time")]
         public int CookingTime { get; set; }
 
         [JsonPropertyName("serves")]
@@ -50,7 +66,9 @@ namespace CookEco.Models
         [JsonPropertyName("user_id")]
         public int UserId { get; set; }
 
+        [JsonIgnore]
         public string ImagePath { get; set; }
+
     }
     public class RecipesResponse
     {

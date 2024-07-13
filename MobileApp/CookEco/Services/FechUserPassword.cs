@@ -20,7 +20,7 @@ namespace CookEco.Services
         {
             try
             {
-                var usersResponse = await _http.GetFromJsonAsync<UsersResponse>("/API/CUBES3/CUBES3-api/index.php/users");
+                var usersResponse = await _http.GetFromJsonAsync<UsersResponse>("/newAPI/CUBES3/index.php/users");
                 if (usersResponse == null)
                 {
                     Console.WriteLine("Error: usersResponse is null.");

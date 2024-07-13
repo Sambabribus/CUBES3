@@ -19,6 +19,7 @@ namespace CookEco.Services
             _database = new SQLiteAsyncConnection(databasePath);
             await _database.CreateTableAsync<User>();
             await _database.CreateTableAsync<Recipe>();
+            await _database.CreateTableAsync<Comment>(); 
         }
 
         public static Task<int> SaveUserAsync(User user) => _database.InsertAsync(user);
@@ -26,5 +27,8 @@ namespace CookEco.Services
 
         public static Task<int> SaveRecipeAsync(Recipe recipe) => _database.InsertAsync(recipe);
         public static Task<List<Recipe>> GetRecipesAsync() => _database.Table<Recipe>().ToListAsync();
+
+        public static Task<int> SaveCommentAsync(Comment comment) => _database.InsertAsync(comment); 
+        public static Task<List<Comment>> GetCommentsAsync() => _database.Table<Comment>().ToListAsync(); 
     }
 }
