@@ -4,7 +4,6 @@ using Microsoft.Maui.Controls;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using BCrypt.Net;
 using static CookEco.Services.FetchUserPassword;
 
 namespace CookEco
@@ -35,40 +34,40 @@ namespace CookEco
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
-            var usersResponse = await _fetchUserPassword.GetUsersResponse();
-            if (usersResponse?.Records != null)
+            await ManagerDB.Init();
+
+            var localUser = await ManagerDB.GetUserAsync(UsernameEntry.Text);
+            if (localUser != null && PasswordEntry.Text == localUser.Password && UsernameEntry.Text == localUser.Username)
             {
-                Console.WriteLine("Users list retrieved successfully.");
-                var user = usersResponse.Records.FirstOrDefault(u => u.Username == UsernameEntry.Text);
-
-                if (user != null)
+                await DisplayAlert("Success", "Login successful", "OK");
+                ((App)Application.Current).LoginSuccessful();
+                return;
+            }
+            try
+            {
+                var usersResponse = await _fetchUserPassword.GetUsersResponse();
+                if (usersResponse?.Records != null)
                 {
-                    Console.WriteLine($"User found: {user.Username}");
-                    Console.WriteLine($"Stored Hashed Password: {user.Password}");
-
-                    if (BCrypt.Net.BCrypt.Verify(PasswordEntry.Text, user.Password))
+                    Console.WriteLine("Users list retrieved successfully.");
+                    var apiUser = usersResponse.Records.FirstOrDefault(u => u.Username == UsernameEntry.Text);
+                    if (apiUser != null && PasswordEntry.Text == apiUser.Password)
                     {
                         await DisplayAlert("Success", "Login successful", "OK");
                         ((App)Application.Current).LoginSuccessful();
                         return;
                     }
-                    else
-                    {
-                        Console.WriteLine("Password verification failed.");
-                        await DisplayAlert("Error", "Incorrect password.", "OK");
-                    }
                 }
                 else
                 {
-                    Console.WriteLine("User not found.");
-                    await DisplayAlert("Error", "User not found.", "OK");
+                    Console.WriteLine("Failed to retrieve users list.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Failed to retrieve users list.");
-                await DisplayAlert("Error", "Failed to retrieve users list.", "OK");
+                Console.WriteLine($"API connection failed: {ex.Message}");
             }
+
+            await DisplayAlert("Error", "Incorrect username or password.", "OK");
         }
 
         private async void OnRegisterClicked(object sender, EventArgs e)

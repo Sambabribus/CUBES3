@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\pages\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:pages\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\pages\\registerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:pages\\registerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\pages\\registerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:pages\\registerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\pages\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,36 +27,12 @@
       "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:services\\managerdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\platforms\\android\\androidmanifest.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:platforms\\android\\androidmanifest.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\services\\fechuserrecipes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:services\\fechuserrecipes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\pages\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:pages\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\pages\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:pages\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\models\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:models\\models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|c:\\projectcesi\\cubes3\\mobileapp\\cookeco\\pages\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{73D78A84-147B-4C66-8F72-96C0088F6626}|CookEco.csproj|solutionrelative:pages\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 224,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,145 +70,106 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MauiProgram.cs",
-              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\MauiProgram.cs",
-              "RelativeDocumentMoniker": "MauiProgram.cs",
-              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\MauiProgram.cs",
-              "RelativeToolTip": "MauiProgram.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-12T18:16:36.216Z",
+              "DocumentIndex": 1,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\MainPage.xaml",
+              "RelativeDocumentMoniker": "Pages\\MainPage.xaml",
+              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\MainPage.xaml",
+              "RelativeToolTip": "Pages\\MainPage.xaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-13T14:44:20.557Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AppShell.xaml",
-              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\AppShell.xaml",
-              "RelativeDocumentMoniker": "AppShell.xaml",
-              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\AppShell.xaml",
-              "RelativeToolTip": "AppShell.xaml",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAAtAAAA",
+              "Title": "RegisterPage.xaml",
+              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\RegisterPage.xaml",
+              "RelativeDocumentMoniker": "Pages\\RegisterPage.xaml",
+              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\RegisterPage.xaml",
+              "RelativeToolTip": "Pages\\RegisterPage.xaml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-12T18:12:17.908Z",
+              "WhenOpened": "2024-07-13T14:41:14.013Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\App.xaml.cs",
-              "RelativeDocumentMoniker": "App.xaml.cs",
-              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\App.xaml.cs",
-              "RelativeToolTip": "App.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 6,
+              "Title": "Models.cs",
+              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Models\\Models.cs",
+              "RelativeDocumentMoniker": "Models\\Models.cs",
+              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Models\\Models.cs",
+              "RelativeToolTip": "Models\\Models.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABEAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-12T18:12:14.633Z",
+              "WhenOpened": "2024-07-13T14:34:18.649Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AndroidManifest.xml",
-              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Platforms\\Android\\AndroidManifest.xml",
-              "RelativeDocumentMoniker": "Platforms\\Android\\AndroidManifest.xml",
-              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Platforms\\Android\\AndroidManifest.xml",
-              "RelativeToolTip": "Platforms\\Android\\AndroidManifest.xml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
-              "WhenOpened": "2024-07-12T18:11:37.883Z",
+              "DocumentIndex": 2,
+              "Title": "RegisterPage.xaml.cs",
+              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\RegisterPage.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\RegisterPage.xaml.cs",
+              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\RegisterPage.xaml.cs",
+              "RelativeToolTip": "Pages\\RegisterPage.xaml.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwBAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T14:09:37.923Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "LoginPage.xaml.cs",
               "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\LoginPage.xaml.cs",
               "RelativeDocumentMoniker": "Pages\\LoginPage.xaml.cs",
               "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\LoginPage.xaml.cs",
               "RelativeToolTip": "Pages\\LoginPage.xaml.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAYwDAAAABSAAAA",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAwDIAAABMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-12T18:08:44.597Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "LoginPage.xaml",
-              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\LoginPage.xaml",
-              "RelativeDocumentMoniker": "Pages\\LoginPage.xaml",
-              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\LoginPage.xaml",
-              "RelativeToolTip": "Pages\\LoginPage.xaml",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACEAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-12T18:08:43.22Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\MainPage.xaml",
-              "RelativeDocumentMoniker": "Pages\\MainPage.xaml",
-              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\MainPage.xaml",
-              "RelativeToolTip": "Pages\\MainPage.xaml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-11T18:53:58.416Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "MainPage.xaml.cs",
               "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\MainPage.xaml.cs",
               "RelativeDocumentMoniker": "Pages\\MainPage.xaml.cs",
               "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\MainPage.xaml.cs",
               "RelativeToolTip": "Pages\\MainPage.xaml.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAkwDQAAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-11T18:38:39.881Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FechUserRecipes.cs",
-              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Services\\FechUserRecipes.cs",
-              "RelativeDocumentMoniker": "Services\\FechUserRecipes.cs",
-              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Services\\FechUserRecipes.cs",
-              "RelativeToolTip": "Services\\FechUserRecipes.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAwwB8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T18:12:35.306Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ManagerDB.cs",
               "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Services\\ManagerDB.cs",
               "RelativeDocumentMoniker": "Services\\ManagerDB.cs",
               "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Services\\ManagerDB.cs",
               "RelativeToolTip": "Services\\ManagerDB.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBgAAAAGAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAmwB0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T14:45:26.131Z",
+              "WhenOpened": "2024-07-13T14:30:40.866Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Models.cs",
-              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Models\\Models.cs",
-              "RelativeDocumentMoniker": "Models\\Models.cs",
-              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Models\\Models.cs",
-              "RelativeToolTip": "Models\\Models.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAowCMAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-04T17:31:50.091Z",
+              "DocumentIndex": 7,
+              "Title": "LoginPage.xaml",
+              "DocumentMoniker": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\LoginPage.xaml",
+              "RelativeDocumentMoniker": "Pages\\LoginPage.xaml",
+              "ToolTip": "C:\\ProjectCESI\\CUBES3\\MobileApp\\CookEco\\Pages\\LoginPage.xaml",
+              "RelativeToolTip": "Pages\\LoginPage.xaml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACEAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-12T18:08:43.22Z",
               "EditorCaption": ""
             }
           ]
