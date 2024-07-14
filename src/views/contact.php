@@ -86,7 +86,7 @@ require_once "../../vendor/autoload.php";
                             class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Admin</a>
                     <?php endif; ?>
                     <?php if (isset($_SESSION["user_mail"])): ?>
-                        <a href="../app/controllers/logout.php"
+                        <a href="logout.php"
                             class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Déconnexion</a>
                     <?php else: ?>
                         <a href="login.php"
@@ -118,7 +118,7 @@ require_once "../../vendor/autoload.php";
                                     d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
                             </svg>
                         </div>
-                        <input id="input-group-1 name" type="text" name="text" <?php if(!$modify){echo 'disabled';}?>
+                        <input id="input-group-1 name" type="text" name="text"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
                             value="<?php echo $_SESSION['user_mail']; ?>" required>
                     </div>
@@ -138,7 +138,7 @@ require_once "../../vendor/autoload.php";
                                     d="M360-390q-21 0-35.5-14.5T310-440q0-21 14.5-35.5T360-490q21 0 35.5 14.5T410-440q0 21-14.5 35.5T360-390Zm240 0q-21 0-35.5-14.5T550-440q0-21 14.5-35.5T600-490q21 0 35.5 14.5T650-440q0 21-14.5 35.5T600-390ZM480-160q134 0 227-93t93-227q0-24-3-46.5T786-570q-21 5-42 7.5t-44 2.5q-91 0-172-39T390-708q-32 78-91.5 135.5T160-486v6q0 134 93 227t227 93Zm0 80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-54-715q42 70 114 112.5T700-640q14 0 27-1.5t27-3.5q-42-70-114-112.5T480-800q-14 0-27 1.5t-27 3.5ZM177-581q51-29 89-75t57-103q-51 29-89 75t-57 103Zm249-214Zm-103 36Z" />
                             </svg>
                         </div>
-                        <input id="input-group-1 email" type="email"  name="email" <?php if(!$modify){echo 'disabled';}?>
+                        <input id="input-group-1 email" type="email"  name="email"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
                             value="<?php echo $_SESSION['user_username']; ?>" required>
                     </div>

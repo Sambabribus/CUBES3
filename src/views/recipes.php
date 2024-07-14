@@ -123,7 +123,7 @@ if (isset($_GET["btn_search_recipe"])) {
                             class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Admin</a>
                     <?php endif; ?>
                     <?php if (isset($_SESSION["user_mail"])): ?>
-                        <a href="../app/controllers/logout.php"
+                        <a href="logout.php"
                             class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Déconnexion</a>
                     <?php else: ?>
                         <a href="login.php"
@@ -250,6 +250,7 @@ if (isset($_GET["btn_search_recipe"])) {
         </section>
         <!--#endregion -->
     </main>
+    <!--#endregion -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>
 <!--#endregion -->

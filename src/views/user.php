@@ -122,7 +122,7 @@ if (isset($_POST["update_user"])) {
                             class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Admin</a>
                     <?php endif; ?>
                     <?php if (isset($_SESSION["user_mail"])): ?>
-                        <a href="../app/controllers/logout.php"
+                        <a href="logout.php"
                             class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Déconnexion</a>
                     <?php else: ?>
                         <a href="login.php"
@@ -135,7 +135,7 @@ if (isset($_POST["update_user"])) {
         </nav>
     </header>
     <!--#endregion -->
-
+    <!--#region Main -->
     <main class="mx-auto py-4 px-8 md:px-32">
         <section class="mx-auto px-16 max-w-screen-sm border border-gray-200 rounded-xl p-4">
             <form class="grid"
@@ -148,6 +148,7 @@ if (isset($_POST["update_user"])) {
                         $messageInscription
                     ); ?></p>
                 <?php endif; ?>
+                <!--#region Name -->
                 <div class="flex flex-col mb-2">
                     <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900">Votre E-Mail</label>
                     <div class="relative">
@@ -165,6 +166,8 @@ if (isset($_POST["update_user"])) {
                             value="<?php echo $user->get_mail_user() ?>" required>
                     </div>
                 </div>
+                <!--#endregion -->
+                <!--#region Username -->
                 <div class="flex flex-col mb-2">
                     <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900">Votre nom
                         d'utilisateur</label>
@@ -183,6 +186,8 @@ if (isset($_POST["update_user"])) {
                             value="<?php echo $user->get_username_user() ?>" required>
                     </div>
                 </div>
+                <!--#endregion -->
+                <!--#region Password -->
                 <div class="flex flex-col mb-4">
                     <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900">Votre mot de
                         passe</label>
@@ -202,6 +207,8 @@ if (isset($_POST["update_user"])) {
                             required>
                     </div>
                 </div>
+                <!--#endregion -->
+                <!--#region Buttons -->
                 <input type="hidden" name="id_user" value="<?php echo $_SESSION["user_id"] ?>">
                 <?php if (!$modify): ?>
                     <button class="justify-self-center w-full sm:w-2/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
@@ -213,9 +220,11 @@ if (isset($_POST["update_user"])) {
                 class="justify-self-center w-full sm:w-2/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
                 Mettre à jour</button>
                 <?php endif; ?>
+                <!--#endregion -->
             </form>
         </section>
     </main>
+    <!--#endregion -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 
 </body>

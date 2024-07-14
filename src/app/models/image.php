@@ -5,7 +5,7 @@ namespace src\app\models;
 use DateTime;
 use src\app\services\ImageService;
 use src\FileManager;
-require __DIR__ . "/../../vendor/autoload.php";
+require __DIR__ . "/../../../vendor/autoload.php";
 #endregion
 
 class Image

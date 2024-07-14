@@ -15,7 +15,7 @@ use PDOException;
 class ImageService
 {
     #region Constants
-    public const DIR_PATH = "uploads/";
+    public const DIR_PATH = "src/views/uploads/";
 
     private Database $db;
     #endregion
@@ -60,33 +60,27 @@ class ImageService
         string $mime_type
     ): ?Image {
         try {
-            // BDD -> Chck si fichier exist
-            // Si existe, return false ou autre (throw)
-            // Sinon, enregistre le fichier + suite de la query
             $this->db->query(
                 "SELECT count(id) FROM images WHERE file_name = :file_name"
             );
-            // If file does not exists if database, write it and add it to database
             if ($this->db->single([$file_name])["count(id)"] == 0) {
                 $filecontent = file_get_contents($tmp_file_name);
-                $file_path =
-                    FileManager::rootDirectory() .
-                    ImageService::DIR_PATH .
-                    $file_name .
-                    "." .
-                    $extension;
+                $file_path = __DIR__ . "/../../views/uploads/" . $file_name . "." . $extension;
                 $myfile = fopen($file_path, "w");
                 fwrite($myfile, $filecontent);
                 fclose($myfile);
 
+                $server_image_url = "ecocook.snsekken.com" . $file_name . "." . $extension;
+
                 $this->db->query(
-                    "INSERT INTO images (recipe_id, file_name, extension, mime_type) VALUES (?, ?, ?, ?)"
+                    "INSERT INTO images (recipe_id, file_name, extension, mime_type, image_url) VALUES (?, ?, ?, ?, ?)"
                 );
                 $this->db->execute([
                     $recipe_id,
                     $file_name,
                     $extension,
                     $mime_type,
+                    $server_image_url,
                 ]);
 
                 $insertedImageId = $this->db->lastInsertId();
