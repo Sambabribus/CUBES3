@@ -6,6 +6,9 @@ using CookEco.Services;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Maui.Media;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 
 namespace CookEco
 {
@@ -62,19 +65,42 @@ namespace CookEco
             {
                 Title = TitleEntry.Text,
                 Description = DescriptionEntry.Text,
+                PreparationTime = int.Parse(PreparationTimeEntry.Text),
+                CookingTime = int.Parse(CookingTimeEntry.Text),
+                Serves = int.Parse(ServesEntry.Text),
+                CreationDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                UserId = int.Parse(UserIdEntry.Text),
                 ImagePath = localFilePath
             };
+            var existingRecipe = await ManagerDB.GetRecipeByIdAsync(recipe.Id);
+            if (existingRecipe == null)
+            {
+                await ManagerDB.SaveRecipeAsync(recipe);
+                _recipes?.Add(recipe);
+                await SendRecipeToAPI(recipe);
 
-            await ManagerDB.SaveRecipeAsync(recipe);
-            _recipes?.Add(recipe);
+                await DisplayAlert("Success", "Recipe saved", "OK");
+            }
+            else
+            {
+                await DisplayAlert("Error", "Recipe already exists", "OK");
+            }
 
-            await DisplayAlert("Success", "Recipe saved", "OK");
             await Navigation.PopAsync();
         }
 
         public void SetRecipesCollection(ObservableCollection<Recipe> recipes)
         {
             _recipes = recipes;
+        }
+
+        private async Task SendRecipeToAPI(Recipe recipe)
+        {
+            using var httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.0.29/") };
+            var json = JsonSerializer.Serialize(new { records = new[] { recipe } });
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync("newAPI/CUBES3/index.php/recipes", content);
+            response.EnsureSuccessStatusCode();
         }
     }
 }

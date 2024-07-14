@@ -29,9 +29,9 @@
                    HorizontalOptions="Center"
                    VerticalOptions="Start"/>
 
-            <!-- Email textbox -->
+            <!-- Login textbox -->
             <Frame BackgroundColor="Transparent" CornerRadius="5" Padding="0">
-                <Entry x:Name="UsernameEntry" Placeholder="Email" 
+                <Entry x:Name="UsernameEntry" Placeholder="Login" 
                        BackgroundColor="Transparent" 
                        TextColor="#000000" 
                        Margin="0" 

@@ -8,25 +8,21 @@
         <HorizontalStackLayout VerticalOptions="Fill">
             <Label
               Text="Créer une recette"
-              
               TextColor="White"
               VerticalTextAlignment="Center"
               VerticalOptions="Center"
               HeightRequest="50"
-              FontSize="Title" />  
+              FontSize="Title" />
         </HorizontalStackLayout>
     </Shell.TitleView>
 
     <StackLayout Spacing="20" Padding="10">
-
         <Entry x:Name="TitleEntry" Placeholder="Titre de la recette" FontSize="16" />
-        <SearchBar x:Name="IngredientSearchBar" 
-                   Placeholder="Rechercher des ingrédients" 
-                   FontSize="16" />
-                   <!--SearchButtonPressed="OnSearchButtonPressed"-->
-        <Entry x:Name="PreparationTime" Placeholder="Temps de préparation (min)" FontSize="16" />
-        <Entry x:Name="CookingTime" Placeholder="Temps de cuisson (min)" FontSize="16" />
-        <Editor x:Name="DescriptionEntry" Placeholder="Description de la recette" FontSize="16" HeightRequest="150"/>
+        <Entry x:Name="DescriptionEntry" Placeholder="Description de la recette" FontSize="16" />
+        <Entry x:Name="PreparationTimeEntry" Placeholder="Temps de préparation (min)" FontSize="16" />
+        <Entry x:Name="CookingTimeEntry" Placeholder="Temps de cuisson (min)" FontSize="16" />
+        <Entry x:Name="ServesEntry" Placeholder="Nombre de portions" FontSize="16" />
+        <Entry x:Name="UserIdEntry" Placeholder="ID de l'utilisateur" FontSize="16" />
 
         <Frame BackgroundColor="#a17c5e" CornerRadius="25" Padding="0">
             <HorizontalStackLayout Padding="10">

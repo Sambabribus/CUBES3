@@ -20,7 +20,6 @@ namespace CookEco.Services
         {
             var response = await httpClient.GetAsync("newAPI/CUBES3/index.php/recipes/");
             var jsonString = await response.Content.ReadAsStringAsync();
-
             var recipesResponse = JsonSerializer.Deserialize<RecipesResponse>(jsonString);
             if (recipesResponse?.Records != null)
             {
