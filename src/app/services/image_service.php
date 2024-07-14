@@ -65,9 +65,8 @@ class ImageService
             );
             if ($this->db->single([$file_name])["count(id)"] == 0) {
                 $filecontent = file_get_contents($tmp_file_name);
-                $file_path = "/var/www/CUBES3/src/views/uploadsuploads/" . $file_name . "." . $extension;
-                echo $file_path;
-                $myfile = fopen($file_path, "w");
+                $file_path = __DIR__ . "/../../views/uploads/" . $file_name . "." . $extension;
+                $myfile = fopen($file_path, "w") or die("Unable to open file!");
                 fwrite($myfile, $filecontent);
                 fclose($myfile);
 
