@@ -3,11 +3,11 @@
 #region Namespace and Imports
 namespace src\app\services;
 
-use DateTime;
-use Exception;
-use src\FileManager;
-use src\app\models\Recipe;
+require __DIR__ . "/../models/image.php";
+
 use src\app\models\Image;
+use DateTime;
+use src\FileManager;
 use src\app\models\Database;
 use PDOException;
 #endregion

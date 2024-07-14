@@ -3,9 +3,9 @@
 #region Imports
 // Définit l'espace de noms pour le service de commentaires et importe les dépendances nécessaires.
 namespace src\app\services;
-require_once "../app/models/user.php";
-require_once "../app/models/database.php";
-require_once "../app/models/comment.php";
+require_once __DIR__ . "/../models/user.php";
+require_once __DIR__ . "/../models/database.php";
+require_once __DIR__ . "/../models/comment.php";
 use src\app\models\Recipe;
 use src\app\models\Database;
 use src\app\models\Comment;

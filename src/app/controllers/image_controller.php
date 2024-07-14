@@ -2,9 +2,10 @@
 
 #region Namespace and Imports
 namespace src\app\controllers;
-require_once "../app/models/database.php";
-require_once "../app/models/image.php";
-require_once "../app/services/image_service.php";
+require_once __DIR__ . "/../models/database.php";
+require_once __DIR__ . "/../models/image.php";
+require_once __DIR__ . "/../services/image_service.php";
+
 use src\app\models\Database;
 use src\app\models\Image;
 use src\app\services\ImageService;

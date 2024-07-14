@@ -2,9 +2,10 @@
 #region Required Classes
 // Définition de l'espace de noms et importation des classes nécessaires.
 namespace src\app\controllers;
-require_once "../app/models/recipes.php";
-require_once "../app/models/database.php";
-require_once "../app/services/recipe_service.php";
+require_once __DIR__ . "/../models/recipes.php";
+require_once __DIR__ . "/../models/database.php";
+require_once __DIR__ . "/../services/recipe_service.php";
+
 use src\app\models\Recipe;
 use src\app\models\Database;
 use src\app\services\RecipeService;

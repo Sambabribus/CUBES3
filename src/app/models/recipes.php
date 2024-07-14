@@ -2,7 +2,7 @@
 
 #region Namespace and Imports
 namespace src\app\models;
-require "../../vendor/autoload.php";
+require __DIR__ . "/../../vendor/autoload.php";
 #endregion
 
 // Définition de la classe Recipe.

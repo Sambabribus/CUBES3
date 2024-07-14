@@ -2,8 +2,8 @@
 #region Imports
 //
 namespace src\app\services;
-require_once "../app/models/user.php";
-require_once "../app/models/database.php";
+require_once __DIR__ . "/../models/user.php";
+require_once __DIR__ . "/../models/database.php";
 use PDOException;
 use src\app\models\Database;
 use src\app\models\User;

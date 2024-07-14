@@ -2,7 +2,7 @@
 #region Setup and Imports
 // Définition de l'espace de noms pour le modèle Comment et importation de l'autoloader Composer.
 namespace src\app\models;
-require "../../vendor/autoload.php";
+require __DIR__ . "../../vendor/autoload.php";
 #endregion
 
 class Comment

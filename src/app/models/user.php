@@ -2,7 +2,7 @@
 #region Namespace and Imports
 // Définit l'espace de noms pour le modèle User et importe les dépendances nécessaires.
 namespace src\app\models;
-require "../../vendor/autoload.php";
+require __DIR__ . "/../../vendor/autoload.php";
 #endregion
 
 class User
