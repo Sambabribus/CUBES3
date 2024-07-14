@@ -66,7 +66,12 @@ if (isset($_POST["update_user"])) {
         <nav class="border-b border-gray-200 flex flex-wrap items-center justify-between p-4 start-0 bg-white">
             <!--#region Brand -->
             <a href="index.php" class="cursor-pointer flex items-center rtl:space-x-reverse space-x-3">
-                <img src="../../public/assets/img/EcoCook.svg" alt="Brand" class="w-10 h-10" />
+                <img src="data: image/svg+xml;base64,<?php echo base64_encode(
+                                file_get_contents(
+                                    FileManager::rootDirectory() .
+                                        "public/assets/img/EcoCook.svg"
+                                )
+                            ); ?>" alt="Brand" class="w-10 h-10" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap ">EcoCook</span>
             </a>
             <!--#endregion -->
@@ -226,7 +231,6 @@ if (isset($_POST["update_user"])) {
     </main>
     <!--#endregion -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
-
 </body>
 
 </html>

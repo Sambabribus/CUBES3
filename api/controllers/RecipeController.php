@@ -39,12 +39,7 @@ class RecipeController
         }
     }
 
-    /**
-     * Get all recipes
-     * @param void
-     * @return void 
-     */
-    public function getRecipes(): void
+    public function getRecipes()
     {
         $recipe = new Recipe($this->db);
         $stmt = $recipe->read_all();
@@ -56,6 +51,7 @@ class RecipeController
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 extract($row);
+                $recipe->id = $id;
                 $recipe_item = array(
                     "id" => $id,
                     "title" => $title,
@@ -65,7 +61,7 @@ class RecipeController
                     "serves" => $serves,
                     "creation_date" => $creation_date,
                     "user_id" => $user_id,
-                    "images" => $recipe->get_images()
+                    "image" => $recipe->get_image() // Inclure l'URL de l'image comme une chaîne
                 );
                 array_push($recipes_arr["records"], $recipe_item);
             }
@@ -95,7 +91,7 @@ class RecipeController
                 "serves" => $serves,
                 "creation_date" => $creation_date,
                 "user_id" => $user_id,
-                "images" => $recipe->get_images()
+                "image" => $recipe->get_image() // Inclure l'URL de l'image comme une chaîne
             );
             http_response_code(200);
             echo json_encode($recipe_item);

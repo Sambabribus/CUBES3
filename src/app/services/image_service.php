@@ -65,12 +65,13 @@ class ImageService
             );
             if ($this->db->single([$file_name])["count(id)"] == 0) {
                 $filecontent = file_get_contents($tmp_file_name);
-                $file_path = __DIR__ . "/../../views/uploads/" . $file_name . "." . $extension;
+                $file_path = "/var/www/CUBES3/src/views/uploadsuploads/" . $file_name . "." . $extension;
+                echo $file_path;
                 $myfile = fopen($file_path, "w");
                 fwrite($myfile, $filecontent);
                 fclose($myfile);
 
-                $server_image_url = "ecocook.snsekken.com" . $file_name . "." . $extension;
+                $server_image_url = "ecocook.snsekken.com/uploads/" . $file_name . "." . $extension;
 
                 $this->db->query(
                     "INSERT INTO images (recipe_id, file_name, extension, mime_type, image_url) VALUES (?, ?, ?, ?, ?)"

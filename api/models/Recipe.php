@@ -105,13 +105,13 @@ class Recipe
         return false;
     }
 
-    public function get_images()
+    public function get_image()
     {
-        $query = "SELECT file_path FROM images WHERE recipe_id = ?";
+        $query = "SELECT image_url FROM images WHERE recipe_id = ? LIMIT 1";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->id);
         $stmt->execute();
-        $images = $stmt->fetchAll(PDO::FETCH_COLUMN);
-        return $images;
+        $image = $stmt->fetch(PDO::FETCH_ASSOC);
+        return isset($image['image_url']) ? $image['image_url'] : "";
     }
 }
