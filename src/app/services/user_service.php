@@ -29,18 +29,18 @@ class user_service
     public function login(string $username, string $password): ?User
     {
         try {
-            $this->db->query("SELECT * FROM user WHERE mail_user = ?");
+            $this->db->query("SELECT * FROM users WHERE mail = ?");
             $userResult = $this->db->single([$username]);
             $output = new User();
             $output
-                ->set_id_user($userResult["id_user"])
-                ->set_username_user($userResult["username_user"])
-                ->set_mail_user($userResult["mail_user"])
-                ->set_pwd_user($userResult["pwd_user"])
-                ->set_isadmin_user($userResult["isadmin_user"]);
+                ->set_id_user($userResult["id"])
+                ->set_username_user($userResult["username"])
+                ->set_mail_user($userResult["mail"])
+                ->set_pwd_user($userResult["password"])
+                ->set_isadmin_user($userResult["isadmin"]);
             return $output;
         } catch (PDOException $e) {
-            return null;
+            return $output;
         }
     }
     #endregion
@@ -50,22 +50,24 @@ class user_service
     public function sign_up(
         string $username,
         string $password,
-        string $email
+        string $mail,
+        string $isadmin
     ): ?User {
         try {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $this->db->query(
-                "INSERT INTO user (mail_user, pwd_user, username_user) VALUES (?, ?, ?)"
+                "INSERT INTO users (mail, password, username, isadmin) VALUES (?, ?, ?, ?)"
             );
-            $this->db->execute([$email, $hashedPassword, $username]);
-            $this->db->query("SELECT * FROM user WHERE mail_user = ?");
-            $userResult = $this->db->single([$email]);
+            $this->db->execute([$mail, $hashedPassword, $username, $isadmin]);
+            $this->db->query("SELECT * FROM users WHERE mail = ?");
+            $userResult = $this->db->single([$mail]);
             $output = new User();
             $output
-                ->set_id_user($userResult["id_user"])
-                ->set_username_user($userResult["username_user"])
-                ->set_mail_user($userResult["mail_user"])
-                ->set_pwd_user($userResult["pwd_user"]);
+                ->set_id_user($userResult["id"])
+                ->set_username_user($userResult["username"])
+                ->set_mail_user($userResult["mail"])
+                ->set_pwd_user($userResult["password"])
+                ->set_isadmin_user($userResult["isadmin"]);
             return $output;
         } catch (PDOException $e) {
             return null;
@@ -79,7 +81,7 @@ class user_service
     {
         try {
             $this->db->query(
-                "SELECT username_user, mail_user, id_user, isadmin_user from user"
+                "SELECT username, mail, id, isadmin from users"
             );
             return $this->db->resultSet();
         } catch (PDOException $e) {
@@ -90,16 +92,17 @@ class user_service
     }
     #endregion
 
+    #region getUser Function
     public function getUser(int $id): ?User
     {
         try {
-            $this->db->query("SELECT * FROM user WHERE id_user = ?");
+            $this->db->query("SELECT * FROM users WHERE id = ?");
             $userResult = $this->db->single([$id]);
             $output = new User();
             $output
-                ->set_username_user($userResult["username_user"])
-                ->set_mail_user($userResult["mail_user"])
-                ->set_pwd_user($userResult["pwd_user"]);
+                ->set_username_user($userResult["username"])
+                ->set_mail_user($userResult["mail"])
+                ->set_pwd_user($userResult["password"]);
             return $output;
             
         } catch (PDOException $e) {
@@ -108,13 +111,14 @@ class user_service
             );
         }
     }
+    #endregion
 
     #region delUser Function
     // Fonction pour supprimer un utilisateur.
     public function delUser(int $id)
     {
         try {
-            $this->db->query("DELETE FROM user WHERE id_user = :id");
+            $this->db->query("DELETE FROM users WHERE id = :id");
             $this->db->execute([":id" => $id]);
             return true;
         } catch (PDOException $e) {
@@ -124,21 +128,23 @@ class user_service
         }
     }
     #endregion
-    final public function update(int $id, string $username, string $mail_user, string $password): ?User
+    
+    #region update Function
+    final public function update(int $id, string $username, string $mail, string $password): ?User
     {
         try {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $this->db->query(
-                "UPDATE user SET username_user = ?, mail_user = ?, pwd_user = ? WHERE id_user = ?"
+                "UPDATE users SET username = ?, mail = ?, password = ? WHERE id = ?"
             );
-            $this->db->execute([$username, $mail_user, $hashedPassword, $id]);
-            $this->db->query("SELECT * FROM user WHERE mail_user = ?");
-            $userResult = $this->db->single([$mail_user]);
+            $this->db->execute([$username, $mail, $hashedPassword, $id]);
+            $this->db->query("SELECT * FROM users WHERE mail = ?");
+            $userResult = $this->db->single([$mail]);
             $output = new User();
             $output
-                ->set_username_user($userResult["username_user"])
-                ->set_mail_user($userResult["mail_user"])
-                ->set_pwd_user($userResult["pwd_user"]);
+                ->set_username_user($userResult["username"])
+                ->set_mail_user($userResult["mail"])
+                ->set_pwd_user($userResult["password"]);
             return $output;
             
         } catch (PDOException $e) {
@@ -147,6 +153,6 @@ class user_service
             );
         }
     }
-    
+    #endregion
     
 }

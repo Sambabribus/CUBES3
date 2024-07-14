@@ -1,12 +1,41 @@
 <?php
-#region Session management
+#region session
 session_start();
 #endregion
 
-#region Include FileManager
-use src\FileManager;
-
+#region require
+require_once "../app/controllers/recipes_controller.php";
 require_once "../../vendor/autoload.php";
+
+use src\app\controllers\recipe_controller;
+use src\FileManager;
+#endregion
+
+#region variables
+$id = $_GET["id"];
+#endregion
+
+#region controller
+$controller = new recipe_controller();
+$recipe = $controller->show($id);
+#endregion
+
+#region mail
+if (isset($_POST["btn_post_mail"])) {
+    $mail = $_POST["mail"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"] . "<br><br><a href='http://localhost:8000/src/views/recipe.php?id=" . $id . "'>Cliquez ici pour voir la recette</a>";
+
+    if (!isset($_POST['$message'])) {
+        $message = "Bonjour " . $_POST["mail"] .", je vous partage cette recette : " . "<br><br><a href='http://localhost:8000/src/views/recipe.php?id=" . $id . "'>Cliquez ici pour voir la recette</a>";
+    }
+    
+    $headers = "From: " . $_SESSION['user_mail'] . "\r\n";
+    $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+
+    mail($mail, $subject, $message, $headers);
+    
+}
 #endregion
 ?>
 
@@ -103,11 +132,11 @@ require_once "../../vendor/autoload.php";
     <main class="mx-auto py-4 px-8 md:px-32">
         <section class="mx-auto px-16 max-w-screen-sm border border-gray-200 rounded-xl p-4">
             <form class="grid"
-                action="https://formsubmit.co/meelonup@gmail.com" method="POST">
-                <!--#region TextArea Recipients -->
-                <h2 class="text-2xl font-semibold leading-tight justify-self-center">Nous contacter</h2>
+                action="" method="POST">
+                <h2 class="text-2xl font-semibold leading-tight justify-self-center">Partager</h2>
+                <!--#region Recipients -->
                 <div class="flex flex-col mb-2">
-                    <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900">Votre E-Mail</label>
+                    <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900">Destinataire</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -118,16 +147,15 @@ require_once "../../vendor/autoload.php";
                                     d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
                             </svg>
                         </div>
-                        <input id="input-group-1 name" type="text" name="text" <?php if(!$modify){echo 'disabled';}?>
+                        <input id="input-group-1 name" type="email" name="mail"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
-                            value="<?php echo $_SESSION['user_mail']; ?>" required>
+                            value="" required>
                     </div>
                 </div>
                 <!--#endregion -->
-                <!--#region Textarea Subject -->
+                <!--#region Subject -->
                 <div class="flex flex-col mb-2">
-                    <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900">Votre nom
-                        d'utilisateur</label>
+                    <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900">Objet du Mail</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <svg class="w-5 h-5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -138,13 +166,13 @@ require_once "../../vendor/autoload.php";
                                     d="M360-390q-21 0-35.5-14.5T310-440q0-21 14.5-35.5T360-490q21 0 35.5 14.5T410-440q0 21-14.5 35.5T360-390Zm240 0q-21 0-35.5-14.5T550-440q0-21 14.5-35.5T600-490q21 0 35.5 14.5T650-440q0 21-14.5 35.5T600-390ZM480-160q134 0 227-93t93-227q0-24-3-46.5T786-570q-21 5-42 7.5t-44 2.5q-91 0-172-39T390-708q-32 78-91.5 135.5T160-486v6q0 134 93 227t227 93Zm0 80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-54-715q42 70 114 112.5T700-640q14 0 27-1.5t27-3.5q-42-70-114-112.5T480-800q-14 0-27 1.5t-27 3.5ZM177-581q51-29 89-75t57-103q-51 29-89 75t-57 103Zm249-214Zm-103 36Z" />
                             </svg>
                         </div>
-                        <input id="input-group-1 email" type="email"  name="email" <?php if(!$modify){echo 'disabled';}?>
+                        <input id="input-group-1" type="text"  name="subject"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
-                            value="<?php echo $_SESSION['user_username']; ?>" required>
+                            value="" required>
                     </div>
                 </div>
                 <!--#endregion -->
-                <!--#region Textarea Message -->
+                <!--#region Message -->
                 <div class="flex flex-col mb-4">
                 <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900">Votre message</label>
                     <div class="relative">
@@ -155,13 +183,16 @@ require_once "../../vendor/autoload.php";
                                     d="M240-400h480v-80H240v80Zm0-120h480v-80H240v80Zm0-120h480v-80H240v80ZM880-80 720-240H160q-33 0-56.5-23.5T80-320v-480q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v720ZM160-320h594l46 45v-525H160v480Zm0 0v-480 480Z" />
                             </svg>
                         </div>
-                        <textarea id="text message"  name="message" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5" required></textarea>
+                        <textarea id="text message"  name="message" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"></textarea>
                     </div>
                 </div>
                 <!--#endregion -->
-                <button type="submit"
+
+                <!--#region Submit -->
+                <button type="submit" name="btn_post_mail"
                 class="justify-self-center w-full sm:w-2/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
                 Envoyer</button>
+                <!--#endregion -->
             </form>
         </section>
     </main>
@@ -170,5 +201,4 @@ require_once "../../vendor/autoload.php";
 
 </body>
 <!--#endregion -->
-
 </html>

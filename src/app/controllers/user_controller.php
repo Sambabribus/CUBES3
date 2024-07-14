@@ -45,9 +45,10 @@ class user_controller
     public function sign_up(
         string $username,
         string $password,
-        string $email
+        string $mail,
+        string $isadmin
     ): ?User {
-        return $this->userService->sign_up($username, $password, $email);
+        return $this->userService->sign_up($username, $password, $mail, $isadmin);
     }
     #endregion
 
@@ -67,10 +68,12 @@ class user_controller
     }
     #endregion
 
+    #region Get One User Function
     public function getOne(int $id): ?User
     {
         return $this->userService->getUser($id);
     }
+    #endregion
 
     #region Get All Users Function
     // Méthode pour récupérer tous les utilisateurs.

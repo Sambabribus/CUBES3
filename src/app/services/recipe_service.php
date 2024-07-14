@@ -42,8 +42,8 @@ class RecipeService
                 ->setId($recipeResult["id"])
                 ->setTitle($recipeResult["title"])
                 ->setDescription($recipeResult["description"])
-                ->setCookingTime($recipeResult["cooking_time"])
-                ->setPreparationTime($recipeResult["preparation_time"])
+                ->setCookingTime($recipeResult["cook_time"])
+                ->setPreparationTime($recipeResult["prep_time"])
                 ->setServes($recipeResult["serves"])
                 ->setUserId($recipeResult["user_id"])
                 ->setImages(
@@ -80,7 +80,7 @@ class RecipeService
     {
         try {
             $this->db->query(
-                "INSERT INTO recipes (title, description, preparation_time, cooking_time, serves, creation_date, user_id) VALUES (?, ?, ?, ?, ?, NOW(), ?)"
+                "INSERT INTO recipes (title, description, prep_time, cook_time, serves, creation_date, user_id) VALUES (?, ?, ?, ?, ?, NOW(), ?)"
             );
             $this->db->execute([
                 $data->getTitle(),
@@ -121,7 +121,7 @@ class RecipeService
     {
         try {
             $this->db->query(
-                "UPDATE recipes SET title = ?, description = ?, preparation_time = ?, cooking_time = ?, serves = ? WHERE id = ?"
+                "UPDATE recipes SET title = ?, description = ?, prep_time = ?, cook_time = ?, serves = ? WHERE id = ?"
             );
             $this->db->execute([
                 $data->getTitle(),
@@ -158,8 +158,8 @@ class RecipeService
                     ->setId($row["id"])
                     ->setTitle($row["title"])
                     ->setDescription($row["description"])
-                    ->setCookingTime($row["cooking_time"])
-                    ->setPreparationTime($row["preparation_time"])
+                    ->setCookingTime($row["cook_time"])
+                    ->setPreparationTime($row["prep_time"])
                     ->setServes($row["serves"])
                     ->setUserId($row["user_id"])
                     ->setImages($this->imageService->getByRecipeId($row["id"]));
@@ -184,7 +184,7 @@ class RecipeService
         try {
             $data = "%" . $data . "%";
             $this->db->query(
-                "SELECT recipes.id, title, description, cooking_time, preparation_time, serves, user_id FROM recipes WHERE recipes.title LIKE ?"
+                "SELECT id, title, description, cook_time, prep_time, serves, user_id FROM recipes WHERE title LIKE ?"
             );
             $results = $this->db->resultSet([$data]);
             foreach ($results as $row) {
@@ -193,8 +193,8 @@ class RecipeService
                     ->setId($row["id"])
                     ->setTitle($row["title"])
                     ->setDescription($row["description"])
-                    ->setCookingTime($row["cooking_time"])
-                    ->setPreparationTime($row["preparation_time"])
+                    ->setCookingTime($row["cook_time"])
+                    ->setPreparationTime($row["prep_time"])
                     ->setServes($row["serves"])
                     ->setUserId($row["user_id"])
                     ->setImages($this->imageService->getByRecipeId($row["id"]));

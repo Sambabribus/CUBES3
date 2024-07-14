@@ -90,8 +90,10 @@ class Database
     }
     #endregion
 
+    #region LastInsertId Method
     final public function lastInsertId(string $name = null): string
     {
         return $this->conn->lastInsertId($name);
     }
+    #endregion
 }

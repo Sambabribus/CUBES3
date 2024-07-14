@@ -37,17 +37,17 @@ class comment_service
         $comResults = [];
         try {
             $this->db->query(
-                "SELECT * FROM comment WHERE recipe_id_comment = :recipe_id ORDER BY creat_date_comment "
+                "SELECT * FROM comments WHERE recipe_id = :recipe_id ORDER BY creation_date"
             );
             $results = $this->db->resultSet([$recipe_id]);
 
             foreach ($results as $row) {
                 $comment = new Comment();
                 $comment
-                    ->setIdCom($row["id_comment"])
-                    ->setUserIdComment($row["user_id_comment"])
-                    ->setRecipeIdComment($row["recipe_id_comment"])
-                    ->setcomComment($row["com_comment"]);
+                    ->setIdCom($row["id"])
+                    ->setUserIdComment($row["user_id"])
+                    ->setRecipeIdComment($row["recipe_id"])
+                    ->setcomComment($row["content"]);
 
                 $comResults[] = $comment;
             }
@@ -66,7 +66,7 @@ class comment_service
     {
         try {
             $this->db->query(
-                "INSERT INTO comment (user_id_comment, recipe_id_comment, com_comment) VALUES (?, ?, ?)"
+                "INSERT INTO comments (user_id, recipe_id, content) VALUES (?, ?, ?)"
             );
             $this->db->execute([$user_id, $recipe_id, $data->getcomComment()]);
             return true;
@@ -78,11 +78,11 @@ class comment_service
 
     #region Delete Comment
     // Fonction pour supprimer un commentaire.
-    public function delete_comment($id_comment)
+    public function delete_comment($id)
     {
         try {
-            $this->db->query("DELETE FROM comment WHERE id_comment = :id");
-            $this->db->execute([$id_comment]);
+            $this->db->query("DELETE FROM comments WHERE id = :id");
+            $this->db->execute([$id]);
             return true;
         } catch (PDOException $e) {
             throw new PDOException("" . $e->getMessage());
@@ -92,13 +92,13 @@ class comment_service
 
     #region Update Comment
     // Fonction pour mettre à jour un commentaire.
-    public function update_comment(Comment $data, $id_comment)
+    public function update_comment($content, $id)
     {
         try {
             $this->db->query(
-                "UPDATE comment SET com_comment = ? WHERE id_comment = :id"
+                "UPDATE comments SET content = ? WHERE id = :id"
             );
-            $this->db->execute([$data->com_comment, $id_comment]);
+            $this->db->execute([$content, $id]);
             return true;
         } catch (PDOException $e) {
             throw new PDOException("" . $e->getMessage());

@@ -62,18 +62,20 @@ class comments_controller
 
     #region Update Comment
     // Méthode pour mettre à jour un commentaire existant par son ID.
-    public function update($content, $id_comment): bool
+    public function update($content, $id): bool
     {
         $comment = $this->comment_service->update_comment(
             $content,
-            $id_comment
+            $id
         );
         return $comment;
     }
     #endregion
 
+    #region Delete Comment
     public function delete($id_comment): bool
     {
         return $this->comment_service->delete_comment($id_comment);
     }
+    #endregion
 }

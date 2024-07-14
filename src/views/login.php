@@ -1,27 +1,38 @@
 <?php
+#region require
 require_once "../app/controllers/user_controller.php";
 
 use src\app\controllers\user_controller;
 use src\FileManager;
+#endregion
 
+#region session
 session_start(); // Démarre ou reprend une session au début de chaque script
+#endregion
 
+#region variables
 $messageInscription = "";
 $messageConnexion = "";
+#endregion
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $controller = new user_controller();
-
+    #region sign_in
     if (isset($_POST["sign_in"])) {
         $result = $controller->sign_up(
             $_POST["username_user"],
             $_POST["pwd_user"],
-            $_POST["mail_user"]
+            $_POST["mail_user"],
+            "0"
         );
 
         if ($result != null) {
             $messageInscription = "Inscription réussie!";
         }
+    #endregion
+
+    #region login
     } elseif (isset($_POST["login"])) {
         $result = $controller->login(
             $_POST["login-mail_user"],
@@ -35,14 +46,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["user_mail"] = $result->get_mail_user();
             $_SESSION["user_id"] = $result->get_id_user();
             $_SESSION["user_isadmin"] = $result->get_isadmin_user();
+            $_SESSION["user_username"] = $result->get_username_user();
             header("Location: index.php");
         } else {
             $messageConnexion = "Identifiants incorrects.";
         }
     }
+    #endregion
 }
 ?>
-
+<!--#region DOCTYPE Head -->
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -53,14 +66,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
 </head>
+<!--#endregion -->
 
+<!--#region Body -->
 <body>
+    <!--#region Header -->
     <header class="sticky top-0 w-full z-20">
         <nav class="border-b border-gray-200 flex flex-wrap items-center justify-between p-4 start-0 bg-white">
+            <!--#region Brand -->
             <a href="index.php" class="cursor-pointer flex items-center rtl:space-x-reverse space-x-3">
                 <img src="../../public/assets/img/EcoCook.svg" alt="Brand" class="w-10 h-10" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap ">EcoCook</span>
             </a>
+            <!--#endregion -->
+            <!--#region User Icon Navbar -->
             <div class="flex flex-row items-center md:order-last gap-2">
                 <button data-collapse-toggle="top-navbar"
                     class="flex md:hidden cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-200 hover:bg-gray-100 inline-flex items-center justify-center p-2 rounded-lg text-gray-500">
@@ -93,17 +112,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <?php endif; ?>
                 </a>
             </div>
+            <!--#endregion -->
+            <!--#region Top Navbar -->
             <div id="top-navbar" class="md:flex md:flex-row md:order-none md:w-auto order-last w-full hidden gap-8">
                 <div
                     class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
                     <a href="recipes.php"
-                        class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Recipes</a>
+                        class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Recherche</a>
                     <a href="about.php"
-                        class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">About</a>
+                        class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">À Propos</a>
                     <a href="contact.php"
                         class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Contact</a>
-                    <!-- Is user connected -->
-                    <!-- Is user admin -->
                     <?php if (
                         isset($_SESSION["user_isadmin"]) &&
                         $_SESSION["user_isadmin"]
@@ -119,13 +138,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Connexion
                             / Inscription</a>
                     <?php endif; ?>
-                    <!-- Is user not connected -->
                 </div>
-                <!-- avatar redirect profile -->
             </div>
+            <!--#endregion -->
         </nav>
     </header>
-
+    <!--#endregion -->
+    <!--#region Main -->
     <main class="mx-auto py-4">
         <section class="mx-auto px-32 max-w-screen-sm border border-gray-200 rounded-xl p-4">
             <form class="grid mb-6" action="<?php echo htmlspecialchars(
@@ -177,6 +196,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     Connecter</button>
             </form>
 
+            <!--#region Inscription -->
             <form class="grid"
                 action="<?php echo htmlspecialchars(
                     $_SERVER["PHP_SELF"]
@@ -187,6 +207,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $messageInscription
                     ); ?></p>
                 <?php endif; ?>
+
+                <!--#region E-Mail -->
                 <div class="flex flex-col mb-2">
                     <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900">Votre E-Mail</label>
                     <div class="relative">
@@ -204,6 +226,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             placeholder="E-mail">
                     </div>
                 </div>
+                <!--#endregion -->
+
+                <!--#region Username -->
                 <div class="flex flex-col mb-2">
                     <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900">Votre nom
                         d'utilisateur</label>
@@ -222,6 +247,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             placeholder="Nom d'utilisateur">
                     </div>
                 </div>
+                <!--#endregion -->
+
+                <!--#region Password -->
                 <div class="flex flex-col mb-4">
                     <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900">Votre mot de
                         passe</label>
@@ -240,14 +268,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             placeholder="Mot de passe">
                     </div>
                 </div>
+                <!--#endregion -->
+
+                <!--#region Submit -->
                 <button type="submit" name="sign_in"
                     class="justify-self-center w-full sm:w-3/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
                     S'inscrire</button>
+                <!--#endregion -->
             </form>
+            <!
         </section>
     </main>
+    <!--#endregion -->
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>
-
+<!--#endregion -->
 </html>

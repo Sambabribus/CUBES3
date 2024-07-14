@@ -1,26 +1,37 @@
 <?php
 
+#region require
 require_once "../app/controllers/user_controller.php";
 
 use src\app\controllers\user_controller;
 use src\FileManager;
+#endregion
 
+#region session
 session_start();
+#endregion
 
-if(!isset($_SESSION['user_id']))
+#region redirect
+if($_SESSION["user_id"] < 0 || !isset($_SESSION["user_id"]))
 {
     header("Location: login.php");
     exit;
 }
+#endregion
 
+#region variables
 $messageInscription = "";
 $messageConnexion = "";
 
 $modify = $_GET["modify"] ?? false;
+#endregion
 
+#region controller
 $controller = new user_controller();
 $user = $controller->getOne($_SESSION["user_id"]);
+#endregion
 
+#region update
 if (isset($_POST["update_user"])) {
     $controller = new user_controller();
     $user = $controller->update(
@@ -32,8 +43,11 @@ if (isset($_POST["update_user"])) {
 
     $mustRefresh = true;
 }
+#endregion
 
 ?>
+
+<!--#region DOCTYPE Head -->
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -44,14 +58,19 @@ if (isset($_POST["update_user"])) {
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
 </head>
+<!--#endregion -->
 
 <body>
+    <!--#region Header -->
     <header class="sticky top-0 w-full z-20">
         <nav class="border-b border-gray-200 flex flex-wrap items-center justify-between p-4 start-0 bg-white">
+            <!--#region Brand -->
             <a href="index.php" class="cursor-pointer flex items-center rtl:space-x-reverse space-x-3">
                 <img src="../../public/assets/img/EcoCook.svg" alt="Brand" class="w-10 h-10" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap ">EcoCook</span>
             </a>
+            <!--#endregion -->
+            <!--#region User Icon Navbar -->
             <div class="flex flex-row items-center md:order-last gap-2">
                 <button data-collapse-toggle="top-navbar"
                     class="flex md:hidden cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-200 hover:bg-gray-100 inline-flex items-center justify-center p-2 rounded-lg text-gray-500">
@@ -84,17 +103,17 @@ if (isset($_POST["update_user"])) {
                     <?php endif; ?>
                 </a>
             </div>
+            <!--#endregion -->
+            <!--#region Top Navbar -->
             <div id="top-navbar" class="md:flex md:flex-row md:order-none md:w-auto order-last w-full hidden gap-8">
                 <div
                     class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
                     <a href="recipes.php"
-                        class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Recipes</a>
+                        class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Recherche</a>
                     <a href="about.php"
-                        class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">About</a>
+                        class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">À Propos</a>
                     <a href="contact.php"
                         class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Contact</a>
-                    <!-- Is user connected -->
-                    <!-- Is user admin -->
                     <?php if (
                         isset($_SESSION["user_isadmin"]) &&
                         $_SESSION["user_isadmin"]
@@ -110,12 +129,12 @@ if (isset($_POST["update_user"])) {
                             class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Connexion
                             / Inscription</a>
                     <?php endif; ?>
-                    <!-- Is user not connected -->
                 </div>
-                <!-- avatar redirect profile -->
             </div>
+            <!--#endregion -->
         </nav>
     </header>
+    <!--#endregion -->
 
     <main class="mx-auto py-4 px-8 md:px-32">
         <section class="mx-auto px-16 max-w-screen-sm border border-gray-200 rounded-xl p-4">
@@ -185,8 +204,7 @@ if (isset($_POST["update_user"])) {
                 </div>
                 <input type="hidden" name="id_user" value="<?php echo $_SESSION["user_id"] ?>">
                 <?php if (!$modify): ?>
-                    <button name="update_user"
-                class="justify-self-center w-full sm:w-2/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                    <button class="justify-self-center w-full sm:w-2/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
                 <a href="user.php?modify=true">
                     Modifier son compte</a></button>
                 

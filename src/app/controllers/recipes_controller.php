@@ -38,8 +38,8 @@ class recipe_controller
     final public function create(
         $title,
         $description,
-        $preparation_time,
-        $cooking_time,
+        $prep_time,
+        $cook_time,
         $serves,
         $user_id
     ): int {
@@ -47,8 +47,8 @@ class recipe_controller
         $recipe
             ->setTitle($title)
             ->setDescription($description)
-            ->setPreparationTime($preparation_time)
-            ->setCookingTime($cooking_time)
+            ->setPreparationTime($prep_time)
+            ->setCookingTime($cook_time)
             ->setServes($serves);
 
         return $this->recipeService->create($recipe, $user_id);
@@ -99,16 +99,16 @@ class recipe_controller
         $id,
         $title,
         $description,
-        $preparation_time,
-        $cooking_time,
+        $prep_time,
+        $cook_time,
         $serves
     ): bool {
         $recipe = new Recipe();
         $recipe
             ->setTitle($title)
             ->setDescription($description)
-            ->setPreparationTime($preparation_time)
-            ->setCookingTime($cooking_time)
+            ->setPreparationTime($prep_time)
+            ->setCookingTime($cook_time)
             ->setServes($serves);
 
         return $this->recipeService->update($id, $recipe);

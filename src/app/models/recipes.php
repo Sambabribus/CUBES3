@@ -12,8 +12,8 @@ class Recipe
     private int $id;
     private string $title;
     private string $description;
-    private float $cooking_time;
-    private float $preparation_time;
+    private float $cook_time;
+    private float $prep_time;
     private int $serves;
     private array $images;
     private ?int $user_id;
@@ -62,11 +62,11 @@ class Recipe
     // Méthodes pour obtenir et définir le temps de cuisson de la recette.
     public function getCookingTime(): float
     {
-        return $this->cooking_time;
+        return $this->cook_time;
     }
-    public function setCookingTime(float $cooking_time): Recipe
+    public function setCookingTime(float $cook_time): Recipe
     {
-        $this->cooking_time = $cooking_time;
+        $this->cook_time = $cook_time;
         return $this;
     }
     #endregion
@@ -75,11 +75,11 @@ class Recipe
     // Méthodes pour obtenir et définir le temps de préparation de la recette.
     public function getPreparationTime(): float
     {
-        return $this->preparation_time;
+        return $this->prep_time;
     }
-    public function setPreparationTime(float $preparation_time): Recipe
+    public function setPreparationTime(float $prep_time): Recipe
     {
-        $this->preparation_time = $preparation_time;
+        $this->prep_time = $prep_time;
         return $this;
     }
     #endregion

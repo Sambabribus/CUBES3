@@ -8,22 +8,22 @@ require "../../vendor/autoload.php";
 class User
 {
     #region Properties
-    private int $id_user;
-    private string $username_user;
-    private string $pwd_user;
-    private string $mail_user;
-    private bool $isadmin_user;
+    private int $id;
+    private string $username;
+    private string $pwd;
+    private string $mail;
+    private bool $isadmin;
     #endregion
 
     #region ID User Accessors
     // Accesseurs pour l'identifiant de l'utilisateur.
     public function get_id_user(): int
     {
-        return $this->id_user;
+        return $this->id;
     }
-    public function set_id_user($id_user): User
+    public function set_id_user($id): User
     {
-        $this->id_user = $id_user;
+        $this->id = $id;
         return $this;
     }
     #endregion
@@ -32,11 +32,11 @@ class User
     // Accesseurs pour le nom d'utilisateur.
     public function get_username_user(): string
     {
-        return $this->username_user;
+        return $this->username;
     }
-    public function set_username_user($username_user): User
+    public function set_username_user($username): User
     {
-        $this->username_user = $username_user;
+        $this->username = $username;
         return $this;
     }
     #endregion
@@ -45,11 +45,11 @@ class User
     // Accesseurs pour le mot de passe de l'utilisateur.
     public function get_pwd_user(): string
     {
-        return $this->pwd_user;
+        return $this->pwd;
     }
-    public function set_pwd_user($pwd_user): User
+    public function set_pwd_user($pwd): User
     {
-        $this->pwd_user = $pwd_user;
+        $this->pwd = $pwd;
         return $this;
     }
     #endregion
@@ -58,11 +58,11 @@ class User
     // Accesseurs pour l'adresse e-mail de l'utilisateur.
     public function get_mail_user(): string
     {
-        return $this->mail_user; // Retourne l'adresse e-mail de l'utilisateur.
+        return $this->mail; // Retourne l'adresse e-mail de l'utilisateur.
     }
-    public function set_mail_user($mail_user): User
+    public function set_mail_user($mail): User
     {
-        $this->mail_user = $mail_user;
+        $this->mail = $mail;
         return $this;
     }
     #endregion
@@ -71,11 +71,11 @@ class User
     // Accesseurs pour le statut d'administrateur de l'utilisateur.
     public function get_isadmin_user(): bool
     {
-        return $this->isadmin_user;
+        return $this->isadmin;
     }
-    public function set_isadmin_user($isadmin_user): User
+    public function set_isadmin_user($isadmin): User
     {
-        $this->isadmin_user = $isadmin_user;
+        $this->isadmin = $isadmin;
         return $this;
     }
     #endregion

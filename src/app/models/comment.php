@@ -9,22 +9,22 @@ class Comment
 {
     #region Properties
     // Déclaration des propriétés privées pour le modèle Comment.
-    private int $id_comment;
-    private int $user_id_comment;
-    private int $recipe_id_comment;
-    private string $creat_date_comment;
-    private string $com_comment;
+    private int $id;
+    private int $user_id;
+    private int $recipe_id;
+    private string $creation_date;
+    private string $content;
     #endregion
 
     #region ID Comment Accessors
     // Accesseurs pour l'ID du commentaire.
     public function getIdCom(): int
     {
-        return $this->id_comment;
+        return $this->id;
     }
-    public function setIdCom(int $id_comment): Comment
+    public function setIdCom(int $id): Comment
     {
-        $this->id_comment = $id_comment;
+        $this->id = $id;
         return $this; // Retourne l'instance pour permettre le chaînage des méthodes.
     }
     #endregion
@@ -33,11 +33,11 @@ class Comment
     // Accesseurs pour l'ID de l'utilisateur.
     public function getUserIdComment(): int
     {
-        return $this->user_id_comment;
+        return $this->user_id;
     }
-    public function setUserIdComment(int $user_id_comment): Comment
+    public function setUserIdComment(int $user_id): Comment
     {
-        $this->user_id_comment = $user_id_comment;
+        $this->user_id = $user_id;
         return $this;
     }
     #endregion
@@ -46,11 +46,11 @@ class Comment
     // Accesseurs pour l'ID de la recette.
     public function getRecipeIdComment(): int
     {
-        return $this->recipe_id_comment;
+        return $this->recipe_id;
     }
-    public function setRecipeIdComment(int $recipe_id_comment): Comment
+    public function setRecipeIdComment(int $recipe_id): Comment
     {
-        $this->recipe_id_comment = $recipe_id_comment;
+        $this->recipe_id = $recipe_id;
         return $this;
     }
     #endregion
@@ -59,11 +59,11 @@ class Comment
     // Accesseurs pour la date de création du commentaire.
     public function getcreatDateComment(): string
     {
-        return $this->creat_date_comment;
+        return $this->creation_date;
     }
-    public function setcreatDateComment(string $creat_date_comment): Comment
+    public function setcreatDateComment(string $creation_date): Comment
     {
-        $this->creat_date_comment = $creat_date_comment;
+        $this->creation_date = $creation_date;
         return $this;
     }
     #endregion
@@ -72,11 +72,11 @@ class Comment
     // Accesseurs pour le contenu du commentaire.
     public function getcomComment(): string
     {
-        return $this->com_comment;
+        return $this->content;
     }
-    public function setcomComment(string $com_comment): Comment
+    public function setcomComment(string $content): Comment
     {
-        $this->com_comment = $com_comment;
+        $this->content = $content;
         return $this;
     }
     #endregion
