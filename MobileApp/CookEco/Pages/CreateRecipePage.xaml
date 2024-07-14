@@ -22,7 +22,6 @@
         <Entry x:Name="PreparationTimeEntry" Placeholder="Temps de préparation (min)" FontSize="16" />
         <Entry x:Name="CookingTimeEntry" Placeholder="Temps de cuisson (min)" FontSize="16" />
         <Entry x:Name="ServesEntry" Placeholder="Nombre de portions" FontSize="16" />
-        <Entry x:Name="UserIdEntry" Placeholder="ID de l'utilisateur" FontSize="16" />
 
         <Frame BackgroundColor="#a17c5e" CornerRadius="25" Padding="0">
             <HorizontalStackLayout Padding="10">

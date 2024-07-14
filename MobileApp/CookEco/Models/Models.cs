@@ -67,8 +67,9 @@ namespace CookEco.Models
         [JsonPropertyName("user_id")]
         public int UserId { get; set; }
 
-        [JsonIgnore]
-        public string ImagePath { get; set; }
+        [JsonPropertyName("image")]
+        public string ImagePath { get; set; } 
+        public string FullImagePath => ImagePath.StartsWith("http") ? ImagePath : $"http://{ImagePath}";
     }
 
     public class RecipesResponse

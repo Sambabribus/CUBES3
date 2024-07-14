@@ -40,5 +40,14 @@ namespace CookEco.Services
 
         public static Task<int> SaveCommentAsync(Comment comment) => _database.InsertAsync(comment);
         public static Task<List<Comment>> GetCommentsAsync() => _database.Table<Comment>().ToListAsync();
+
+        public static Task ClearAllDataAsync()
+        {
+            return Task.WhenAll(
+                _database.DeleteAllAsync<User>(),
+                _database.DeleteAllAsync<Recipe>(),
+                _database.DeleteAllAsync<Comment>()
+            );
+        }
     }
 }

@@ -13,12 +13,12 @@ namespace CookEco.Services
 
         public FetchUserComments()
         {
-            httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.0.29/") };
+            httpClient = new HttpClient { BaseAddress = new Uri("http://api.snsekken.com/") };
         }
 
         public async Task<string> AddAllComments()
         {
-            var response = await httpClient.GetAsync("/newAPI/CUBES3/index.php/comments");
+            var response = await httpClient.GetAsync("index.php/comments");
             var jsonString = await response.Content.ReadAsStringAsync();
             try
             {

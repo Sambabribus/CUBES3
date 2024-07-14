@@ -69,7 +69,6 @@ namespace CookEco
                 CookingTime = int.Parse(CookingTimeEntry.Text),
                 Serves = int.Parse(ServesEntry.Text),
                 CreationDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                UserId = int.Parse(UserIdEntry.Text),
                 ImagePath = localFilePath
             };
             var existingRecipe = await ManagerDB.GetRecipeByIdAsync(recipe.Id);

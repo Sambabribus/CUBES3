@@ -1,7 +1,9 @@
+using BCrypt.Net;
 using CookEco.Models;
 using CookEco.Services;
 using Microsoft.Maui.Controls;
 using System;
+using BCrypt.Net;
 using System.Linq;
 using System.Threading.Tasks;
 using static CookEco.Services.FetchUserPassword;
@@ -35,7 +37,6 @@ namespace CookEco
         private async void OnLoginClicked(object sender, EventArgs e)
         {
             await ManagerDB.Init();
-
             var localUser = await ManagerDB.GetUserAsync(UsernameEntry.Text);
             if (localUser != null && PasswordEntry.Text == localUser.Password && UsernameEntry.Text == localUser.Username)
             {
@@ -50,7 +51,7 @@ namespace CookEco
                 {
                     Console.WriteLine("Users list retrieved successfully.");
                     var apiUser = usersResponse.Records.FirstOrDefault(u => u.Username == UsernameEntry.Text);
-                    if (apiUser != null && PasswordEntry.Text == apiUser.Password)
+                    if (apiUser != null && BCrypt.Net.BCrypt.Verify(PasswordEntry.Text, apiUser.Password))
                     {
                         await DisplayAlert("Success", "Login successful", "OK");
                         ((App)Application.Current).LoginSuccessful();

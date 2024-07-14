@@ -13,12 +13,12 @@ namespace CookEco.Services
 
         public FetchUserRecipe()
         {
-            httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.0.29/") };
+            httpClient = new HttpClient { BaseAddress = new Uri("http://api.snsekken.com") };
         }
 
         public async Task<string> AddAllRecipes()
         {
-            var response = await httpClient.GetAsync("newAPI/CUBES3/index.php/recipes/");
+            var response = await httpClient.GetAsync("/index.php/recipes/");
             var jsonString = await response.Content.ReadAsStringAsync();
             var recipesResponse = JsonSerializer.Deserialize<RecipesResponse>(jsonString);
             if (recipesResponse?.Records != null)

@@ -23,7 +23,7 @@
                 <DataTemplate>
                     <Frame CornerRadius="10" Margin="5" Padding="0" BorderColor="#D3C1AE">
                         <StackLayout>
-                            <Image Source="{Binding ImagePath}" Aspect="AspectFill" HeightRequest="200" />
+                            <Image Source="{Binding FullImagePath}" Aspect="AspectFill" HeightRequest="200" />
                             <StackLayout Padding="10">
                                 <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold" TextColor="#50392C" />
                                 <Label Text="{Binding Description}" FontSize="Small" TextColor="#50392C" LineBreakMode="TailTruncation" MaxLines="3" />
