@@ -60,6 +60,7 @@ if (isset($_GET["btn_search_recipe"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - Partage de Recettes</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
 </head>
 <!--#endregion -->
@@ -67,7 +68,7 @@ if (isset($_GET["btn_search_recipe"])) {
 <body>
     <!--#region Header -->
     <header class="sticky top-0 w-full z-20">
-        <nav class="border-b border-gray-200 flex flex-wrap items-center justify-between p-4 start-0 bg-white">
+        <nav class="border-b border-gray-200 flex flex-wrap items-center justify-between p-4 start-0 bg-[#C49D837F]">
             <!--#region Brand -->
             <a href="index.php" class="cursor-pointer flex items-center rtl:space-x-reverse space-x-3">
                 <img src="data: image/svg+xml;base64,<?php echo base64_encode(
@@ -75,7 +76,7 @@ if (isset($_GET["btn_search_recipe"])) {
                                     FileManager::rootDirectory() .
                                         "public/assets/img/EcoCook.svg"
                                 )
-                            ); ?>" alt="Brand" class="w-10 h-10" />
+                            ); ?>" alt="Brand" class="w-20 h-20" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap ">EcoCook</span>
             </a>
             <!--#endregion -->
@@ -116,26 +117,26 @@ if (isset($_GET["btn_search_recipe"])) {
             <!--#region Top Navbar -->
             <div id="top-navbar" class="md:flex md:flex-row md:order-none md:w-auto order-last w-full hidden gap-8">
                 <div
-                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-[#C49D837F] md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-[#C49D830F]">
                     <a href="recipes.php"
-                        class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Recherche</a>
+                        class="block cursor-pointer hover:bg-white-100 md:border-0 md:hover:bg-transparent md:hover:text-[#A17C5E] md:p-0 px-3 py-2 rounded text-white-100">Recherche</a>
                     <a href="about.php"
-                        class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">À Propos</a>
+                        class="block cursor-pointer hover:bg-white-100 md:border-0 md:hover:bg-transparent md:hover:text-[#A17C5E] md:p-0 px-3 py-2 rounded text-white-100">À Propos</a>
                     <a href="contact.php"
-                        class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Contact</a>
+                        class="block cursor-pointer hover:bg-white-100 md:border-0 md:hover:bg-transparent md:hover:text-[#A17C5E] md:p-0 px-3 py-2 rounded text-white-100">Contact</a>
                     <?php if (
                         isset($_SESSION["user_isadmin"]) &&
                         $_SESSION["user_isadmin"]
                     ): ?>
                         <a href="admin.php"
-                            class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Admin</a>
+                            class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-[#A17C5E] md:p-0 px-3 py-2 rounded text-white-100">Admin</a>
                     <?php endif; ?>
                     <?php if (isset($_SESSION["user_mail"])): ?>
                         <a href="logout.php"
-                            class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Déconnexion</a>
+                            class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-[#A17C5E] md:p-0 px-3 py-2 rounded text-white-100">Déconnexion</a>
                     <?php else: ?>
                         <a href="login.php"
-                            class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 px-3 py-2 rounded text-gray-900">Connexion
+                            class="block cursor-pointer hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-[#A17C5E] md:p-0 px-3 py-2 rounded text-white-100">Connexion
                             / Inscription</a>
                     <?php endif; ?>
                 </div>
@@ -161,14 +162,14 @@ if (isset($_GET["btn_search_recipe"])) {
                 <input type="text" id="default-search" name="search_recipe" value="<?php if (isset($_SESSION["search_recipe"])) {
                     echo htmlspecialchars($_SESSION["search_recipe"]);
                 } ?>"
-                    class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                    class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-brown-500 focus:border-brown-500"
                     placeholder="Rechercher une recette" requi0red />
                 <button type="submit" name="btn_search_recipe"
-                    class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Chercher</button>
+                    class="text-white absolute end-2.5 bottom-2.5 bg-[#A17C5E] hover:bg-[#C49D83] focus:ring-4 focus:outline-none focus:ring-brown-300 font-medium rounded-lg text-sm px-4 py-2">Chercher</button>
             </div>
         </form>
         <button type="button"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"><a
+            class="justify-self-center m-5 top-[calc(100%)] right-2.5 px-5 py-2.5 bg-[#A17C5E] text-white no-underline rounded-lg transition-[background-color_0.3s_ease,_transform_0.2s_ease] focus:ring-4 focus:ring-brown-300 font-medium text-sm w-1/4 sm:w-1/3 hover:scale-105 hover:bg-[#C49D83]"><a
                 href="creation_recipe.php">Creer une recettes</a></button>
         <!--#endregion -->
         <!--#region Display Search result -->        

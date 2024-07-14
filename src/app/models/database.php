@@ -2,6 +2,7 @@
 #region Namespace and Imports
 // Définit l'espace de noms pour le modèle et importe les classes PDO nécessaires pour la gestion de la base de données.
 namespace src\app\models;
+
 use PDO;
 use PDOException;
 use PDOStatement;
@@ -11,8 +12,8 @@ class Database
 {
     #region Properties
     private string $host = "localhost";
-    private string $user = "database";
-    private string $pass = "Sekken379@";
+    private string $user = "root";
+    private string $pass = "";
     private string $name = "eco_cook";
     private string $port = "3306";
     private string $charset = "utf8mb4";

@@ -37,7 +37,7 @@ class ImageService
             $output
                 ->setId($imageResult["id"])
                 ->setFileName($imageResult["file_name"])
-                ->setCreationDate(new DateTime($imageResult ["creation_date"]))
+                ->setCreationDate(new DateTime($imageResult["creation_date"]))
                 ->setExtension($imageResult["extension"])
                 ->setMimeType($imageResult["mime_type"])
                 ->setRecipeId($imageResult["recipe_id"]);
@@ -65,7 +65,7 @@ class ImageService
             );
             if ($this->db->single([$file_name])["count(id)"] == 0) {
                 $filecontent = file_get_contents($tmp_file_name);
-                $file_path = "/var/www/CUBES3/src/views/uploadsuploads/" . $file_name . "." . $extension;
+                $file_path = "/var/www/CUBES3/src/views/uploads/" . $file_name . "." . $extension;
                 echo $file_path;
                 $myfile = fopen($file_path, "w");
                 fwrite($myfile, $filecontent);
@@ -108,7 +108,7 @@ class ImageService
         }
     }
     #endregion
-    
+
     #region Get By Recipe ID
     final public function getByRecipeId(int $recipe_id): array
     {

@@ -64,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - Partage de Recettes</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
 </head>
 <!--#endregion -->
@@ -196,7 +197,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
                 <button type="submit" name="login"
-                    class="justify-self-center w-full sm:w-3/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">Se
+                    class="justify-self-center m-5 top-[calc(100%)] right-2.5 px-5 py-2.5 bg-[#A17C5E] text-white no-underline rounded-lg transition-[background-color_0.3s_ease,_transform_0.2s_ease] focus:ring-4 focus:ring-brown-300 font-medium text-sm w-full sm:w-2/5 hover:scale-105 hover:bg-[#C49D83]">Se
                     Connecter</button>
             </form>
 
@@ -276,7 +277,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <!--#region Submit -->
                 <button type="submit" name="sign_in"
-                    class="justify-self-center w-full sm:w-3/5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                    class="justify-self-center m-5 top-[calc(100%)] right-2.5 px-5 py-2.5 bg-[#A17C5E] text-white no-underline rounded-lg transition-[background-color_0.3s_ease,_transform_0.2s_ease] focus:ring-4 focus:ring-brown-300 font-medium text-sm w-full sm:w-2/5 hover:scale-105 hover:bg-[#C49D83]">
                     S'inscrire</button>
                 <!--#endregion -->
             </form>
