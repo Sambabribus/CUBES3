@@ -13,7 +13,7 @@ class Database
     private string $host = "localhost";
     private string $user = "database";
     private string $pass = "Sekken379@";
-    private string $name = "eco_cook";
+    private string $name = "pp";
     private string $port = "3306";
     private string $charset = "utf8mb4";
     private ?PDOStatement $stmt = null;
