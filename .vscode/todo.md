@@ -11,7 +11,7 @@ VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=yzhang.
 - [X] Finir l'affichage des recettes
 - [X] Page de profil - Pouvoir modifier : utilisateur 
 - [X] Afficher le pseudo sur les commentaires
+- [X] Faire la page contact
+- [X] Envoie d'une recettes par mail
+- [X] Support PDF
 - [ ] CSS
-- [ ] Faire la page contact
-- [ ] Envoie d'une recettes par mail
-- [ ] Support PDF
