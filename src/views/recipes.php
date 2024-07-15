@@ -148,7 +148,7 @@ if (isset($_GET["btn_search_recipe"])) {
     <!--#region Main -->
     <main class="container py-6 mx-auto">
         <!--#region Search -->
-        <form class="flex flex-row pb-4" action="<?php echo htmlspecialchars(
+        <form class="flex flex-row px-16 pb-4" action="<?php echo htmlspecialchars(
             $_SERVER["PHP_SELF"]
         ); ?>" method="get">
             <div class="relative w-full">
