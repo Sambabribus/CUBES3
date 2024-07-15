@@ -13,6 +13,7 @@ namespace CookEco
     public partial class LoginPage : ContentPage
     {
         private FetchUserPassword _fetchUserPassword;
+        private int CurrentUserID { get; set; }
 
         public LoginPage()
         {
@@ -40,8 +41,9 @@ namespace CookEco
             var localUser = await ManagerDB.GetUserAsync(UsernameEntry.Text);
             if (localUser != null && PasswordEntry.Text == localUser.Password && UsernameEntry.Text == localUser.Username)
             {
+                CurrentUserID = localUser.Id;
                 await DisplayAlert("Success", "Login successful", "OK");
-                ((App)Application.Current).LoginSuccessful();
+                ((App)Application.Current).LoginSuccessful(CurrentUserID);
                 return;
             }
             try
@@ -53,8 +55,9 @@ namespace CookEco
                     var apiUser = usersResponse.Records.FirstOrDefault(u => u.Username == UsernameEntry.Text);
                     if (apiUser != null && BCrypt.Net.BCrypt.Verify(PasswordEntry.Text, apiUser.Password))
                     {
+                        CurrentUserID = apiUser.Id;
                         await DisplayAlert("Success", "Login successful", "OK");
-                        ((App)Application.Current).LoginSuccessful();
+                        ((App)Application.Current).LoginSuccessful(CurrentUserID);
                         return;
                     }
                 }
@@ -70,6 +73,7 @@ namespace CookEco
 
             await DisplayAlert("Error", "Incorrect username or password.", "OK");
         }
+
 
         private async void OnRegisterClicked(object sender, EventArgs e)
         {

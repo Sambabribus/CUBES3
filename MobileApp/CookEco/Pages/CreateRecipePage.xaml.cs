@@ -15,7 +15,7 @@ namespace CookEco
     public partial class CreateRecipePage : ContentPage
     {
         private ObservableCollection<Recipe> _recipes;
-        public static string localFilePath;
+        public static string localFileName;
 
         public CreateRecipePage()
         {
@@ -29,7 +29,7 @@ namespace CookEco
 
         private async void TakePhoto(object sender, EventArgs e)
         {
-            localFilePath = await CapturePhotoAsync();
+            localFileName = await CapturePhotoAsync();
         }
 
         private async Task<string> CapturePhotoAsync()
@@ -40,20 +40,16 @@ namespace CookEco
 
                 if (photo != null)
                 {
-                    string localFilePath = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
-                    using Stream sourceStream = await photo.OpenReadAsync();
-                    using FileStream localFileStream = File.OpenWrite(localFilePath);
-                    await sourceStream.CopyToAsync(localFileStream);
-                    return localFilePath ?? "no_image_path";
+                    return photo.FileName; 
                 }
                 else
                 {
-                    return "no_image_path";
+                    return "no_image_name";
                 }
             }
             else
             {
-                return "no_image_path";
+                return "no_image_name";
             }
         }
 
@@ -69,14 +65,15 @@ namespace CookEco
                 CookingTime = int.Parse(CookingTimeEntry.Text),
                 Serves = int.Parse(ServesEntry.Text),
                 CreationDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                ImagePath = localFilePath
+                ImagePath = localFileName 
             };
+
             var existingRecipe = await ManagerDB.GetRecipeByIdAsync(recipe.Id);
             if (existingRecipe == null)
             {
                 await ManagerDB.SaveRecipeAsync(recipe);
                 _recipes?.Add(recipe);
-                await SendRecipeToAPI(recipe);
+                //await SendRecipeToAPI(recipe);
 
                 await DisplayAlert("Success", "Recipe saved", "OK");
             }
@@ -93,13 +90,17 @@ namespace CookEco
             _recipes = recipes;
         }
 
-        private async Task SendRecipeToAPI(Recipe recipe)
+       /* private async Task SendRecipeToAPI(Recipe recipe)
         {
-            using var httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.0.29/") };
+            using var httpClient = new HttpClient { BaseAddress = new Uri("http://api.snsekken.com") };
             var json = JsonSerializer.Serialize(new { records = new[] { recipe } });
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync("newAPI/CUBES3/index.php/recipes", content);
+            var response = await httpClient.PostAsync("/index.php/recipes", content);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Response: {responseContent}");  
+
             response.EnsureSuccessStatusCode();
-        }
+        }*/
     }
 }
