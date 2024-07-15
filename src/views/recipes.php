@@ -185,7 +185,7 @@ if (isset($_GET["btn_search_recipe"])) {
                         <div class="absolute top-1 right-1 flex items-start gap-2.5">
                             <button id="<?php echo $toggleId; ?>" data-dropdown-toggle="<?php echo $menuId; ?>"
                                 data-dropdown-placement="bottom-start"
-                                class="inline-flex self-center items-center p-2 text-sm font-medium text-center text-gray-900 bg-slate-200/50 rounded-lg hover:bg-slate-400/50"
+                                class="inline-flex self-center items-center p-2 text-sm font-medium text-center text-white bg-slate-200/50 rounded-lg hover:bg-slate-400/50"
                                 type="button">
                                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor" viewBox="0 0 4 15">
@@ -247,7 +247,7 @@ if (isset($_GET["btn_search_recipe"])) {
                                     <span class="text-gray-400 font-light text-sm"><?php echo $row->getServes(); ?>.
                                         pers</span>
                                 </a>
-                                <p class="mb-2 line-clamp-3 -text-gray-700 font-normal">
+                                <p class="mb-2 line-clamp-3 -text-white-700 font-normal">
                                     <?php echo $row->getDescription(); ?>
                                 </p>
                             </div>

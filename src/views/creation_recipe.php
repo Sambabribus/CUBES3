@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <!--#region Header -->
     <header class="sticky top-0 w-full z-20">
-        <nav class="border-b border-gray-200 flex flex-wrap items-center justify-between p-4 start-0 bg-white">
+        <nav class="border-b border-gray-200 flex flex-wrap items-center justify-between p-4 start-0 bg-[#C49D836F]">
             <!--#region Brand -->
             <a href="index.php" class="cursor-pointer flex items-center rtl:space-x-reverse space-x-3">
                 <img src="data: image/svg+xml;base64,<?php echo base64_encode(
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     FileManager::rootDirectory() .
                                         "public/assets/img/EcoCook.svg"
                                 )
-                            ); ?>" alt="Brand" class="w-10 h-10" />
+                            ); ?>" alt="Brand" class="w-20 h-20" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap ">EcoCook</span>
             </a>
             <!--#endregion -->
@@ -245,7 +245,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="flex flex-col mb-4">
                     <label class="block mb-2 text-sm font-medium text-gray-900 " for="file_input">Photo</label>
                     <div class="flex">
-                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" 
+                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white focus:outline-none" 
                         id="file_input" 
                         type="file" 
                         name="images" 
