@@ -12,8 +12,8 @@ class Database
 {
     #region Properties
     private string $host = "localhost";
-    private string $user = "root";
-    private string $pass = "";
+    private string $user = "database";
+    private string $pass = "Sekken379@";
     private string $name = "eco_cook";
     private string $port = "3306";
     private string $charset = "utf8mb4";

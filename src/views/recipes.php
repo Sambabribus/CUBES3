@@ -68,7 +68,7 @@ if (isset($_GET["btn_search_recipe"])) {
 <body>
     <!--#region Header -->
     <header class="sticky top-0 w-full z-20">
-        <nav class="border-b border-gray-200 flex flex-wrap items-center justify-between p-4 start-0 bg-[#C49D837F]">
+        <nav class="border-b border-gray-200 flex flex-wrap items-center justify-between p-4 start-0 bg-[#C49D83]">
             <!--#region Brand -->
             <a href="index.php" class="cursor-pointer flex items-center rtl:space-x-reverse space-x-3">
                 <img src="data: image/svg+xml;base64,<?php echo base64_encode(
@@ -169,31 +169,29 @@ if (isset($_GET["btn_search_recipe"])) {
             </div>
         </form>
         <?php if($_SESSION['user_id'] > 0): ?>
-        <button type="button"
-            class="justify-self-center m-5 top-[calc(100%)] right-2.5 px-5 py-2.5 bg-[#A17C5E] text-white no-underline rounded-lg transition-[background-color_0.3s_ease,_transform_0.2s_ease] focus:ring-4 focus:ring-brown-300 font-medium text-sm w-1/4 sm:w-1/3 hover:scale-105 hover:bg-[#C49D83]"><a
-                href="creation_recipe.php">Creer une recettes</a></button>
+            <a class="justify-self-center m-5 top-[calc(100%)] right-2.5 px-5 py-2.5 bg-[#A17C5E] text-white no-underline rounded-lg transition-[background-color_0.3s_ease,_transform_0.2s_ease] focus:ring-4 focus:ring-brown-300 font-medium text-sm w-1/4 sm:w-1/3 hover:scale-105 hover:bg-[#C49D83]" href="creation_recipe.php">Creer une recettes</a>
         <?php else: ?>
         <div class="grid border border-gray-200 rounded-lg size-fit mx-auto">
-                            <h1 class="text-xl font-semibold text-center justify-self-center p-2">Connectez-vous pour
-                                creer une recette</h1>
-                        </div>
+            <h1 class="text-xl font-semibold text-center justify-self-center p-2">Connectez-vous pour
+                creer une recette</h1>
+        </div>
 
         <?php endif; ?>
         <!--#endregion -->
         <!--#region Display Search result -->        
-        <section class="px-8 mx-auto">
+        <section class="px-8 py-6 mx-auto">
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
                 <?php foreach ($recipes as $row): ?>
-                    <div class="relative flex flex-col items-center border border-gray-200 rounded-lg min-h-64">
+                    <div class="relative flex flex-col items-center bg-white/75 border border-gray-200 rounded-lg min-h-64">
                         <?php $menuId =
                             "dropdownRecipeMenu-" . $row->getId(); ?>
                         <?php $toggleId =
                             "dropdownRecipeToggle-" . $row->getId(); ?>
                         <!--#region Dropdown Button -->
                         <div class="absolute top-1 right-1 flex items-start gap-2.5">
-                            <button id="<?php echo $toggleId; ?>" data-dropdown-toggle="<?php echo $menuId; ?>"
+                        <button id="<?php echo $toggleId; ?>" data-dropdown-toggle="<?php echo $menuId; ?>"
                                 data-dropdown-placement="bottom-start"
-                                class="inline-flex self-center items-center p-2 text-sm font-medium text-center text-white bg-slate-200/50 rounded-lg hover:bg-slate-400/50"
+                                class="inline-flex self-center items-center p-2 text-sm font-medium text-center text-gray-900 bg-slate-200/50 rounded-lg hover:bg-slate-400/50"
                                 type="button">
                                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor" viewBox="0 0 4 15">
@@ -210,13 +208,13 @@ if (isset($_GET["btn_search_recipe"])) {
                                             class="block px-4 py-2 hover:bg-gray-100/50">Détails</a>
                                     </li>
                                     <li>
-                                        <a href="share.php?id=<?php echo $row->getId(); ?>"
-                                            class="block px-4 py-2 hover:bg-gray-100/50">Partager</a>
+                                            <a href="share.php?id=<?php echo $row->getId(); ?>"
+                                                class="block px-4 py-2 hover:bg-gray-100/50">Partager</a>
                                     </li>
                                     <?php if (
                                         (isset($_SESSION["user_id"]) &&
                                             $_SESSION["user_id"] ==
-                                            $row->getUserId()) ||
+                                                $row->getUserId()) ||
                                         (isset($_SESSION["user_isadmin"]) &&
                                             $_SESSION["user_isadmin"] == 1)
                                     ) { ?>
@@ -231,33 +229,31 @@ if (isset($_GET["btn_search_recipe"])) {
                                     <?php } ?>
                                 </ul>
                             </div>
-                            <!--#endregion -->
                         </div>
                         <!--#endregion -->
-                        <!--#region Display Recipe -->
+                        <!--#region Recipe Card -->
                         <div class="w-full max-h-96 flex flex-col gap-2">
                             <div class="w-full basis-1/3">
                                 <?php if (!empty($row->getImages())): ?>
-                                    <img class="object-cover w-full h-48 rounded-t-lg" src="data: <?php echo $row
-                                        ->getImages()[0]
-                                        ->getMimeType(); ?>;base64,<?php echo base64_encode(
-                                         file_get_contents($row->getImages()[0]->getFilePath())
-                                     ); ?>" />
+                                    <img class="object-cover w-full h-48 rounded-t-lg"
+                                        src="data: <?php echo $row
+                                            ->getImages()[0]
+                                            ->getMimeType(); ?>;base64,<?php echo base64_encode(
+                                            file_get_contents($row->getImages()[0]->getFilePath())
+                                        ); ?>" />
                                 <?php else: ?>
                                     <img class="object-cover w-full h-48 rounded-t-lg" src="https://placehold.co/180x120"
                                         alt="Placeholder" />
                                 <?php endif; ?>
                             </div>
                             <div class="w-full flex flex-col gap-1 p-4 basis-2/3 text-ellipsis">
-                                <a class="mb-3 text-gray-900 text-2xl font-bold leading-tight"
+                                <a class="mb-3 text-gray-900 text-2xl font-bold line-clamp-2 leading-tight"
                                     href="recipe.php?id=<?php echo $row->getId(); ?>&edit=false">
                                     <?php echo $row->getTitle(); ?>
                                     <span class="text-gray-400 font-light text-sm"><?php echo $row->getServes(); ?>.
                                         pers</span>
                                 </a>
-                                <p class="mb-2 line-clamp-3 -text-white-700 font-normal">
-                                    <?php echo $row->getDescription(); ?>
-                                </p>
+                                <p class="mb-2 line-clamp-2 text-gray-700 font-normal"><?php echo $row->getDescription(); ?></p>
                             </div>
                         </div>
                         <!--#endregion -->

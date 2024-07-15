@@ -40,7 +40,7 @@ if (isset($_GET["btn_del_recipe"])) {
 <body>
     <!--#region Header -->
     <header class="sticky top-0 w-full z-20">
-        <nav class="border-b border-gray-200 flex flex-wrap items-center justify-between p-4 start-0 bg-[#C49D837F] ">
+        <nav class="border-b border-gray-200 flex flex-wrap items-center justify-between p-4 start-0 bg-[#C49D83] ">
             <!--#region Brand -->
             <a href="index.php" class="cursor-pointer flex items-center rtl:space-x-reverse space-x-3 w-500 h-250">
                 <img src="data: image/svg+xml;base64,<?php echo base64_encode(
@@ -181,21 +181,21 @@ if (isset($_GET["btn_del_recipe"])) {
                                         src="data: <?php echo $recipe
                                             ->getImages()[0]
                                             ->getMimeType(); ?>;base64,<?php echo base64_encode(
-    file_get_contents($recipe->getImages()[0]->getFilePath())
-); ?>" />
+                                            file_get_contents($recipe->getImages()[0]->getFilePath())
+                                        ); ?>" />
                                 <?php else: ?>
                                     <img class="object-cover w-full h-48 rounded-t-lg" src="https://placehold.co/180x120"
                                         alt="Placeholder" />
                                 <?php endif; ?>
                             </div>
                             <div class="w-full flex flex-col gap-1 p-4 basis-2/3 text-ellipsis">
-                                <a class="mb-3 text-gray-900 text-2xl font-bold leading-tight"
+                                <a class="mb-3 text-gray-900 line-clamp-2 text-2xl font-bold leading-tight"
                                     href="recipe.php?id=<?php echo $recipe->getId(); ?>&edit=false">
                                     <?php echo $recipe->getTitle(); ?>
                                     <span class="text-gray-400 font-light text-sm"><?php echo $recipe->getServes(); ?>.
                                         pers</span>
                                 </a>
-                                <p class="mb-2 line-clamp-3 -text-gray-700 font-normal"><?php echo $recipe->getDescription(); ?></p>
+                                <p class="mb-2 line-clamp-2 text-gray-700 font-normal"><?php echo $recipe->getDescription(); ?></p>
                             </div>
                         </div>
                         <!--#endregion -->
