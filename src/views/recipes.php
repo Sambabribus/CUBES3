@@ -168,9 +168,17 @@ if (isset($_GET["btn_search_recipe"])) {
                     class="text-white absolute end-2.5 bottom-2.5 bg-[#A17C5E] hover:bg-[#C49D83] focus:ring-4 focus:outline-none focus:ring-brown-300 font-medium rounded-lg text-sm px-4 py-2">Chercher</button>
             </div>
         </form>
+        <?php if($_SESSION['user_id'] > 0): ?>
         <button type="button"
             class="justify-self-center m-5 top-[calc(100%)] right-2.5 px-5 py-2.5 bg-[#A17C5E] text-white no-underline rounded-lg transition-[background-color_0.3s_ease,_transform_0.2s_ease] focus:ring-4 focus:ring-brown-300 font-medium text-sm w-1/4 sm:w-1/3 hover:scale-105 hover:bg-[#C49D83]"><a
                 href="creation_recipe.php">Creer une recettes</a></button>
+        <?php else: ?>
+        <div class="grid border border-gray-200 rounded-lg size-fit mx-auto">
+                            <h1 class="text-xl font-semibold text-center justify-self-center p-2">Connectez-vous pour
+                                creer une recette</h1>
+                        </div>
+
+        <?php endif; ?>
         <!--#endregion -->
         <!--#region Display Search result -->        
         <section class="px-8 mx-auto">
