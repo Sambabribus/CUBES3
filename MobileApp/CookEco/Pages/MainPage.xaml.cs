@@ -26,7 +26,6 @@ namespace CookEco
         private async void LoadRecipes()
         {
             await ManagerDB.Init();
-            await ManagerDB.ClearAllDataAsync();
             var recipes = await ManagerDB.GetRecipesAsync();
             foreach (var recipe in recipes)
             {

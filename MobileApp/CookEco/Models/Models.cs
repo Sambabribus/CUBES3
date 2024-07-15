@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text.Json.Serialization;
 using SQLite;
 
@@ -68,8 +69,11 @@ namespace CookEco.Models
         public int UserId { get; set; }
 
         [JsonPropertyName("image")]
-        public string ImagePath { get; set; } 
-        public string FullImagePath => ImagePath.StartsWith("http") ? ImagePath : $"http://{ImagePath}";
+        public string ImagePath { get; set; }
+        public string LocalImagePath { get; set; }
+
+        public string FullImagePath =>
+            !string.IsNullOrEmpty(LocalImagePath) ? LocalImagePath : (ImagePath.StartsWith("http") ? ImagePath : $"http://{ImagePath}");
     }
 
     public class RecipesResponse

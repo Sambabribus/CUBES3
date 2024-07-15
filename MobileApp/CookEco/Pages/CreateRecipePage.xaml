@@ -33,6 +33,8 @@
             </HorizontalStackLayout>
         </Frame>
 
+        <Image x:Name="RecipeImage" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" />
+
         <ImageButton Source="Resources/Images/check.png" 
                      Clicked="OnSaveRecipeClicked" 
                      BackgroundColor="#a17c5e"

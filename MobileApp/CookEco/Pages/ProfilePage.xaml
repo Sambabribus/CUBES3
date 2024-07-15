@@ -8,18 +8,18 @@
     <Shell.TitleView>
         <HorizontalStackLayout VerticalOptions="Fill">
             <Label
-                Text="Créer une recette"
-                TextColor="White"
-                VerticalTextAlignment="Center"
-                VerticalOptions="Center"
-                HeightRequest="50"
-                FontSize="Title" />
+          Text="Créer une recette"
+          
+          TextColor="White"
+          VerticalTextAlignment="Center"
+          VerticalOptions="Center"
+          HeightRequest="50"
+          FontSize="Title" />
         </HorizontalStackLayout>
     </Shell.TitleView>
 
     <ScrollView>
         <StackLayout Spacing="20" Padding="20">
-
             <!-- Profile Section -->
             <Frame BackgroundColor="#FFFFFF" Padding="10" CornerRadius="10" BorderColor="#D0D0D0">
                 <Grid RowSpacing="10" ColumnSpacing="10">
@@ -34,7 +34,7 @@
 
                     <!-- Profile Image -->
                     <Image Source="default_user.png"
-                           Grid.Row="0"
+                        Grid.Row="0"
                            Grid.RowSpan="2"
                            Grid.Column="0"
                            HeightRequest="100"
@@ -44,27 +44,9 @@
                            Aspect="AspectFill"
                            Margin="10" />
 
-                    <!-- Empty Space for Layout Alignment -->
-                    <BoxView Grid.Row="0"
-                             Grid.Column="1"
-                             HeightRequest="100"
-                             WidthRequest="100"
-                             HorizontalOptions="Center"
-                             VerticalOptions="Center"
-                             BackgroundColor="Transparent" />
-
-                    <!-- Username -->
+                    <!-- Username Label -->
                     <Label x:Name="UsernameLabel"
-                           FontSize="24"
-                           FontAttributes="Bold"
-                           TextColor="#a17c5e"
-                           Grid.Row="0"
-                           Grid.Column="1"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center" />
-
-                    <!-- Title "Vos Recettes" -->
-                    <Label Text="VOS RECETTES"
+                           Text="Nom d'utilisateur"
                            FontSize="24"
                            FontAttributes="Bold"
                            TextColor="#a17c5e"
@@ -74,13 +56,6 @@
                            VerticalOptions="Center" />
                 </Grid>
             </Frame>
-
-            <!-- Recipe Section -->
-            <StackLayout x:Name="UserRecipesStackLayout">
-                <!-- Dynamically loaded recipes will go here -->
-            </StackLayout>
-
         </StackLayout>
     </ScrollView>
-
 </ContentPage>

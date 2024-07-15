@@ -3,6 +3,7 @@
     public partial class App : Application
     {
         public int CurrentUserId { get; set; }
+
         public App()
         {
             InitializeComponent();

@@ -3,7 +3,6 @@ using CookEco.Models;
 using CookEco.Services;
 using Microsoft.Maui.Controls;
 using System;
-using BCrypt.Net;
 using System.Linq;
 using System.Threading.Tasks;
 using static CookEco.Services.FetchUserPassword;
@@ -56,6 +55,7 @@ namespace CookEco
                     if (apiUser != null && BCrypt.Net.BCrypt.Verify(PasswordEntry.Text, apiUser.Password))
                     {
                         CurrentUserID = apiUser.Id;
+                        await ManagerDB.SaveUserAsync(apiUser); 
                         await DisplayAlert("Success", "Login successful", "OK");
                         ((App)Application.Current).LoginSuccessful(CurrentUserID);
                         return;
@@ -73,7 +73,6 @@ namespace CookEco
 
             await DisplayAlert("Error", "Incorrect username or password.", "OK");
         }
-
 
         private async void OnRegisterClicked(object sender, EventArgs e)
         {

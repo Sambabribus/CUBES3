@@ -24,6 +24,7 @@ namespace CookEco.Services
 
         public static Task<int> SaveUserAsync(User user) => _database.InsertAsync(user);
         public static Task<User> GetUserAsync(string username) => _database.Table<User>().FirstOrDefaultAsync(u => u.Username == username);
+
         public static Task<User> GetUserByIdAsync(int id) => _database.Table<User>().FirstOrDefaultAsync(u => u.Id == id);
 
         public static async Task<int> SaveRecipeAsync(Recipe recipe)

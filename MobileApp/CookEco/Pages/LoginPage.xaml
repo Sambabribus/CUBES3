@@ -55,6 +55,16 @@
                    HorizontalOptions="End" 
                    Margin="0,0,0,10" />
 
+            <!-- lien d'inscription -->
+            <Label Text="S’inscrire gratuitement" 
+                   FontSize="12" 
+                   TextColor="#a17c5e" 
+                   HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnRegisterClicked" />
+                </Label.GestureRecognizers>
+            </Label>
+
             <!-- bouton connexion -->
             <Button Text="Se connecter" 
                     BackgroundColor="#a17c5e" 
@@ -67,15 +77,6 @@
             <Label x:Name="API_FILD" Text="">
             </Label>
 
-                <!-- lien d'inscription -->
-            <Label Text="S’inscrire gratuitement" 
-                   FontSize="12" 
-                   TextColor="#a17c5e" 
-                   HorizontalOptions="Center">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnRegisterClicked" />
-                </Label.GestureRecognizers>
-            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

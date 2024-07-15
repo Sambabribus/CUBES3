@@ -30,7 +30,12 @@ namespace CookEco
         private async void TakePhoto(object sender, EventArgs e)
         {
             localFileName = await CapturePhotoAsync();
+            if (!string.IsNullOrEmpty(localFileName))
+            {
+                RecipeImage.Source = ImageSource.FromFile(localFileName);
+            }
         }
+
 
         private async Task<string> CapturePhotoAsync()
         {
@@ -40,17 +45,15 @@ namespace CookEco
 
                 if (photo != null)
                 {
-                    return photo.FileName; 
-                }
-                else
-                {
-                    return "no_image_name";
+                    var newFile = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
+                    using (var stream = await photo.OpenReadAsync())
+                    using (var newStream = File.OpenWrite(newFile))
+                        await stream.CopyToAsync(newStream);
+
+                    return newFile;
                 }
             }
-            else
-            {
-                return "no_image_name";
-            }
+            return null;
         }
 
         private async void OnSaveRecipeClicked(object sender, EventArgs e)
@@ -65,7 +68,7 @@ namespace CookEco
                 CookingTime = int.Parse(CookingTimeEntry.Text),
                 Serves = int.Parse(ServesEntry.Text),
                 CreationDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                ImagePath = localFileName 
+                LocalImagePath = localFileName
             };
 
             var existingRecipe = await ManagerDB.GetRecipeByIdAsync(recipe.Id);
@@ -73,7 +76,6 @@ namespace CookEco
             {
                 await ManagerDB.SaveRecipeAsync(recipe);
                 _recipes?.Add(recipe);
-                //await SendRecipeToAPI(recipe);
 
                 await DisplayAlert("Success", "Recipe saved", "OK");
             }
@@ -89,18 +91,5 @@ namespace CookEco
         {
             _recipes = recipes;
         }
-
-       /* private async Task SendRecipeToAPI(Recipe recipe)
-        {
-            using var httpClient = new HttpClient { BaseAddress = new Uri("http://api.snsekken.com") };
-            var json = JsonSerializer.Serialize(new { records = new[] { recipe } });
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync("/index.php/recipes", content);
-
-            var responseContent = await response.Content.ReadAsStringAsync();
-            Console.WriteLine($"Response: {responseContent}");  
-
-            response.EnsureSuccessStatusCode();
-        }*/
     }
 }
